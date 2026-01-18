@@ -709,9 +709,10 @@ p {
 
 .team__overlay p {
     color: var(--sand);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin-bottom: 4px;
     text-align: center;
+    white-space: nowrap;
 }
 
 .team__photo-wrapper:hover .team__photo {
