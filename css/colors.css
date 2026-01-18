@@ -1,0 +1,46 @@
+/* ========================================
+   PasneserPark Brand Colors
+   ======================================== */
+
+:root {
+    /* Primaire kleuren */
+    --color-sand:           #FFF4D5;    /* Achtergrond - zand/beige uit logo */
+    --color-brown-dark:     #5D4037;    /* Donkerbruin - cirkelrand logo, tekst */
+    --color-brown-medium:   #6B5D52;    /* Middenbruin - accenten */
+    --color-brown-light:    #8B7355;    /* Lichtbruin - subtekst */
+    
+    /* Accent kleuren */
+    --color-green-dark:     #5A7D3E;    /* Donkergroen - bergen, natuur */
+    --color-green-light:    #7A9F5A;    /* Lichtgroen - hover states */
+    --color-orange:         #F7CB88;    /* Oranje/goud - zon, warmte */
+    --color-orange-dark:    #E8A850;    /* Donker oranje - hover */
+    
+    /* Neutrale kleuren */
+    --color-white:          #FFFFFF;
+    --color-black:          #000000;
+    --color-text:           #4A4039;    /* Standaard tekstkleur */
+    
+    /* Schaduwen */
+    --shadow-light:         0 2px 8px rgba(93, 64, 55, 0.1);
+    --shadow-medium:        0 4px 16px rgba(93, 64, 55, 0.15);
+    --shadow-heavy:         0 8px 24px rgba(93, 64, 55, 0.2);
+    
+    /* Overgangen */
+    --transition-fast:      0.2s ease;
+    --transition-normal:    0.3s ease;
+    --transition-slow:      0.5s ease;
+}
+
+/* ========================================
+   Handige utility classes
+   ======================================== */
+
+.bg-sand        { background-color: var(--color-sand); }
+.bg-brown-dark  { background-color: var(--color-brown-dark); }
+.bg-green       { background-color: var(--color-green-dark); }
+.bg-orange      { background-color: var(--color-orange); }
+
+.text-brown     { color: var(--color-brown-dark); }
+.text-brown-light { color: var(--color-brown-light); }
+.text-green     { color: var(--color-green-dark); }
+.text-white     { color: var(--color-white); }

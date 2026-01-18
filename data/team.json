@@ -1,0 +1,52 @@
+[
+    {
+        "id": "merel",
+        "name": "Merel",
+        "photo": "images/team/merel.jpg",
+        "info": [
+            "Kattenvrouwtje",
+            "Houdt van koken en bakken",
+            "Had ooit een snoepwinkel"
+        ]
+    },
+    {
+        "id": "frank",
+        "name": "Frank",
+        "photo": "images/team/frank.jpg",
+        "info": [
+            "Is dol op snoepjes ;)",
+            "Rijdt graag op brommertje",
+            "Noemt zichzelf Halfbanees"
+        ]
+    },
+    {
+        "id": "tito",
+        "name": "Tito",
+        "photo": "images/team/tito.jpg",
+        "info": [
+            "Is Halfbanees",
+            "Werkt als schaapsherder en als tourgids",
+            "Blijft soms nachtenlang weg"
+        ]
+    },
+    {
+        "id": "besa",
+        "name": "Besa",
+        "photo": "images/team/besa.jpg",
+        "info": [
+            "Kan urenlang mediteren :)",
+            "Is een echte miauwpoes",
+            "Blijft soms ook nachtenlang weg"
+        ]
+    },
+    {
+        "id": "alpha",
+        "name": "Alpha",
+        "photo": "images/team/alpha.jpg",
+        "info": [
+            "Heeft leren miauwen van Besa",
+            "Is heel lief...",
+            "Maar pas op!"
+        ]
+    }
+]

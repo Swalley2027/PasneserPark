@@ -1,0 +1,325 @@
+/* PasneserPark - Responsive Stylesheet */
+
+/* ================================
+   Large Tablets (max-width: 1024px)
+   ================================ */
+@media (max-width: 1024px) {
+    :root {
+        --space-lg: 3rem;
+        --space-xl: 4rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero__title {
+        font-size: 4rem;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .accommodation__item {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .accommodation__item:nth-child(even) {
+        direction: ltr;
+    }
+
+    .contact__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================
+   Tablets (max-width: 768px)
+   ================================ */
+@media (max-width: 768px) {
+    :root {
+        --space-md: 1.5rem;
+        --space-lg: 2.5rem;
+        --space-xl: 3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .hero__title {
+        font-size: 3rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.25rem;
+    }
+
+    /* Header */
+    .header__nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .header__right .weather-widget {
+        display: none;
+    }
+
+    /* Photo Grid */
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xs);
+    }
+
+    /* Text Block */
+    .text-block__quote {
+        font-size: 1.4rem;
+    }
+
+    /* Team */
+    .team__grid {
+        gap: var(--space-md);
+    }
+
+    .team__photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team__info {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 280px;
+    }
+
+    /* Experiences */
+    .experiences__grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reviews */
+    .reviews__grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    .footer__inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer__links {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    /* Language Page */
+    .flags-container {
+        height: 350px;
+    }
+
+    .flag {
+        width: 40px;
+        height: 30px;
+    }
+
+    .language-page__logo {
+        width: 150px;
+    }
+}
+
+/* ================================
+   Mobile (max-width: 480px)
+   ================================ */
+@media (max-width: 480px) {
+    :root {
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 2rem;
+        --space-xl: 2.5rem;
+    }
+
+    body {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .container {
+        padding: 0 var(--space-sm);
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.1rem;
+    }
+
+    /* Photo Grid */
+    .photo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Text Block */
+    .text-block {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .text-block__quote {
+        font-size: 1.2rem;
+    }
+
+    /* Team */
+    .team__grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team__photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Accommodation */
+    .accommodation__image img {
+        height: 250px;
+    }
+
+    /* Experience Cards */
+    .experience-card {
+        aspect-ratio: 16/12;
+    }
+
+    /* Contact */
+    .contact__map iframe {
+        height: 300px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    /* Language Page */
+    .flags-container {
+        height: 300px;
+    }
+
+    .flag {
+        width: 36px;
+        height: 27px;
+    }
+
+    .language-page__logo {
+        width: 120px;
+        margin-bottom: var(--space-md);
+    }
+
+    .language-page__text h2 {
+        font-size: 1.25rem;
+    }
+
+    .language-page__text p {
+        font-size: 1rem;
+    }
+}
+
+/* ================================
+   Print Styles
+   ================================ */
+@media print {
+    .header,
+    .footer,
+    .btn,
+    .hamburger {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .hero {
+        height: auto;
+        min-height: auto;
+        page-break-after: always;
+    }
+
+    .hero__image {
+        position: relative;
+        height: 300px;
+    }
+
+    .section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ================================
+   High DPI / Retina Adjustments
+   ================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .flag {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* ================================
+   Reduced Motion
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ================================
+   Dark Mode Support (future)
+   ================================ */
+@media (prefers-color-scheme: dark) {
+    /* Prepared for future dark mode implementation */
+    /* Currently disabled to maintain brand consistency */
+}

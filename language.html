@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PasneserPark - Glamping in de Albanese natuur. Kies je taal.">
+    <title>PasneserPark - Kies je taal</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #FFF4D5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            width: 280px;
+            height: auto;
+            margin-bottom: 25px;
+        }
+
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #5D4037;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        .flags-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 35px 45px;
+            max-width: 1100px;
+        }
+
+        .flag-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .flag-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .flag-item img {
+            width: 85px;
+            height: 57px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid #5D4037;
+            box-shadow: 0 4px 12px rgba(93, 64, 55, 0.15);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .flag-item:hover img {
+            box-shadow: 0 10px 25px rgba(93, 64, 55, 0.3);
+            transform: scale(1.05);
+        }
+
+        .flag-item span {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #5D4037;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .flags-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 30px 35px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .flags-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px 30px;
+            }
+            
+            .logo {
+                width: 220px;
+            }
+
+            .site-title {
+                font-size: 2.2rem;
+            }
+
+            .flag-item img {
+                width: 70px;
+                height: 47px;
+            }
+
+            .flag-item span {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .flags-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px 25px;
+            }
+
+            .logo {
+                width: 180px;
+            }
+
+            .site-title {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+            }
+
+            .flag-item img {
+                width: 60px;
+                height: 40px;
+            }
+
+            .flag-item span {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="images/logo/Logo Pasneserpark.png" alt="PasneserPark Logo" class="logo">
+    
+    <h1 class="site-title">PasneserPark</h1>
+
+    <div class="flags-grid">
+        <!-- Rij 1 -->
+        <a href="index.html?lang=nl" class="flag-item" title="Nederland">
+            <img src="https://flagcdn.com/w80/nl.png" alt="Nederland">
+            <span>Nederland</span>
+        </a>
+        <a href="index.html?lang=fy" class="flag-item" title="Fryslân">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Frisian_flag.svg/80px-Frisian_flag.svg.png" alt="Fryslân">
+            <span>Fryslân</span>
+        </a>
+        <a href="index.html?lang=nl" class="flag-item" title="België">
+            <img src="https://flagcdn.com/w80/be.png" alt="België">
+            <span>België</span>
+        </a>
+        <a href="index.html?lang=de" class="flag-item" title="Deutschland">
+            <img src="https://flagcdn.com/w80/de.png" alt="Deutschland">
+            <span>Deutschland</span>
+        </a>
+        <a href="index.html?lang=fr" class="flag-item" title="France">
+            <img src="https://flagcdn.com/w80/fr.png" alt="France">
+            <span>France</span>
+        </a>
+        <a href="index.html?lang=it" class="flag-item" title="Italia">
+            <img src="https://flagcdn.com/w80/it.png" alt="Italia">
+            <span>Italia</span>
+        </a>
+        <a href="index.html?lang=es" class="flag-item" title="España">
+            <img src="https://flagcdn.com/w80/es.png" alt="España">
+            <span>España</span>
+        </a>
+        <a href="index.html?lang=pt" class="flag-item" title="Portugal">
+            <img src="https://flagcdn.com/w80/pt.png" alt="Portugal">
+            <span>Portugal</span>
+        </a>
+
+        <!-- Rij 2 -->
+        <a href="index.html?lang=pl" class="flag-item" title="Polska">
+            <img src="https://flagcdn.com/w80/pl.png" alt="Polska">
+            <span>Polska</span>
+        </a>
+        <a href="index.html?lang=cs" class="flag-item" title="Česko">
+            <img src="https://flagcdn.com/w80/cz.png" alt="Česko">
+            <span>Česko</span>
+        </a>
+        <a href="index.html?lang=da" class="flag-item" title="Danmark">
+            <img src="https://flagcdn.com/w80/dk.png" alt="Danmark">
+            <span>Danmark</span>
+        </a>
+        <a href="index.html?lang=sv" class="flag-item" title="Sverige">
+            <img src="https://flagcdn.com/w80/se.png" alt="Sverige">
+            <span>Sverige</span>
+        </a>
+        <a href="index.html?lang=no" class="flag-item" title="Norge">
+            <img src="https://flagcdn.com/w80/no.png" alt="Norge">
+            <span>Norge</span>
+        </a>
+        <a href="index.html?lang=fi" class="flag-item" title="Suomi">
+            <img src="https://flagcdn.com/w80/fi.png" alt="Suomi">
+            <span>Suomi</span>
+        </a>
+        <a href="index.html?lang=en" class="flag-item" title="United Kingdom">
+            <img src="https://flagcdn.com/w80/gb.png" alt="UK">
+            <span>UK</span>
+        </a>
+        <a href="index.html?lang=en" class="flag-item" title="United States">
+            <img src="https://flagcdn.com/w80/us.png" alt="USA">
+            <span>USA</span>
+        </a>
+
+        <!-- Rij 3 -->
+        <a href="index.html?lang=en" class="flag-item" title="Canada">
+            <img src="https://flagcdn.com/w80/ca.png" alt="Canada">
+            <span>Canada</span>
+        </a>
+        <a href="index.html?lang=en" class="flag-item" title="Australia">
+            <img src="https://flagcdn.com/w80/au.png" alt="Australia">
+            <span>Australia</span>
+        </a>
+        <a href="index.html?lang=en" class="flag-item" title="New Zealand">
+            <img src="https://flagcdn.com/w80/nz.png" alt="New Zealand">
+            <span>New Zealand</span>
+        </a>
+        <a href="index.html?lang=en" class="flag-item" title="Ireland">
+            <img src="https://flagcdn.com/w80/ie.png" alt="Ireland">
+            <span>Ireland</span>
+        </a>
+        <a href="index.html?lang=en" class="flag-item" title="South Africa">
+            <img src="https://flagcdn.com/w80/za.png" alt="South Africa">
+            <span>South Africa</span>
+        </a>
+        <a href="index.html?lang=sq" class="flag-item" title="Shqipëria">
+            <img src="https://flagcdn.com/w80/al.png" alt="Shqipëria">
+            <span>Shqipëria</span>
+        </a>
+        <a href="index.html?lang=sq" class="flag-item" title="Kosova">
+            <img src="https://flagcdn.com/w80/xk.png" alt="Kosova">
+            <span>Kosova</span>
+        </a>
+        <a href="index.html?lang=el" class="flag-item" title="Ελλάδα">
+            <img src="https://flagcdn.com/w80/gr.png" alt="Ελλάδα">
+            <span>Ελλάδα</span>
+        </a>
+    </div>
+</body>
+</html>

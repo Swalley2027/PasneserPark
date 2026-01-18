@@ -1,0 +1,128 @@
+{
+    "meta": {
+        "language": "nl",
+        "languageName": "Nederlands"
+    },
+    "navigation": {
+        "home": "Home",
+        "accommodation": "Accommodatie",
+        "experiences": "Te doen in de buurt",
+        "reviews": "Reviews",
+        "contact": "Contact",
+        "book": "Reserveren"
+    },
+    "languagePage": {
+        "title": "Kies je taal",
+        "subtitle": "Choose your language"
+    },
+    "home": {
+        "heroTitle": "PasneserPark",
+        "heroSubtitle": "Glamping in de Albanese natuur",
+        "quote": "Een beltent, een luxe bed, een houten vlonder. Geen poespas, wel comfort.",
+        "teamTitle": "Ons Team"
+    },
+    "accommodation": {
+        "pageTitle": "Accommodatie",
+        "pageSubtitle": "Jouw thuis in de Albanese natuur",
+        "tent": {
+            "title": "De Beltent",
+            "text": "Onze ruime beltent biedt het beste van twee werelden: de charme van kamperen met het comfort van een hotelkamer. Gelegen op een private plek met uitzicht over de groene heuvels van Albanie."
+        },
+        "platform": {
+            "title": "Het Platform",
+            "text": "De tent staat op een stevig houten platform, verhoogd boven de grond. Dit houdt alles droog en geeft je een prachtig terras om te genieten van je ochtendkoffie met uitzicht."
+        },
+        "inside": {
+            "title": "Binnen in de Tent",
+            "text": "Een comfortabel tweepersoons bed met kwaliteitsmatras en fijn beddengoed. Sfeervolle verlichting, voldoende opbergruimte en kleine details die het verschil maken."
+        },
+        "shower": {
+            "title": "De Douche",
+            "text": "Een warme douche onder de blote hemel - is er iets beters? Onze buitendouche combineert gemak met een unieke ervaring. Warm water is altijd beschikbaar."
+        },
+        "toilet": {
+            "title": "Het Toilet",
+            "text": "Een schoon en comfortabel privaat toilet, netjes weggewerkt maar altijd binnen handbereik. Geen concessies aan je comfort."
+        },
+        "washbasin": {
+            "title": "De Wasbak",
+            "text": "Buiten wassen met uitzicht op de natuur. Onze buitenwasbak heeft stromend water en geeft je de ruimte om te genieten van de eenvoud van het buitenleven."
+        },
+        "ctaTitle": "Klaar om te boeken?",
+        "ctaText": "Reserveer je verblijf via Airbnb"
+    },
+    "experiences": {
+        "pageTitle": "Te doen in de buurt",
+        "pageSubtitle": "Ontdek wat PasneserPark te bieden heeft",
+        "kitchen": {
+            "title": "Buitenkeuken",
+            "text": "Kook je eigen maaltijd in onze volledig uitgeruste buitenkeuken. Met gasfornuis, koelkast en alles wat je nodig hebt."
+        },
+        "water": {
+            "title": "De Waterplek",
+            "text": "Een verfrissende plek om af te koelen op warme dagen. Helder water, omringd door groen."
+        },
+        "forest": {
+            "title": "Bospaadjes",
+            "text": "Wandel door de omliggende bossen. Rustige paden, schaduwrijke plekken en de geluiden van de natuur."
+        },
+        "bar": {
+            "title": "Avond bij de Bar",
+            "text": "Sluit de dag af met een drankje aan onze gezellige bar. Onder de sterren, met goed gezelschap."
+        },
+        "quote": "De beste herinneringen maak je buiten."
+    },
+    "reviews": {
+        "pageTitle": "Reviews",
+        "pageSubtitle": "Wat onze gasten zeggen",
+        "ctaTitle": "Zelf ervaren?",
+        "ctaText": "Boek je verblijf en schrijf straks je eigen review"
+    },
+    "contact": {
+        "pageTitle": "Contact",
+        "pageSubtitle": "Heb je vragen? Neem gerust contact op",
+        "formTitle": "Neem contact op",
+        "email": "E-mail",
+        "phone": "Telefoon",
+        "location": "Locatie",
+        "booking": "Reserveren",
+        "bookingText": "Boek direct via"
+    },
+    "weather": {
+        "today": "Vandaag",
+        "tomorrow": "Morgen",
+        "dayAfter": "Overmorgen"
+    },
+    "footer": {
+        "navigation": "Navigatie",
+        "contact": "Contact",
+        "copyright": "Alle rechten voorbehouden."
+    },
+    "team": {
+        "merel": [
+            "Kattenvrouwtje",
+            "Houdt van koken en bakken",
+            "Had ooit een snoepwinkel"
+        ],
+        "frank": [
+            "Is dol op snoepjes ;)",
+            "Rijdt graag op brommertje",
+            "Noemt zichzelf Halfbanees"
+        ],
+        "tito": [
+            "Is Halfbanees",
+            "Werkt als schaapsherder en als tourgids",
+            "Blijft soms nachtenlang weg"
+        ],
+        "besa": [
+            "Kan urenlang mediteren :)",
+            "Is een echte miauwpoes",
+            "Blijft soms ook nachtenlang weg"
+        ],
+        "alpha": [
+            "Heeft leren miauwen van Besa",
+            "Is heel lief...",
+            "Maar pas op!"
+        ]
+    }
+}
