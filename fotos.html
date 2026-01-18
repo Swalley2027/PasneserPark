@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PasneserPark - Ontdek wat je kunt doen in en rond het park. Buitenkeuken, waterplek, bospaadjes en meer.">
-    <title>Te doen in de buurt - PasneserPark</title>
+    <meta name="description" content="PasneserPark - Bekijk foto's van onze glamping in Albanië. Buitenkeuken, waterplek, bospaadjes en meer.">
+    <title>Foto's - PasneserPark</title>
     <link rel="icon" type="image/png" href="images/icons/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,32 +22,14 @@
             </a>
 
             <nav class="header__nav">
-                <a href="accommodation.html">Accommodatie</a>
-                <a href="experiences.html" class="active">Te doen in de buurt</a>
+                <a href="de-tent.html">De tent</a>
+                <a href="fotos.html" class="active">Foto's</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="contact.html">Contact</a>
             </nav>
 
             <div class="header__right">
-                <div class="weather-widget" id="weather-widget">
-                    <span class="weather-widget__icon">&#9728;</span>
-                    <span class="weather-widget__temp" id="weather-temp">--&#176;C</span>
-                    <div class="weather-widget__dropdown" id="weather-dropdown">
-                        <div class="weather-widget__day">
-                            <span>Vandaag</span>
-                            <span id="weather-day1">--&#176;C</span>
-                        </div>
-                        <div class="weather-widget__day">
-                            <span>Morgen</span>
-                            <span id="weather-day2">--&#176;C</span>
-                        </div>
-                        <div class="weather-widget__day">
-                            <span>Overmorgen</span>
-                            <span id="weather-day3">--&#176;C</span>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://www.airbnb.com" target="_blank" rel="noopener" class="btn btn--primary">Reserveren</a>
+                <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="btn btn--primary">Reserveren</a>
             </div>
 
             <div class="hamburger" id="hamburger">
@@ -60,17 +42,17 @@
 
     <!-- Mobile Navigation -->
     <nav class="mobile-nav" id="mobile-nav">
-        <a href="accommodation.html">Accommodatie</a>
-        <a href="experiences.html" class="active">Te doen in de buurt</a>
+        <a href="de-tent.html">De tent</a>
+        <a href="fotos.html" class="active">Foto's</a>
         <a href="reviews.html">Reviews</a>
         <a href="contact.html">Contact</a>
-        <a href="https://www.airbnb.com" target="_blank" rel="noopener" class="btn btn--primary">Reserveren</a>
+        <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="btn btn--primary">Reserveren</a>
     </nav>
 
     <!-- Page Header -->
     <div class="page-header">
         <div class="container">
-            <h1>Te doen in de buurt</h1>
+            <h1>Foto's</h1>
             <p>Ontdek wat PasneserPark te bieden heeft</p>
         </div>
     </div>
@@ -80,38 +62,38 @@
         <div class="container">
             <div class="experiences__grid">
                 <!-- Buitenkeuken -->
-                <div class="experience-card">
+                <div class="experience-card" data-photo-id="buitenkeuken">
                     <img src="images/experiences/outdoor-kitchen.jpg" alt="Buitenkeuken">
                     <div class="experience-card__overlay">
-                        <h3 class="experience-card__title">Buitenkeuken</h3>
-                        <p class="experience-card__text">Kook je eigen maaltijd in onze volledig uitgeruste buitenkeuken. Met gasfornuis, koelkast en alles wat je nodig hebt.</p>
+                        <h3 class="experience-card__title"></h3>
+                        <p class="experience-card__text"></p>
                     </div>
                 </div>
 
                 <!-- Waterplek -->
-                <div class="experience-card">
+                <div class="experience-card" data-photo-id="waterplek">
                     <img src="images/experiences/water-spot.jpg" alt="Waterplek">
                     <div class="experience-card__overlay">
-                        <h3 class="experience-card__title">De Waterplek</h3>
-                        <p class="experience-card__text">Een verfrissende plek om af te koelen op warme dagen. Helder water, omringd door groen.</p>
+                        <h3 class="experience-card__title"></h3>
+                        <p class="experience-card__text"></p>
                     </div>
                 </div>
 
                 <!-- Bospaadjes -->
-                <div class="experience-card">
+                <div class="experience-card" data-photo-id="bospaadjes">
                     <img src="images/experiences/forest-path-bench.jpg" alt="Bospaadjes">
                     <div class="experience-card__overlay">
-                        <h3 class="experience-card__title">Bospaadjes</h3>
-                        <p class="experience-card__text">Wandel door de omliggende bossen. Rustige paden, schaduwrijke plekken en de geluiden van de natuur.</p>
+                        <h3 class="experience-card__title"></h3>
+                        <p class="experience-card__text"></p>
                     </div>
                 </div>
 
                 <!-- Avond bij de bar -->
-                <div class="experience-card">
+                <div class="experience-card" data-photo-id="bar">
                     <img src="images/experiences/bar-evening.jpg" alt="Avond bij de bar">
                     <div class="experience-card__overlay">
-                        <h3 class="experience-card__title">Avond bij de Bar</h3>
-                        <p class="experience-card__text">Sluit de dag af met een drankje aan onze gezellige bar. Onder de sterren, met goed gezelschap.</p>
+                        <h3 class="experience-card__title"></h3>
+                        <p class="experience-card__text"></p>
                     </div>
                 </div>
             </div>
@@ -138,8 +120,8 @@
                     <div class="footer__column">
                         <h4>Navigatie</h4>
                         <a href="index.html">Home</a>
-                        <a href="accommodation.html">Accommodatie</a>
-                        <a href="experiences.html">Te doen</a>
+                        <a href="de-tent.html">De tent</a>
+                        <a href="fotos.html">Foto's</a>
                         <a href="reviews.html">Reviews</a>
                         <a href="contact.html">Contact</a>
                     </div>
@@ -157,6 +139,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/weather.js"></script>
+    <script src="js/photos-config.js"></script>
 </body>
 </html>

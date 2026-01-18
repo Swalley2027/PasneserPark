@@ -169,10 +169,7 @@ p {
     pointer-events: none;
 }
 
-.header--transparent .header__nav a,
-.header--transparent .weather-widget,
-.header--transparent .weather-widget__icon,
-.header--transparent .weather-widget__temp {
+.header--transparent .header__nav a {
     color: var(--sand);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
@@ -187,10 +184,7 @@ p {
     pointer-events: auto;
 }
 
-.header--solid .header__nav a,
-.header--solid .weather-widget,
-.header--solid .weather-widget__icon,
-.header--solid .weather-widget__temp {
+.header--solid .header__nav a {
     color: var(--brown);
     text-shadow: none;
 }
@@ -248,63 +242,6 @@ p {
     gap: var(--space-md);
 }
 
-/* ================================
-   Weather Widget
-   ================================ */
-.weather-widget {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    cursor: pointer;
-    position: relative;
-    transition: color 0.4s ease;
-}
-
-.weather-widget__icon {
-    font-size: 1.5rem;
-    transition: color 0.4s ease;
-}
-
-.weather-widget__temp {
-    font-weight: 600;
-    transition: color 0.4s ease;
-}
-
-.weather-widget__dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: var(--space-xs);
-    background-color: var(--sand);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    padding: var(--space-sm);
-    min-width: 200px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all var(--transition);
-}
-
-.weather-widget:hover .weather-widget__dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.weather-widget__day {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-xs) 0;
-    border-bottom: 1px solid var(--sand-dark);
-    color: var(--brown);
-    text-shadow: none;
-}
-
-.weather-widget__day:last-child {
-    border-bottom: none;
-}
 
 /* ================================
    Buttons
