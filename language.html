@@ -23,29 +23,67 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 40px 20px;
+        }
+
+        /* Paper texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .logo {
             width: 280px;
             height: auto;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .site-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: #5D4037;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #8B7355;
             margin-bottom: 50px;
         }
 
+        .choose-text {
+            font-size: 1rem;
+            color: #8B7355;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
         .flags-grid {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 35px 45px;
-            max-width: 1100px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
         }
 
         .flag-item {
@@ -53,72 +91,95 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
         .flag-item:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
         }
 
-        .flag-item img {
-            width: 85px;
-            height: 57px;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 2px solid #5D4037;
-            box-shadow: 0 4px 12px rgba(93, 64, 55, 0.15);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        .flag-wrapper {
+            width: 120px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid #D4AF37;
+            box-shadow: 0 6px 20px rgba(93, 64, 55, 0.2);
+            transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
         }
 
-        .flag-item:hover img {
-            box-shadow: 0 10px 25px rgba(93, 64, 55, 0.3);
+        .flag-item:hover .flag-wrapper {
+            box-shadow: 0 12px 35px rgba(93, 64, 55, 0.35);
             transform: scale(1.05);
+            border-color: #5D4037;
+        }
+
+        .flag-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .flag-item span {
-            margin-top: 12px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: 600;
             color: #5D4037;
             text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .flag-item:hover span {
+            color: #8B7355;
+        }
+
+        /* Decorative line */
+        .decorative-line {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 50px 0 30px;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: #8B7355;
+            opacity: 0.7;
         }
 
         /* Responsive */
-        @media (max-width: 1000px) {
+        @media (max-width: 600px) {
             .flags-grid {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 30px 35px;
+                gap: 40px;
             }
-        }
 
-        @media (max-width: 750px) {
-            .flags-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 25px 30px;
+            .flag-wrapper {
+                width: 100px;
+                height: 67px;
             }
-            
+
             .logo {
                 width: 220px;
             }
 
             .site-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
-            .flag-item img {
-                width: 70px;
-                height: 47px;
-            }
-
-            .flag-item span {
-                font-size: 0.8rem;
+            .tagline {
+                font-size: 1rem;
             }
         }
 
-        @media (max-width: 450px) {
+        @media (max-width: 400px) {
             .flags-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px 25px;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .flag-wrapper {
+                width: 120px;
+                height: 80px;
             }
 
             .logo {
@@ -126,128 +187,44 @@
             }
 
             .site-title {
-                font-size: 1.8rem;
-                letter-spacing: 1px;
-            }
-
-            .flag-item img {
-                width: 60px;
-                height: 40px;
-            }
-
-            .flag-item span {
-                font-size: 0.75rem;
+                font-size: 2rem;
+                letter-spacing: 2px;
             }
         }
     </style>
 </head>
 <body>
-    <img src="images/logo/Logo Pasneserpark.png" alt="PasneserPark Logo" class="logo">
-    
-    <h1 class="site-title">PasneserPark</h1>
+    <div class="content">
+        <img src="images/logo/Logo Pasneserpark.png" alt="PasneserPark Logo" class="logo">
 
-    <div class="flags-grid">
-        <!-- Rij 1 -->
-        <a href="index.html?lang=nl" class="flag-item" title="Nederland">
-            <img src="https://flagcdn.com/w80/nl.png" alt="Nederland">
-            <span>Nederland</span>
-        </a>
-        <a href="index.html?lang=fy" class="flag-item" title="Fryslân">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Frisian_flag.svg/80px-Frisian_flag.svg.png" alt="Fryslân">
-            <span>Fryslân</span>
-        </a>
-        <a href="index.html?lang=nl" class="flag-item" title="België">
-            <img src="https://flagcdn.com/w80/be.png" alt="België">
-            <span>België</span>
-        </a>
-        <a href="index.html?lang=de" class="flag-item" title="Deutschland">
-            <img src="https://flagcdn.com/w80/de.png" alt="Deutschland">
-            <span>Deutschland</span>
-        </a>
-        <a href="index.html?lang=fr" class="flag-item" title="France">
-            <img src="https://flagcdn.com/w80/fr.png" alt="France">
-            <span>France</span>
-        </a>
-        <a href="index.html?lang=it" class="flag-item" title="Italia">
-            <img src="https://flagcdn.com/w80/it.png" alt="Italia">
-            <span>Italia</span>
-        </a>
-        <a href="index.html?lang=es" class="flag-item" title="España">
-            <img src="https://flagcdn.com/w80/es.png" alt="España">
-            <span>España</span>
-        </a>
-        <a href="index.html?lang=pt" class="flag-item" title="Portugal">
-            <img src="https://flagcdn.com/w80/pt.png" alt="Portugal">
-            <span>Portugal</span>
-        </a>
+        <h1 class="site-title">PasneserPark</h1>
+        <p class="tagline">Glamping in de Albanese natuur</p>
 
-        <!-- Rij 2 -->
-        <a href="index.html?lang=pl" class="flag-item" title="Polska">
-            <img src="https://flagcdn.com/w80/pl.png" alt="Polska">
-            <span>Polska</span>
-        </a>
-        <a href="index.html?lang=cs" class="flag-item" title="Česko">
-            <img src="https://flagcdn.com/w80/cz.png" alt="Česko">
-            <span>Česko</span>
-        </a>
-        <a href="index.html?lang=da" class="flag-item" title="Danmark">
-            <img src="https://flagcdn.com/w80/dk.png" alt="Danmark">
-            <span>Danmark</span>
-        </a>
-        <a href="index.html?lang=sv" class="flag-item" title="Sverige">
-            <img src="https://flagcdn.com/w80/se.png" alt="Sverige">
-            <span>Sverige</span>
-        </a>
-        <a href="index.html?lang=no" class="flag-item" title="Norge">
-            <img src="https://flagcdn.com/w80/no.png" alt="Norge">
-            <span>Norge</span>
-        </a>
-        <a href="index.html?lang=fi" class="flag-item" title="Suomi">
-            <img src="https://flagcdn.com/w80/fi.png" alt="Suomi">
-            <span>Suomi</span>
-        </a>
-        <a href="index.html?lang=en" class="flag-item" title="United Kingdom">
-            <img src="https://flagcdn.com/w80/gb.png" alt="UK">
-            <span>UK</span>
-        </a>
-        <a href="index.html?lang=en" class="flag-item" title="United States">
-            <img src="https://flagcdn.com/w80/us.png" alt="USA">
-            <span>USA</span>
-        </a>
+        <p class="choose-text">Kies je taal</p>
 
-        <!-- Rij 3 -->
-        <a href="index.html?lang=en" class="flag-item" title="Canada">
-            <img src="https://flagcdn.com/w80/ca.png" alt="Canada">
-            <span>Canada</span>
-        </a>
-        <a href="index.html?lang=en" class="flag-item" title="Australia">
-            <img src="https://flagcdn.com/w80/au.png" alt="Australia">
-            <span>Australia</span>
-        </a>
-        <a href="index.html?lang=en" class="flag-item" title="New Zealand">
-            <img src="https://flagcdn.com/w80/nz.png" alt="New Zealand">
-            <span>New Zealand</span>
-        </a>
-        <a href="index.html?lang=en" class="flag-item" title="Ireland">
-            <img src="https://flagcdn.com/w80/ie.png" alt="Ireland">
-            <span>Ireland</span>
-        </a>
-        <a href="index.html?lang=en" class="flag-item" title="South Africa">
-            <img src="https://flagcdn.com/w80/za.png" alt="South Africa">
-            <span>South Africa</span>
-        </a>
-        <a href="index.html?lang=sq" class="flag-item" title="Shqipëria">
-            <img src="https://flagcdn.com/w80/al.png" alt="Shqipëria">
-            <span>Shqipëria</span>
-        </a>
-        <a href="index.html?lang=sq" class="flag-item" title="Kosova">
-            <img src="https://flagcdn.com/w80/xk.png" alt="Kosova">
-            <span>Kosova</span>
-        </a>
-        <a href="index.html?lang=el" class="flag-item" title="Ελλάδα">
-            <img src="https://flagcdn.com/w80/gr.png" alt="Ελλάδα">
-            <span>Ελλάδα</span>
-        </a>
+        <div class="flags-grid">
+            <a href="index.html?lang=nl" class="flag-item" title="Nederlands">
+                <div class="flag-wrapper">
+                    <img src="https://flagcdn.com/w160/nl.png" alt="Nederlands">
+                </div>
+                <span>Nederlands</span>
+            </a>
+            <a href="index.html?lang=de" class="flag-item" title="Deutsch">
+                <div class="flag-wrapper">
+                    <img src="https://flagcdn.com/w160/de.png" alt="Deutsch">
+                </div>
+                <span>Deutsch</span>
+            </a>
+            <a href="index.html?lang=en" class="flag-item" title="English">
+                <div class="flag-wrapper">
+                    <img src="https://flagcdn.com/w160/gb.png" alt="English">
+                </div>
+                <span>English</span>
+            </a>
+        </div>
+
+        <div class="decorative-line"></div>
+        <p class="footer-text">Shelcan, Elbasan, Albania</p>
     </div>
 </body>
 </html>

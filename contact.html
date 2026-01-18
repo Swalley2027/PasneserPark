@@ -12,6 +12,96 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <style>
+        /* Premium Map Styling */
+        .contact__map--styled {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(93, 64, 55, 0.2);
+            border: 3px solid #D4AF37;
+        }
+
+        .contact__map--styled #map {
+            width: 100%;
+            height: 400px;
+            filter: sepia(25%) saturate(90%) brightness(98%) contrast(95%);
+            transition: filter 0.4s ease;
+        }
+
+        .contact__map--styled:hover #map {
+            filter: sepia(15%) saturate(95%) brightness(100%) contrast(98%);
+        }
+
+        /* Custom marker styling */
+        .custom-marker {
+            background: none;
+            border: none;
+        }
+
+        .marker-pin {
+            width: 40px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .marker-pin svg {
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+        }
+
+        /* Hide Leaflet attribution styling */
+        .leaflet-control-attribution {
+            background: rgba(255, 244, 213, 0.85) !important;
+            font-size: 10px;
+            color: #8B7355;
+            border-radius: 4px 0 0 0;
+        }
+
+        .leaflet-control-attribution a {
+            color: #5D4037;
+        }
+
+        /* Popup styling */
+        .leaflet-popup-content-wrapper {
+            background: #FFF4D5;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(93, 64, 55, 0.25);
+            border: 2px solid #D4AF37;
+        }
+
+        .leaflet-popup-content {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #5D4037;
+            margin: 12px 16px;
+        }
+
+        .leaflet-popup-content h4 {
+            font-family: 'Playfair Display', serif;
+            margin: 0 0 4px 0;
+            font-size: 1.1rem;
+        }
+
+        .leaflet-popup-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #8B7355;
+        }
+
+        .leaflet-popup-tip {
+            background: #FFF4D5;
+            border: 2px solid #D4AF37;
+            border-top: none;
+            border-left: none;
+        }
+
+        .leaflet-container {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -103,14 +193,8 @@
                     </div>
                 </div>
 
-                <div class="contact__map">
-                    <iframe
-                        src="https://maps.google.com/maps?q=41.071042,20.140146&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Locatie PasneserPark">
-                    </iframe>
+                <div class="contact__map contact__map--styled">
+                    <div id="map"></div>
                 </div>
             </div>
         </div>
@@ -143,5 +227,62 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        // Initialize premium styled map
+        const map = L.map('map', {
+            zoomControl: true,
+            scrollWheelZoom: false
+        }).setView([41.071042, 20.140146], 14);
+
+        // Add warm-toned map tiles (CartoDB Positron with sepia filter applied via CSS)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Custom belltent marker icon
+        const belltentIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `
+                <div class="marker-pin">
+                    <svg width="40" height="50" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Pin shape -->
+                        <path d="M20 0C12 0 5 7 5 15C5 25 20 50 20 50C20 50 35 25 35 15C35 7 28 0 20 0Z" fill="#5D4037"/>
+                        <!-- Inner circle -->
+                        <circle cx="20" cy="15" r="12" fill="#D4AF37"/>
+                        <!-- Belltent icon inside -->
+                        <path d="M20 7L12 23H16V21C16 19.5 18 18 20 18C22 18 24 19.5 24 21V23H28L20 7Z" fill="#5D4037"/>
+                        <!-- Flag -->
+                        <path d="M21 7L24 9L21 11V7Z" fill="#5D4037"/>
+                    </svg>
+                </div>
+            `,
+            iconSize: [40, 50],
+            iconAnchor: [20, 50],
+            popupAnchor: [0, -50]
+        });
+
+        // Add marker with popup
+        const marker = L.marker([41.071042, 20.140146], { icon: belltentIcon }).addTo(map);
+
+        marker.bindPopup(`
+            <h4>PasneserPark</h4>
+            <p>Glamping in de Albanese natuur</p>
+        `);
+
+        // Enable scroll zoom on click
+        map.on('click', function() {
+            map.scrollWheelZoom.enable();
+        });
+
+        map.on('mouseout', function() {
+            map.scrollWheelZoom.disable();
+        });
+    </script>
 </body>
 </html>
