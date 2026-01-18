@@ -81,39 +81,21 @@
             <div class="photo-grid">
                 <div class="photo-grid__item" data-lightbox="gallery">
                     <img src="images/home/grid-1.jpg" alt="Beleving PasneserPark">
-                    <div class="photo-grid__overlay">
-                        <span>Bekijk foto</span>
-                    </div>
                 </div>
                 <div class="photo-grid__item" data-lightbox="gallery">
                     <img src="images/home/grid-2.jpg" alt="Beleving PasneserPark">
-                    <div class="photo-grid__overlay">
-                        <span>Bekijk foto</span>
-                    </div>
                 </div>
                 <div class="photo-grid__item" data-lightbox="gallery">
                     <img src="images/home/grid-3.jpg" alt="Beleving PasneserPark">
-                    <div class="photo-grid__overlay">
-                        <span>Bekijk foto</span>
-                    </div>
                 </div>
                 <div class="photo-grid__item" data-lightbox="gallery">
                     <img src="images/home/grid-4.jpg" alt="Beleving PasneserPark">
-                    <div class="photo-grid__overlay">
-                        <span>Bekijk foto</span>
-                    </div>
                 </div>
                 <div class="photo-grid__item" data-lightbox="gallery">
                     <img src="images/home/grid-5.jpg" alt="Beleving PasneserPark">
-                    <div class="photo-grid__overlay">
-                        <span>Bekijk foto</span>
-                    </div>
                 </div>
                 <div class="photo-grid__item" data-lightbox="gallery">
                     <img src="images/home/grid-6.jpg" alt="Beleving PasneserPark">
-                    <div class="photo-grid__overlay">
-                        <span>Bekijk foto</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -378,4 +360,11 @@
         });
 
         document.addEventListener('keydown', (e) => {
-            if (!lightbox.c
+            if (!lightbox.classList.contains('lightbox--active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+    </script>
+</body>
+</html>
