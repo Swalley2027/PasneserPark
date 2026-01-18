@@ -282,6 +282,32 @@ p {
     border-color: var(--gold);
 }
 
+.btn--cta {
+    background: linear-gradient(135deg, var(--brown), var(--brown-dark));
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
+}
+
+.btn--cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(93, 64, 55, 0.4);
+    color: white;
+}
+
+.contact__item--cta {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--sand-dark);
+}
+
+.contact__item--cta .contact__icon {
+    color: var(--brown);
+}
+
 /* ================================
    Hero Section - PARALLAX
    ================================ */
