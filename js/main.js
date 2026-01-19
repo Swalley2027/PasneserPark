@@ -21,7 +21,7 @@
 
         const scrollPosition = window.scrollY;
         // Check for any hero-style section (dark background)
-        const hasHeroSection = document.querySelector('.hero, .accom-hero, .reviews-hero, .blog-hero') !== null;
+        const hasHeroSection = document.querySelector('.hero, .accom-hero, .reviews-hero, .blog-hero, .page-hero') !== null;
 
         // Only apply scroll effect on pages with hero sections
         if (hasHeroSection) {
