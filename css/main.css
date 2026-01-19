@@ -272,6 +272,17 @@ p {
     padding: 0 !important;
 }
 
+/* Hamburger styling for header states */
+.header--transparent .hamburger__line {
+    background-color: #FFF4D5 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.header--solid .hamburger__line {
+    background-color: #5D4037 !important;
+    box-shadow: none;
+}
+
 
 /* ================================
    Buttons
