@@ -14,21 +14,28 @@
     /**
      * Header scroll behavior
      * Changes header style based on scroll position
+     * Works on ALL pages with hero sections
      */
     function handleHeaderScroll() {
         if (!header) return;
 
         const scrollPosition = window.scrollY;
-        const isHomePage = document.querySelector('.hero') !== null;
+        // Check for any hero-style section (dark background)
+        const hasHeroSection = document.querySelector('.hero, .accom-hero, .reviews-hero, .blog-hero') !== null;
 
-        if (isHomePage) {
+        // Only apply scroll effect on pages with hero sections
+        if (hasHeroSection) {
             if (scrollPosition > 100) {
                 header.classList.remove('header--transparent');
                 header.classList.add('header--solid');
             } else {
-                header.classList.add('header--transparent');
                 header.classList.remove('header--solid');
+                header.classList.add('header--transparent');
             }
+        } else {
+            // Pages without hero (fotos, contact) - always solid
+            header.classList.remove('header--transparent');
+            header.classList.add('header--solid');
         }
     }
 

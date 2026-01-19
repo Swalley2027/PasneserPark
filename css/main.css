@@ -195,6 +195,18 @@ p {
     text-shadow: none;
 }
 
+/* Reserveren button in transparent header */
+.header--transparent .btn--primary {
+    background: linear-gradient(135deg, var(--olive), var(--olive-dark));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Reserveren button in solid header */
+.header--solid .btn--primary {
+    background: linear-gradient(135deg, var(--olive), var(--olive-dark));
+    box-shadow: 0 2px 8px rgba(90, 125, 62, 0.3);
+}
+
 .header__inner {
     display: flex;
     align-items: center;
