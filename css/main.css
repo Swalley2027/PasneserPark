@@ -793,8 +793,16 @@ p {
 }
 
 /* ================================
-   Footer - ULTRA PREMIUM
+   Footer - Premium Design
+   ================================
+   Colors:
+   - Background: Deep Forest (#2d3a2e)
+   - Text: Warm white (#f5f0e8)
+   - Headings/accents: Gold (#c9a227)
+   - Links hover: Light gold (#d4b94a)
+   - Divider: Gold
    ================================ */
+
 .footer {
     background-color: var(--footer-bg);
     color: var(--footer-text);
@@ -816,6 +824,7 @@ p {
     pointer-events: none;
 }
 
+/* Footer main content grid */
 .footer__inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -826,55 +835,37 @@ p {
     position: relative;
 }
 
-/* Brand column */
+/* --------------------------------
+   Brand Column (Logo + Tagline)
+   -------------------------------- */
 .footer__brand {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
-/* Logo wrapper with golden circle */
+/* Logo - uses Logo-round.png which has built-in styling */
 .footer__logo-wrapper {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    display: inline-block;
+    transition: transform var(--transition);
 }
 
-.footer__logo-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 1.5px solid var(--footer-accent);
-    box-shadow: 0 0 20px rgba(201, 162, 39, 0.15),
-                inset 0 0 20px rgba(201, 162, 39, 0.05);
-    transition: all var(--transition);
-}
-
-.footer__logo-wrapper:hover::before {
-    box-shadow: 0 0 30px rgba(201, 162, 39, 0.25),
-                inset 0 0 25px rgba(201, 162, 39, 0.1);
+.footer__logo-wrapper:hover {
+    transform: scale(1.03);
 }
 
 .footer__logo {
-    width: 100px;
+    max-width: 180px;
     height: auto;
-    position: relative;
-    z-index: 1;
-    transition: transform 0.3s ease;
+    transition: filter var(--transition);
 }
 
 .footer__logo-wrapper:hover .footer__logo {
-    transform: scale(1.02);
+    filter: brightness(1.05);
 }
 
+/* Tagline */
 .footer__tagline {
     font-family: var(--font-serif);
     font-style: italic;
@@ -884,7 +875,9 @@ p {
     line-height: 1.5;
 }
 
-/* Column styling */
+/* --------------------------------
+   Column Styling
+   -------------------------------- */
 .footer__column h4 {
     font-family: var(--font-sans);
     font-size: 0.75rem;
@@ -897,6 +890,7 @@ p {
     padding-bottom: 0.75rem;
 }
 
+/* Golden underline under headings */
 .footer__column h4::after {
     content: '';
     position: absolute;
@@ -907,6 +901,7 @@ p {
     background: linear-gradient(90deg, var(--footer-accent), transparent);
 }
 
+/* Column links */
 .footer__column a,
 .footer__column p {
     display: block;
@@ -923,7 +918,9 @@ p {
     transform: translateX(3px);
 }
 
-/* Social & booking icons */
+/* --------------------------------
+   Social & Booking Icons
+   -------------------------------- */
 .footer__icons {
     display: flex;
     gap: 0.75rem;
@@ -960,7 +957,9 @@ p {
     fill: var(--footer-bg);
 }
 
-/* Contact info styling */
+/* --------------------------------
+   Contact Info
+   -------------------------------- */
 .footer__contact-item {
     display: flex;
     align-items: center;
@@ -975,7 +974,10 @@ p {
     flex-shrink: 0;
 }
 
-/* Footer bottom with divider */
+/* --------------------------------
+   Footer Bottom (Copyright + Flags)
+   Golden divider line
+   -------------------------------- */
 .footer__bottom {
     max-width: 1200px;
     margin: 0 auto;
@@ -984,9 +986,9 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--footer-text);
-    opacity: 0.6;
+    opacity: 0.7;
     position: relative;
 }
 
@@ -994,11 +996,17 @@ p {
     margin: 0;
 }
 
-/* Language selector in footer bottom */
+/* --------------------------------
+   Language Selector (Flags)
+   Small flags (18-20px) with hover
+   Prepared for 20+ languages
+   -------------------------------- */
 .footer__lang-selector {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.4rem;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .lang-selector__item {
@@ -1007,19 +1015,21 @@ p {
     border-radius: 2px;
     overflow: hidden;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.6;
     transition: all var(--transition);
     border: 1px solid transparent;
 }
 
 .lang-selector__item:hover {
-    opacity: 0.9;
-    transform: scale(1.1);
+    opacity: 1;
+    transform: scale(1.15);
+    filter: brightness(1.1);
 }
 
 .lang-selector__item.active {
     opacity: 1;
     border-color: var(--footer-accent);
+    box-shadow: 0 0 6px rgba(201, 162, 39, 0.4);
 }
 
 .lang-selector__item svg {
@@ -1028,7 +1038,9 @@ p {
     display: block;
 }
 
-/* Footer Responsive */
+/* ================================
+   Footer Responsive
+   ================================ */
 @media (max-width: 992px) {
     .footer__inner {
         grid-template-columns: repeat(2, 1fr);
@@ -1074,13 +1086,8 @@ p {
         grid-column: span 1;
     }
 
-    .footer__logo-wrapper::before {
-        width: 120px;
-        height: 120px;
-    }
-
     .footer__logo {
-        width: 85px;
+        max-width: 150px;
     }
 
     .footer__bottom {
@@ -1104,6 +1111,10 @@ p {
     .footer__icon svg {
         width: 16px;
         height: 16px;
+    }
+
+    .footer__logo {
+        max-width: 130px;
     }
 
     .lang-selector__item {
