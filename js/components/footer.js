@@ -349,7 +349,7 @@
             <!-- Layer 1: Hero met logo -->
             <div class="site-footer__hero">
                 <a href="index.html" class="site-footer__logo-wrapper">
-                    <img src="images/logos/logo-full-inverted.png" alt="PasneserPark Logo" class="site-footer__logo">
+                    <img src="images/logo/Logo-round.png" alt="PasneserPark Logo" class="site-footer__logo">
                 </a>
                 <p class="site-footer__tagline">Jouw thuis in de Albanese natuur</p>
             </div>
