@@ -1,69 +1,11 @@
 /**
  * PasneserPark - Main JavaScript
- * Handles header behavior, mobile navigation, and general interactions
+ * General interactions and animations
+ * NOTE: Header is now handled by js/components/header.js
  */
 
 (function() {
     'use strict';
-
-    // DOM Elements
-    const header = document.getElementById('header');
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    /**
-     * Header scroll behavior
-     * Changes header style based on scroll position
-     * Works on ALL pages with hero sections
-     */
-    function handleHeaderScroll() {
-        if (!header) return;
-
-        const scrollPosition = window.scrollY;
-        // Check for any hero-style section (dark background)
-        const hasHeroSection = document.querySelector('.hero, .accom-hero, .reviews-hero, .blog-hero, .page-hero') !== null;
-
-        // Only apply scroll effect on pages with hero sections
-        if (hasHeroSection) {
-            if (scrollPosition > 100) {
-                header.classList.remove('header--transparent');
-                header.classList.add('header--solid');
-            } else {
-                header.classList.remove('header--solid');
-                header.classList.add('header--transparent');
-            }
-        } else {
-            // Pages without hero (fotos, contact) - always solid
-            header.classList.remove('header--transparent');
-            header.classList.add('header--solid');
-        }
-    }
-
-    /**
-     * Mobile navigation toggle
-     */
-    function toggleMobileNav() {
-        if (!hamburger || !mobileNav) return;
-
-        hamburger.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-    }
-
-    /**
-     * Close mobile nav when clicking a link
-     */
-    function closeMobileNavOnClick() {
-        if (!mobileNav) return;
-
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
 
     /**
      * Smooth scroll for anchor links
@@ -153,16 +95,6 @@
      * Initialize all functionality
      */
     function init() {
-        // Header scroll behavior
-        handleHeaderScroll();
-        window.addEventListener('scroll', handleHeaderScroll);
-
-        // Mobile navigation
-        if (hamburger) {
-            hamburger.addEventListener('click', toggleMobileNav);
-        }
-        closeMobileNavOnClick();
-
         // Smooth scroll
         initSmoothScroll();
 

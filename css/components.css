@@ -355,65 +355,6 @@
 }
 
 /* ================================
-   Hamburger Menu
-   ================================ */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-}
-
-.hamburger__line {
-    width: 25px;
-    height: 3px;
-    background-color: var(--brown);
-    transition: all var(--transition);
-}
-
-.hamburger.active .hamburger__line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active .hamburger__line:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active .hamburger__line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* ================================
-   Mobile Navigation
-   ================================ */
-.mobile-nav {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--sand);
-    z-index: 999;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-md);
-}
-
-.mobile-nav.active {
-    display: flex;
-}
-
-.mobile-nav a {
-    font-size: 1.5rem;
-    font-family: var(--font-serif);
-    color: var(--brown);
-}
-
-/* ================================
    Loading State
    ================================ */
 .loading {

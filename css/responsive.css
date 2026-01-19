@@ -65,19 +65,6 @@
         font-size: 1.25rem;
     }
 
-    /* Header */
-    .header__nav {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .header__right .weather-widget {
-        display: none;
-    }
-
     /* Photo Grid */
     .photo-grid {
         grid-template-columns: repeat(2, 1fr);
