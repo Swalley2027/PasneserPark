@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Kryefaqja",
+    "sleep": "Fjetja",
+    "photos": "Foto",
+    "reviews": "Vlerësime",
+    "contact": "Kontakt",
+    "book": "Rezervo"
+  },
+  "hero": {
+    "title": "PasneserPark",
+    "subtitle": "Glamping në natyrën shqiptare",
+    "scroll": "Lëviz"
+  },
+  "quote": {
+    "text": "Pjesa juaj e natyrës. Një tendë zile në një platformë druri, një shtrat i mrekullueshëm dyshe, në mes të maleve."
+  },
+  "reviews": {
+    "title": "Çfarë thonë mysafirët tanë",
+    "viewAll": "Shiko të gjitha vlerësimet"
+  },
+  "team": {
+    "title": "Ekipi ynë"
+  },
+  "footer": {
+    "tagline": "Glamping në natyrën shqiptare",
+    "navigation": "Navigimi",
+    "bookWithUs": "Rezervo tek ne",
+    "followUs": "Na ndiqni",
+    "contact": "Kontakt",
+    "copyright": "PasneserPark"
+  },
+  "sleep": {
+    "title": "Fjetja",
+    "subtitle": "Akomodimi juaj në PasneserPark"
+  },
+  "photos": {
+    "title": "Foto",
+    "subtitle": "Eksploroni glamping-un tonë"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Na kontaktoni",
+    "location": "Vendndodhja",
+    "email": "Email",
+    "phone": "Telefon",
+    "cta": "Rezervo tani"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "sleep": "Stay",
+    "photos": "Photos",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "book": "Book Now"
+  },
+  "hero": {
+    "title": "PasneserPark",
+    "subtitle": "Glamping in Albanian nature",
+    "scroll": "Scroll"
+  },
+  "quote": {
+    "text": "Your own piece of nature. A bell tent on a wooden platform, a wonderful double bed, in the middle of the mountains."
+  },
+  "reviews": {
+    "title": "What our guests say",
+    "viewAll": "View all reviews"
+  },
+  "team": {
+    "title": "Our Team"
+  },
+  "footer": {
+    "tagline": "Glamping in Albanian nature",
+    "navigation": "Navigation",
+    "bookWithUs": "Book with us",
+    "followUs": "Follow us",
+    "contact": "Contact",
+    "copyright": "PasneserPark"
+  },
+  "sleep": {
+    "title": "Stay",
+    "subtitle": "Your accommodation at PasneserPark"
+  },
+  "photos": {
+    "title": "Photos",
+    "subtitle": "Explore our glamping"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch with us",
+    "location": "Location",
+    "email": "Email",
+    "phone": "Phone",
+    "cta": "Book now"
+  }
+}

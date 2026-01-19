@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "sleep": "Slapen",
+    "photos": "Foto's",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "book": "Reserveren"
+  },
+  "hero": {
+    "title": "PasneserPark",
+    "subtitle": "Glamping in de Albanese natuur",
+    "scroll": "Scroll"
+  },
+  "quote": {
+    "text": "Jouw eigen stukje natuur. Een belltent op houten platform, een heerlijk tweepersoonsbed, midden in de bergen."
+  },
+  "reviews": {
+    "title": "Wat onze gasten zeggen",
+    "viewAll": "Alle reviews bekijken"
+  },
+  "team": {
+    "title": "Ons Team"
+  },
+  "footer": {
+    "tagline": "Glamping in de Albanese natuur",
+    "navigation": "Navigatie",
+    "bookWithUs": "Boek bij ons",
+    "followUs": "Volg ons",
+    "contact": "Contact",
+    "copyright": "PasneserPark"
+  },
+  "sleep": {
+    "title": "Slapen",
+    "subtitle": "Jouw verblijf bij PasneserPark"
+  },
+  "photos": {
+    "title": "Foto's",
+    "subtitle": "Bekijk onze glamping"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Neem contact met ons op",
+    "location": "Locatie",
+    "email": "E-mail",
+    "phone": "Telefoon",
+    "cta": "Boek nu"
+  }
+}

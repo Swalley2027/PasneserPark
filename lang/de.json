@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "sleep": "Übernachten",
+    "photos": "Fotos",
+    "reviews": "Bewertungen",
+    "contact": "Kontakt",
+    "book": "Buchen"
+  },
+  "hero": {
+    "title": "PasneserPark",
+    "subtitle": "Glamping in der albanischen Natur",
+    "scroll": "Scrollen"
+  },
+  "quote": {
+    "text": "Dein eigenes Stück Natur. Ein Glockenzelt auf einer Holzplattform, ein herrliches Doppelbett, mitten in den Bergen."
+  },
+  "reviews": {
+    "title": "Was unsere Gäste sagen",
+    "viewAll": "Alle Bewertungen ansehen"
+  },
+  "team": {
+    "title": "Unser Team"
+  },
+  "footer": {
+    "tagline": "Glamping in der albanischen Natur",
+    "navigation": "Navigation",
+    "bookWithUs": "Bei uns buchen",
+    "followUs": "Folge uns",
+    "contact": "Kontakt",
+    "copyright": "PasneserPark"
+  },
+  "sleep": {
+    "title": "Übernachten",
+    "subtitle": "Deine Unterkunft im PasneserPark"
+  },
+  "photos": {
+    "title": "Fotos",
+    "subtitle": "Entdecke unser Glamping"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Kontaktiere uns",
+    "location": "Standort",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "cta": "Jetzt buchen"
+  }
+}
