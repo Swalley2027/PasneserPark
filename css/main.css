@@ -645,19 +645,17 @@ p {
     object-position: center 45%;
 }
 
-/* ===== BESA (kat) - alleen oren steken uit, rest geclipt ===== */
+/* ===== BESA (kat) - EXACT zelfde techniek als Alpha ===== */
 .team__member:nth-child(4) .team__photo-wrapper {
     overflow: visible;
 }
 
 .team__member:nth-child(4) .team__photo {
     width: 160px;
-    height: 180px;
-    margin-top: -20px;
-    object-fit: cover;
-    object-position: center 30%;
-    border-radius: 0;
-    clip-path: ellipse(50% 45% at 50% 55%);
+    height: 160px;
+    transform: scale(1.25) translateY(-12%);
+    object-position: center 40%;
+    border-radius: 50%;
 }
 
 /* ===== ALPHA (kat) - NIET AANPASSEN ===== */
