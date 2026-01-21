@@ -649,10 +649,10 @@ p {
 
 /* ===== BESA (kat) - voorbewerkte foto met oren ===== */
 .team__member:nth-child(4) .team__photo {
-    width: 150px;
-    height: auto;
-    object-fit: contain;
-    border-radius: 0;
+    width: 150px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
     margin-top: -18px;
     margin-left: 5px;
     clip-path: inset(0 0 8px 0);  /* Snijdt onderkant af, oren blijven zichtbaar */
