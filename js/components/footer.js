@@ -495,19 +495,58 @@
     function initLanguageSelector() {
         const langItems = document.querySelectorAll('.site-footer__lang-item');
 
-        langItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Verwijder active class van alle items
-                langItems.forEach(i => i.classList.remove('active'));
-                // Voeg active class toe aan geklikte item
-                this.classList.add('active');
+        // Detect current language and page from URL
+        const path = window.location.pathname;
+        const pathParts = path.split('/').filter(p => p && !p.endsWith('.html'));
 
-                // Trigger language change event (voor i18n.js)
-                const lang = this.getAttribute('data-lang');
-                if (window.changeLanguage) {
-                    window.changeLanguage(lang);
-                }
+        // Determine current language
+        let currentLang = 'nl'; // default
+        const langFolders = ['en', 'de', 'sq'];
+        for (const lang of langFolders) {
+            if (pathParts.includes(lang)) {
+                currentLang = lang;
+                break;
+            }
+        }
+
+        // Determine current page name
+        let pageName = 'index.html';
+        const fileName = path.split('/').pop();
+        if (fileName && fileName.endsWith('.html')) {
+            pageName = fileName;
+        } else if (fileName === '' || !fileName) {
+            pageName = 'index.html';
+        }
+
+        // Calculate base path (for relative links)
+        const isInSubfolder = langFolders.some(lang => path.includes('/' + lang + '/'));
+        const basePath = isInSubfolder ? '../' : '';
+
+        // Update each language item
+        langItems.forEach(item => {
+            const targetLang = item.getAttribute('data-lang');
+            let href;
+
+            if (targetLang === 'nl') {
+                // Dutch is in root
+                href = basePath + pageName;
+            } else {
+                // Other languages are in subfolders
+                href = basePath + targetLang + '/' + pageName;
+            }
+
+            // Make item clickable
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', function() {
+                window.location.href = href;
             });
+
+            // Mark current language as active
+            if (targetLang === currentLang) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
         });
     }
 

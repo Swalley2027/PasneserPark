@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="sq" data-lang="sq" data-page="reviews">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PasneserPark Reviews - Lexoni se cfare thone mysafiret tane per qendrimin e tyre ne glamping-un tone ne Shqiperi.">
+    <title>Reviews - PasneserPark</title>
+    <link rel="icon" type="image/png" href="../images/icons/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Header wordt geladen via JavaScript -->
+
+    <!-- Hero Section -->
+    <section class="reviews-hero">
+        <h1 class="reviews-hero__title">Reviews</h1>
+        <div class="reviews-hero__line"></div>
+        <a href="#reviews" class="reviews-hero__scroll">
+            <span>Lexo më shumë</span>
+            <div class="reviews-hero__scroll-arrow"></div>
+        </a>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="reviews-container">
+
+            <!-- Review 1: Hettie & James -->
+            <div class="review">
+                <p class="review__text">"De locatie is 10/10, zo mooi! Een klein stukje ongerepte natuur helemaal voor onszelf. Het bed was super comfortabel, vers bronwater, en een prachtig ingerichte buitenkeuken waar we genoten van relaxen en dieren voorbij zien komen."</p>
+                <div class="review__author">
+                    <div class="review__line"></div>
+                    <span class="review__name">Hettie & James</span>
+                </div>
+            </div>
+
+            <!-- Review 2: Ila & Andrea -->
+            <div class="review">
+                <p class="review__text">"Meri was een van de liefste hosts die ik ooit heb gehad. De glamping tent is prachtig, je bent omringd door natuur, wilde kippen, schildpadden, en hond Tito waar we verliefd op werden. Dit is dé plek om tot rust te komen in Albanië!"</p>
+                <div class="review__author">
+                    <div class="review__line"></div>
+                    <span class="review__name">Ila & Andrea</span>
+                </div>
+            </div>
+
+            <!-- Review 3: Efi & Neri -->
+            <div class="review">
+                <p class="review__text">"Meri en Frank waren de beste hosts, vriendelijk en behulpzaam. De plek was precies wat we nodig hadden. Zo dankbaar!"</p>
+                <div class="review__author">
+                    <div class="review__line"></div>
+                    <span class="review__name">Efi & Neri</span>
+                </div>
+            </div>
+
+            <!-- Review 4: Nikola & Nina -->
+            <div class="review">
+                <p class="review__text">"Wat een geweldig verblijf! Merel was zo vriendelijk en altijd behulpzaam. Slapen was gezellig en ruim. We werden verwelkomd met ijskoud water en verse druiven. Op onze laatste avond genoten we van een kampvuur. De perfecte plek om te ontspannen!"</p>
+                <div class="review__author">
+                    <div class="review__line"></div>
+                    <span class="review__name">Nikola & Nina</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="reviews-cta">
+        <div class="reviews-cta__content">
+            <h2 class="reviews-cta__title">Dëshironi ta përjetoni?</h2>
+            <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="btn">Rezervo tani</a>
+        </div>
+    </section>
+
+    <!-- Footer wordt geladen via JavaScript -->
+
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/i18n.js"></script>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in reviews on scroll
+        const reviews = document.querySelectorAll('.review');
+
+        const reviewObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('review--visible');
+                    }, index * 200);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        reviews.forEach(review => reviewObserver.observe(review));
+    </script>
+</body>
+</html>

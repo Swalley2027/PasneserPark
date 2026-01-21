@@ -224,22 +224,45 @@
         }
     `;
 
+    // ===== LANGUAGE DETECTION =====
+    const path = window.location.pathname;
+    const langFolders = ['en', 'de', 'sq'];
+    let currentLang = 'nl';
+    let basePath = '';
+
+    for (const lang of langFolders) {
+        if (path.includes('/' + lang + '/')) {
+            currentLang = lang;
+            basePath = '../';
+            break;
+        }
+    }
+
+    // ===== TRANSLATIONS =====
+    const navTexts = {
+        nl: { home: 'Welkom', glamping: 'Glamping', fotos: "Foto's", info: 'Info', reviews: 'Reviews', blog: 'Blog', contact: 'Contact', book: 'Reserveren' },
+        en: { home: 'Home', glamping: 'Glamping', fotos: 'Photos', info: 'Info', reviews: 'Reviews', blog: 'Blog', contact: 'Contact', book: 'Book Now' },
+        de: { home: 'Startseite', glamping: 'Glamping', fotos: 'Fotos', info: 'Info', reviews: 'Bewertungen', blog: 'Blog', contact: 'Kontakt', book: 'Buchen' },
+        sq: { home: 'Kryefaqja', glamping: 'Glamping', fotos: 'Foto', info: 'Info', reviews: 'Vlerësime', blog: 'Blog', contact: 'Kontakt', book: 'Rezervo' }
+    };
+    const t = navTexts[currentLang] || navTexts.nl;
+
     // ===== HTML TEMPLATE =====
     const headerHTML = `
         <header class="site-header" id="site-header">
             <div class="site-header__inner">
                 <nav class="site-header__nav">
-                    <a href="index.html" data-page="index">Welkom</a>
-                    <a href="glamping.html" data-page="glamping">Glamping</a>
-                    <a href="fotos.html" data-page="fotos">Foto's</a>
-                    <a href="info.html" data-page="info">Info</a>
-                    <a href="reviews.html" data-page="reviews">Reviews</a>
-                    <a href="blog.html" data-page="blog">Blog</a>
-                    <a href="contact.html" data-page="contact">Contact</a>
+                    <a href="${basePath}index.html" data-page="index">${t.home}</a>
+                    <a href="${basePath}glamping.html" data-page="glamping">${t.glamping}</a>
+                    <a href="${basePath}fotos.html" data-page="fotos">${t.fotos}</a>
+                    <a href="${basePath}info.html" data-page="info">${t.info}</a>
+                    <a href="${basePath}reviews.html" data-page="reviews">${t.reviews}</a>
+                    <a href="${basePath}blog.html" data-page="blog">${t.blog}</a>
+                    <a href="${basePath}contact.html" data-page="contact">${t.contact}</a>
                 </nav>
 
                 <div class="site-header__right">
-                    <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">Reserveren</a>
+                    <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">${t.book}</a>
                 </div>
 
                 <div class="site-header__hamburger" id="site-hamburger">
@@ -251,14 +274,14 @@
         </header>
 
         <nav class="site-mobile-nav" id="site-mobile-nav">
-            <a href="index.html" data-page="index">Welkom</a>
-            <a href="glamping.html" data-page="glamping">Glamping</a>
-            <a href="fotos.html" data-page="fotos">Foto's</a>
-            <a href="info.html" data-page="info">Info</a>
-            <a href="reviews.html" data-page="reviews">Reviews</a>
-            <a href="blog.html" data-page="blog">Blog</a>
-            <a href="contact.html" data-page="contact">Contact</a>
-            <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">Reserveren</a>
+            <a href="${basePath}index.html" data-page="index">${t.home}</a>
+            <a href="${basePath}glamping.html" data-page="glamping">${t.glamping}</a>
+            <a href="${basePath}fotos.html" data-page="fotos">${t.fotos}</a>
+            <a href="${basePath}info.html" data-page="info">${t.info}</a>
+            <a href="${basePath}reviews.html" data-page="reviews">${t.reviews}</a>
+            <a href="${basePath}blog.html" data-page="blog">${t.blog}</a>
+            <a href="${basePath}contact.html" data-page="contact">${t.contact}</a>
+            <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">${t.book}</a>
         </nav>
     `;
 
@@ -277,7 +300,7 @@
     const mobileNav = document.getElementById('site-mobile-nav');
 
     // ===== ACTIVE PAGE DETECTION =====
-    const path = window.location.pathname;
+    // path is already defined above
     const pageName = path.split('/').pop().replace('.html', '') || 'index';
 
     // Mark active link in desktop nav
