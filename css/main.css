@@ -633,10 +633,9 @@ p {
     object-position: center 20%;
 }
 
-/* ===== FRANK - meer ingezoomd, onderkant afgesneden ===== */
+/* ===== FRANK - gecentreerd in rondje ===== */
 .team__member:nth-child(2) .team__photo {
-    transform: scale(1.15);
-    object-position: center 30%;
+    object-position: center 25%;
 }
 
 /* ===== TITO - snuit in beeld, pet mag afgesneden ===== */
