@@ -614,7 +614,7 @@ p {
     width: 160px;
     height: 160px;
     margin: 0 auto var(--space-sm);
-    overflow: hidden;
+    overflow: visible;  /* Changed from hidden - needed for tooltips */
     border-radius: 50%;
     box-shadow: 0 4px 20px rgba(93, 64, 55, 0.2);
     border: 3px solid var(--gold);
@@ -642,13 +642,10 @@ p {
 .team__member:nth-child(3) .team__photo {
     transform: scale(1.1);
     object-position: center 45%;
+    border-radius: 50%;  /* Keep photo circular with scale transform */
 }
 
 /* ===== BESA (kat) - EXACT zelfde techniek als Alpha ===== */
-.team__member:nth-child(4) .team__photo-wrapper {
-    overflow: visible;
-}
-
 .team__member:nth-child(4) .team__photo {
     width: 160px;
     height: 160px;
@@ -658,10 +655,6 @@ p {
 }
 
 /* ===== ALPHA (kat) - NIET AANPASSEN ===== */
-.team__member:nth-child(5) .team__photo-wrapper {
-    overflow: visible;
-}
-
 .team__member:nth-child(5) .team__photo {
     width: 160px;
     height: 160px;
