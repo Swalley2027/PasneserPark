@@ -228,12 +228,12 @@
     const path = window.location.pathname;
     const langFolders = ['en', 'de', 'sq'];
     let currentLang = 'nl';
-    let basePath = '';
+    let basePath = '';  // For staying within current language folder
 
     for (const lang of langFolders) {
         if (path.includes('/' + lang + '/')) {
             currentLang = lang;
-            basePath = '../';
+            basePath = '';  // Stay in current folder, don't go back to root
             break;
         }
     }

@@ -38,6 +38,17 @@ const FOTOS = [
     let currentIndex = 0;
     const images = [];
 
+    // Detect if we're in a language subfolder
+    const path = window.location.pathname;
+    const langFolders = ['en', 'de', 'sq'];
+    let basePath = '';
+    for (const lang of langFolders) {
+        if (path.includes('/' + lang + '/')) {
+            basePath = '../';
+            break;
+        }
+    }
+
     function loadPhotos() {
         const grid = document.getElementById('photos-grid');
         if (!grid) return;
@@ -47,7 +58,7 @@ const FOTOS = [
 
         // Voeg elke foto toe
         FOTOS.forEach((foto, index) => {
-            const imgSrc = `images/gallery/${foto.foto}`;
+            const imgSrc = `${basePath}images/gallery/${foto.foto}`;
             images.push(imgSrc);
 
             const card = document.createElement('div');

@@ -331,6 +331,16 @@
     color: var(--olive);
 }
 
+.contact__icon--whatsapp {
+    margin-left: -0.25rem;
+}
+
+.contact__icon--whatsapp svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+}
+
 .contact__text h4 {
     font-family: var(--font-sans);
     font-weight: 600;
@@ -340,6 +350,10 @@
 .contact__text p,
 .contact__text a {
     color: var(--text-light);
+}
+
+.contact__text a.btn {
+    color: white;
 }
 
 .contact__map {

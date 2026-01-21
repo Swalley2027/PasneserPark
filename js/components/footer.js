@@ -342,16 +342,103 @@
     `;
 
     // ================================
-    // HTML TEMPLATE
+    // TRANSLATIONS
     // ================================
-    const footerHTML = `
+    const translations = {
+        nl: {
+            tagline: 'Jouw plek in de Albanese natuur',
+            menu: 'Menu',
+            welcome: 'Welkom',
+            glamping: 'Glamping',
+            photos: "Foto's",
+            info: 'Info',
+            reviews: 'Reviews',
+            blog: 'Blog',
+            contact: 'Contact',
+            bookWithUs: 'Boek Bij Ons',
+            followUs: 'Volg Ons',
+            copyright: 'Alle rechten voorbehouden.'
+        },
+        en: {
+            tagline: 'Your place in Albanian nature',
+            menu: 'Menu',
+            welcome: 'Welcome',
+            glamping: 'Glamping',
+            photos: 'Photos',
+            info: 'Info',
+            reviews: 'Reviews',
+            blog: 'Blog',
+            contact: 'Contact',
+            bookWithUs: 'Book With Us',
+            followUs: 'Follow Us',
+            copyright: 'All rights reserved.'
+        },
+        de: {
+            tagline: 'Dein Platz in der albanischen Natur',
+            menu: 'Menü',
+            welcome: 'Willkommen',
+            glamping: 'Glamping',
+            photos: 'Fotos',
+            info: 'Info',
+            reviews: 'Bewertungen',
+            blog: 'Blog',
+            contact: 'Kontakt',
+            bookWithUs: 'Bei Uns Buchen',
+            followUs: 'Folge Uns',
+            copyright: 'Alle Rechte vorbehalten.'
+        },
+        sq: {
+            tagline: 'Vendi juaj në natyrën shqiptare',
+            menu: 'Menu',
+            welcome: 'Mirësevini',
+            glamping: 'Glamping',
+            photos: 'Foto',
+            info: 'Info',
+            reviews: 'Vlerësime',
+            blog: 'Blog',
+            contact: 'Kontakt',
+            bookWithUs: 'Rezervo',
+            followUs: 'Na Ndiqni',
+            copyright: 'Të gjitha të drejtat e rezervuara.'
+        }
+    };
+
+    // ================================
+    // DETECT LANGUAGE & PATHS
+    // ================================
+    function getLanguageAndPaths() {
+        const path = window.location.pathname;
+        const langFolders = ['en', 'de', 'sq'];
+
+        let currentLang = 'nl';
+        let basePath = '';
+
+        for (const lang of langFolders) {
+            if (path.includes('/' + lang + '/')) {
+                currentLang = lang;
+                basePath = '../';
+                break;
+            }
+        }
+
+        return { currentLang, basePath };
+    }
+
+    // ================================
+    // HTML TEMPLATE GENERATOR
+    // ================================
+    function generateFooterHTML() {
+        const { currentLang, basePath } = getLanguageAndPaths();
+        const t = translations[currentLang];
+
+        return `
         <footer class="site-footer">
             <!-- Layer 1: Hero met logo -->
             <div class="site-footer__hero">
-                <a href="index.html" class="site-footer__logo-wrapper">
-                    <img src="images/logo/Logo-round.png" alt="PasneserPark Logo" class="site-footer__logo">
+                <a href="${basePath}index.html" class="site-footer__logo-wrapper">
+                    <img src="${basePath}images/logo/Logo-round.png" alt="PasneserPark Logo" class="site-footer__logo">
                 </a>
-                <p class="site-footer__tagline">Jouw plek in de Albanese natuur</p>
+                <p class="site-footer__tagline">${t.tagline}</p>
             </div>
 
             <!-- Divider -->
@@ -361,19 +448,19 @@
             <div class="site-footer__info">
                 <!-- Column 1: Menu -->
                 <div class="site-footer__column">
-                    <h4>Menu</h4>
-                    <a href="index.html">Welkom</a>
-                    <a href="glamping.html">Glamping</a>
-                    <a href="fotos.html">Foto's</a>
-                    <a href="info.html">Info</a>
-                    <a href="reviews.html">Reviews</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contact.html">Contact</a>
+                    <h4>${t.menu}</h4>
+                    <a href="index.html">${t.welcome}</a>
+                    <a href="glamping.html">${t.glamping}</a>
+                    <a href="fotos.html">${t.photos}</a>
+                    <a href="info.html">${t.info}</a>
+                    <a href="reviews.html">${t.reviews}</a>
+                    <a href="blog.html">${t.blog}</a>
+                    <a href="contact.html">${t.contact}</a>
                 </div>
 
                 <!-- Column 2: Book With Us -->
                 <div class="site-footer__column">
-                    <h4>Boek Bij Ons</h4>
+                    <h4>${t.bookWithUs}</h4>
                     <div class="site-footer__icons">
                         <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-footer__icon" aria-label="Airbnb">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -390,7 +477,7 @@
 
                 <!-- Column 3: Follow Us -->
                 <div class="site-footer__column">
-                    <h4>Volg Ons</h4>
+                    <h4>${t.followUs}</h4>
                     <div class="site-footer__icons">
                         <a href="https://www.instagram.com/pasneserpark" target="_blank" rel="noopener" class="site-footer__icon" aria-label="Instagram">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -402,7 +489,7 @@
 
                 <!-- Column 4: Contact -->
                 <div class="site-footer__column">
-                    <h4>Contact</h4>
+                    <h4>${t.contact}</h4>
                     <div class="site-footer__contact-item">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -423,7 +510,7 @@
 
             <!-- Layer 3: Copyright + Flags -->
             <div class="site-footer__bottom">
-                <p>&copy; 2026 PasneserPark. Alle rechten voorbehouden.</p>
+                <p>&copy; 2026 PasneserPark. ${t.copyright}</p>
                 <div class="site-footer__lang-selector">
                     <!-- Nederlands (actief) -->
                     <span class="site-footer__lang-item active" data-lang="nl" title="Nederlands">
@@ -482,7 +569,7 @@
 
         // Maak een tijdelijke container om de HTML te parsen
         const temp = document.createElement('div');
-        temp.innerHTML = footerHTML;
+        temp.innerHTML = generateFooterHTML();
         const footer = temp.firstElementChild;
 
         // Voeg footer toe aan het einde van de body (voor scripts)
