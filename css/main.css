@@ -651,8 +651,8 @@ p {
 .team__member:nth-child(4) .team__photo {
     width: 160px;
     height: 160px;
-    transform: scale(1.25) translateY(-12%);
-    object-position: center 40%;
+    transform: scale(1.15) translateY(-8%);
+    object-position: center 25%;
     border-radius: 50%;
 }
 
