@@ -647,13 +647,14 @@ p {
     border-radius: 50%;  /* Keep photo circular with scale transform */
 }
 
-/* ===== BESA (kat) - ingezoomd, oren uitstekend ===== */
+/* ===== BESA (kat) - voorbewerkte foto met oren ===== */
 .team__member:nth-child(4) .team__photo {
-    width: 160px;
-    height: 160px;
-    transform: scale(1.4) translateY(-15%);
-    object-position: center 45%;
-    border-radius: 50%;
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    margin-top: -10px;
+    margin-left: 5px;
 }
 
 /* ===== ALPHA (kat) - NIET AANPASSEN ===== */
