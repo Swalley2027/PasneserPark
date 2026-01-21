@@ -1102,7 +1102,7 @@ p {
     align-items: center;
     padding: 120px 2rem 60px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('../images/experiences/outdoor-kitchen.jpg') center/cover no-repeat;
+                url('../images/gallery/outdoor-kitchen.jpg') center/cover no-repeat;
     text-align: center;
     position: relative;
 }
@@ -1233,7 +1233,7 @@ p {
 
 .page-hero--fotos {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('../images/experiences/forest-path-bench.jpg') center/cover no-repeat;
+                url('../images/gallery/forest-path-bench.jpg') center/cover no-repeat;
 }
 
 /* ================================

@@ -2,7 +2,8 @@
  * PasneserPark - Foto's Configuratie
  *
  * INSTRUCTIES:
- * 1. Zet je foto in de map: images/experiences/
+ * 1. Zet je foto in de map: images/gallery/
+ *    (Dit is de gallery map met alle foto's voor de Foto's pagina)
  * 2. Voeg hieronder een regel toe met: foto en titel
  * 3. Klaar! De foto verschijnt automatisch op de Foto's pagina
  *
@@ -14,7 +15,16 @@ const FOTOS = [
     { foto: "outdoor-kitchen.jpg", titel: "Buitenkeuken" },
     { foto: "water-spot.jpg", titel: "De Waterplek" },
     { foto: "forest-path-bench.jpg", titel: "Bospaadjes" },
-    { foto: "bar-evening.jpg", titel: "Avond bij de Bar" }
+    { foto: "bar-evening.jpg", titel: "Avond bij de Bar" },
+    { foto: "3Glazen flessen.jpeg", titel: "Glazen Flessen" },
+    { foto: "Eien.jpeg", titel: "Eieren" },
+    { foto: "ezel.jpeg", titel: "De Ezel" },
+    { foto: "Groene Bladeren.jpeg", titel: "Groene Bladeren" },
+    { foto: "Haan.jpeg", titel: "De Haan" },
+    { foto: "Koe.jpeg", titel: "De Koe" },
+    { foto: "Schaduw vijgenblad.jpeg", titel: "Schaduw Vijgenblad" },
+    { foto: "Schapen.jpeg", titel: "De Schapen" },
+    { foto: "Tito op Heuvel.jpeg", titel: "Tito op de Heuvel" }
 ];
 
 
@@ -37,7 +47,7 @@ const FOTOS = [
 
         // Voeg elke foto toe
         FOTOS.forEach((foto, index) => {
-            const imgSrc = `images/experiences/${foto.foto}`;
+            const imgSrc = `images/gallery/${foto.foto}`;
             images.push(imgSrc);
 
             const card = document.createElement('div');
