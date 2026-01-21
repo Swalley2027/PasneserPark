@@ -647,12 +647,12 @@ p {
     border-radius: 50%;  /* Keep photo circular with scale transform */
 }
 
-/* ===== BESA (kat) - EXACT zelfde als Alpha ===== */
+/* ===== BESA (kat) - ingezoomd, oren uitstekend ===== */
 .team__member:nth-child(4) .team__photo {
     width: 160px;
     height: 160px;
-    transform: scale(1.25) translateY(-12%);
-    object-position: center 40%;
+    transform: scale(1.4) translateY(-15%);
+    object-position: center 45%;
     border-radius: 50%;
 }
 
