@@ -631,11 +631,13 @@ p {
 /* ===== MEREL - gezicht gecentreerd ===== */
 .team__member:nth-child(1) .team__photo {
     object-position: center 20%;
+    border-radius: 50%;
 }
 
 /* ===== FRANK - gecentreerd in rondje ===== */
 .team__member:nth-child(2) .team__photo {
     object-position: center 25%;
+    border-radius: 50%;
 }
 
 /* ===== TITO - snuit in beeld, pet mag afgesneden ===== */
