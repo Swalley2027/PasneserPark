@@ -409,10 +409,8 @@
     function getLanguageAndPaths() {
         const path = window.location.pathname;
         const langFolders = ['en', 'de', 'sq'];
-
         let currentLang = 'nl';
         let basePath = '';
-
         for (const lang of langFolders) {
             if (path.includes('/' + lang + '/')) {
                 currentLang = lang;
@@ -420,7 +418,6 @@
                 break;
             }
         }
-
         return { currentLang, basePath };
     }
 
@@ -430,7 +427,6 @@
     function generateFooterHTML() {
         const { currentLang, basePath } = getLanguageAndPaths();
         const t = translations[currentLang];
-
         return `
         <footer class="site-footer">
             <!-- Layer 1: Hero met logo -->
@@ -549,6 +545,7 @@
             </div>
         </footer>
     `;
+    }
 
     // ================================
     // INJECT CSS
