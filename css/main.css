@@ -655,6 +655,7 @@ p {
     border-radius: 0;
     margin-top: -18px;
     margin-left: 5px;
+    clip-path: inset(0 0 8px 0);  /* Snijdt onderkant af, oren blijven zichtbaar */
 }
 
 /* ===== ALPHA (kat) - NIET AANPASSEN ===== */
