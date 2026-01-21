@@ -14,14 +14,81 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        /* Hero Section with custom image */
+        .contact-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .contact-hero__image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 60%;
+        }
+
+        .contact-hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+        }
+
+        .contact-hero__content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contact-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: #FFF4D5;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero__subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #FFF4D5;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0.95;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header wordt geladen via JavaScript -->
+    <!-- Header ngarkohet permes JavaScript -->
 
     <!-- Page Hero -->
-    <section class="page-hero">
-        <h1 class="page-hero__title">Kontakt</h1>
-        <p class="page-hero__subtitle">Keni pyetje? Na kontaktoni</p>
+    <section class="contact-hero">
+        <img src="../images/Hero/Haan.jpeg" alt="Gjel ne PasneserPark" class="contact-hero__image">
+        <div class="contact-hero__overlay"></div>
+        <div class="contact-hero__content">
+            <h1 class="contact-hero__title">Kontakt</h1>
+            <p class="contact-hero__subtitle">Keni pyetje? Na kontaktoni</p>
+        </div>
     </section>
 
     <!-- Contact Content -->
