@@ -633,27 +633,31 @@ p {
     object-position: center 20%;
 }
 
-/* ===== FRANK - gezicht gecentreerd ===== */
+/* ===== FRANK - meer ingezoomd, onderkant afgesneden ===== */
 .team__member:nth-child(2) .team__photo {
-    object-position: center 25%;
+    transform: scale(1.15);
+    object-position: center 30%;
 }
 
-/* ===== TITO - pet + kop zichtbaar ===== */
+/* ===== TITO - snuit in beeld, pet mag afgesneden ===== */
 .team__member:nth-child(3) .team__photo {
-    object-position: center 10%;
+    transform: scale(1.1);
+    object-position: center 45%;
 }
 
-/* ===== BESA (kat) - oren steken uit, net als Alpha ===== */
+/* ===== BESA (kat) - alleen oren steken uit, rest geclipt ===== */
 .team__member:nth-child(4) .team__photo-wrapper {
     overflow: visible;
 }
 
 .team__member:nth-child(4) .team__photo {
     width: 160px;
-    height: 160px;
-    transform: scale(1.15) translateY(-8%);
-    object-position: center 25%;
-    border-radius: 50%;
+    height: 180px;
+    margin-top: -20px;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 0;
+    clip-path: ellipse(50% 45% at 50% 55%);
 }
 
 /* ===== ALPHA (kat) - NIET AANPASSEN ===== */
