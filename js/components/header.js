@@ -232,9 +232,9 @@
                     <a href="index.html" data-page="index">Welkom</a>
                     <a href="glamping.html" data-page="glamping">Glamping</a>
                     <a href="fotos.html" data-page="fotos">Foto's</a>
+                    <a href="info.html" data-page="info">Info</a>
                     <a href="reviews.html" data-page="reviews">Reviews</a>
                     <a href="blog.html" data-page="blog">Blog</a>
-                    <a href="info.html" data-page="info">Info</a>
                     <a href="contact.html" data-page="contact">Contact</a>
                 </nav>
 
@@ -254,9 +254,9 @@
             <a href="index.html" data-page="index">Welkom</a>
             <a href="glamping.html" data-page="glamping">Glamping</a>
             <a href="fotos.html" data-page="fotos">Foto's</a>
+            <a href="info.html" data-page="info">Info</a>
             <a href="reviews.html" data-page="reviews">Reviews</a>
             <a href="blog.html" data-page="blog">Blog</a>
-            <a href="info.html" data-page="info">Info</a>
             <a href="contact.html" data-page="contact">Contact</a>
             <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">Reserveren</a>
         </nav>

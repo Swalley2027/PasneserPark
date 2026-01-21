@@ -193,18 +193,18 @@ p {
 }
 
 .btn--cta {
-    background: linear-gradient(135deg, var(--brown), var(--brown-dark));
+    background: linear-gradient(135deg, var(--olive), var(--olive-dark));
     color: white;
     padding: 1rem 2rem;
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(90, 125, 62, 0.3);
 }
 
 .btn--cta:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(93, 64, 55, 0.4);
+    box-shadow: 0 6px 20px rgba(90, 125, 62, 0.4);
     color: white;
 }
 

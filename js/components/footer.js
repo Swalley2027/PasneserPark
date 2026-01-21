@@ -365,9 +365,9 @@
                     <a href="index.html">Welkom</a>
                     <a href="glamping.html">Glamping</a>
                     <a href="fotos.html">Foto's</a>
+                    <a href="info.html">Info</a>
                     <a href="reviews.html">Reviews</a>
                     <a href="blog.html">Blog</a>
-                    <a href="info.html">Info</a>
                     <a href="contact.html">Contact</a>
                 </div>
 
