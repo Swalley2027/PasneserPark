@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Info over PasneserPark - Praktische informatie over onze glamping in Albanie.">
+    <meta name="description" content="Info over PasneserPark - Praktische informatie over prijzen, faciliteiten en locatie van onze glamping in Albanie.">
     <title>Info - PasneserPark</title>
     <link rel="icon" type="image/png" href="images/icons/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,22 +12,634 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* ================================
+           Info Page - Premium Styling
+           ================================ */
+
+        /* Hero Section */
+        .info-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .info-hero__image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+        }
+
+        .info-hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+        }
+
+        .info-hero__content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .info-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: #FFF4D5;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .info-hero__subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #FFF4D5;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0.95;
+        }
+
+        /* Main Content Area */
+        .info-content {
+            background-color: #FDF8EE;
+            position: relative;
+        }
+
+        .info-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+        }
+
+        /* Section Styling */
+        .info-section {
+            padding: 5rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-section--alt {
+            background-color: #FDF8EE;
+        }
+
+        .info-section__inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Premium Cards */
+        .info-card {
+            background: linear-gradient(145deg, #FFFCF5, #FFF9ED);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow:
+                0 4px 20px rgba(107, 68, 35, 0.08),
+                0 1px 3px rgba(107, 68, 35, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 12px 40px rgba(107, 68, 35, 0.12),
+                0 4px 12px rgba(107, 68, 35, 0.08);
+        }
+
+        /* Card Header with Icon */
+        .info-card__header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .info-card__icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #6B4423, #8B5A2B);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(107, 68, 35, 0.25);
+        }
+
+        .info-card__icon svg {
+            width: 26px;
+            height: 26px;
+            fill: #FFF4D5;
+        }
+
+        .info-card__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #5D4037;
+            letter-spacing: 0.5px;
+        }
+
+        /* Card Content */
+        .info-card__content {
+            color: #6B5D52;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .info-card__content p {
+            margin-bottom: 1rem;
+        }
+
+        .info-card__content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-card__content li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .info-card__content li:last-child {
+            border-bottom: none;
+        }
+
+        .info-card__content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1.1rem;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #D4AF37, #C9A227);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Highlight Box */
+        .info-card__highlight {
+            background: linear-gradient(135deg, rgba(107, 68, 35, 0.06), rgba(107, 68, 35, 0.02));
+            border-left: 4px solid #6B4423;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+            color: #5D4037;
+            font-size: 1rem;
+        }
+
+        /* Price Cards */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-card {
+            background: linear-gradient(145deg, #FFFCF5, #FFF9ED);
+            border: 2px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+        }
+
+        .price-card__label {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6B5D52;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-card__value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5A7D3E;
+            line-height: 1;
+        }
+
+        .price-card__period {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            color: #8B7355;
+            margin-top: 0.5rem;
+        }
+
+        /* Discount Badge */
+        .discount-badge {
+            background: linear-gradient(135deg, #6B4423, #8B5A2B);
+            color: white;
+            padding: 1.25rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(107, 68, 35, 0.3);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .discount-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(107, 68, 35, 0.4);
+        }
+
+        .discount-badge__text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Tooltip */
+        .discount-badge__tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: #5D4037;
+            color: #FFF4D5;
+            padding: 0.85rem 1.25rem;
+            border-radius: 8px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.3);
+            z-index: 10;
+        }
+
+        .discount-badge__tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: #5D4037;
+        }
+
+        .discount-badge:hover .discount-badge__tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Map Link */
+        .info-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #5A7D3E;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(90, 125, 62, 0.08);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card__link:hover {
+            background: rgba(90, 125, 62, 0.15);
+            color: #4A6B30;
+        }
+
+        .info-card__link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Two Column Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        /* CTA Section */
+        .info-cta {
+            background-color: #2d3a2e;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .info-cta__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-cta__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            font-weight: 400;
+            color: #FFF4D5;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .info-cta__text {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: rgba(255, 244, 213, 0.85);
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-cta .btn {
+            background: linear-gradient(135deg, #6B4423, #5a3a1d);
+            color: #FDF8EE;
+            padding: 1.1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            box-shadow: 0 6px 20px rgba(107, 68, 35, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .info-cta .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(107, 68, 35, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .info-hero {
+                height: 50vh;
+                min-height: 350px;
+            }
+
+            .info-hero__title {
+                font-size: 3rem;
+                letter-spacing: 2px;
+            }
+
+            .info-hero__subtitle {
+                font-size: 1.1rem;
+            }
+
+            .info-section {
+                padding: 3.5rem 1.5rem;
+            }
+
+            .info-card {
+                padding: 2rem;
+            }
+
+            .info-card__header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .info-card__title {
+                font-size: 1.5rem;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-cta__title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-hero__title {
+                font-size: 2.5rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            .price-card__value {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header wordt geladen via JavaScript -->
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <h1 class="page-hero__title">Info</h1>
-        <p class="page-hero__subtitle">Praktische informatie over PasneserPark</p>
+    <!-- Hero Section -->
+    <section class="info-hero">
+        <img src="images/experiences/forest-path-bench.jpg" alt="PasneserPark natuur" class="info-hero__image">
+        <div class="info-hero__overlay"></div>
+        <div class="info-hero__content">
+            <h1 class="info-hero__title">Info</h1>
+            <p class="info-hero__subtitle">Alles wat je moet weten voor je verblijf</p>
+        </div>
     </section>
 
-    <!-- Info Content -->
-    <section class="contact">
-        <div class="container">
-            <div class="contact__info" style="max-width: 800px; margin: 0 auto;">
-                <p style="text-align: center; font-size: 1.2rem; color: #5D4037;">Info pagina - inhoud volgt</p>
+    <!-- Main Content -->
+    <div class="info-content">
+
+        <!-- Locatie Section -->
+        <section class="info-section">
+            <div class="info-section__inner">
+                <div class="info-card">
+                    <div class="info-card__header">
+                        <div class="info-card__icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </div>
+                        <h2 class="info-card__title">Locatie</h2>
+                    </div>
+                    <div class="info-card__content">
+                        <p><strong>Shelcan, Elbasan, Albania</strong></p>
+                        <p>Gelegen in de heuvels tussen Elbasan en Gjinar omringd door natuur, een perfecte plek om te ontsnappen aan de drukte van het dagelijkse leven.</p>
+                        <div class="info-card__highlight">
+                            Let op: de laatste 10 minuten is een onverharde weg omhoog.
+                        </div>
+                        <a href="https://www.google.com/maps/place/Shelcan,+Albania" target="_blank" rel="noopener" class="info-card__link">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Bekijk op Google Maps
+                        </a>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Prijzen Section -->
+        <section class="info-section info-section--alt">
+            <div class="info-section__inner">
+                <div class="info-card">
+                    <div class="info-card__header">
+                        <div class="info-card__icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                            </svg>
+                        </div>
+                        <h2 class="info-card__title">Prijzen</h2>
+                    </div>
+                    <div class="info-card__content">
+                        <div class="price-grid">
+                            <div class="price-card">
+                                <div class="price-card__label">Belltent op platform</div>
+                                <div class="price-card__value">&euro;45</div>
+                                <div class="price-card__period">per nacht</div>
+                            </div>
+                            <div class="price-card">
+                                <div class="price-card__label">Belltent in bos</div>
+                                <div class="price-card__value">&euro;39</div>
+                                <div class="price-card__period">per nacht</div>
+                            </div>
+                        </div>
+                        <div class="discount-badge">
+                            <span class="discount-badge__tooltip">3 dagen is eigenlijk de minimale tijd om écht tot rust te komen</span>
+                            <span class="discount-badge__text">10% korting bij verblijf van 3 nachten of meer!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inbegrepen & Faciliteiten -->
+        <section class="info-section">
+            <div class="info-section__inner">
+                <div class="info-grid">
+                    <!-- Wat is inbegrepen -->
+                    <div class="info-card">
+                        <div class="info-card__header">
+                            <div class="info-card__icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                            </div>
+                            <h2 class="info-card__title">Inbegrepen</h2>
+                        </div>
+                        <div class="info-card__content">
+                            <ul>
+                                <li>Beddengoed</li>
+                                <li>Handdoeken</li>
+                                <li>Keuken met basis benodigdheden (kruiden, olie, koffie, thee, etc.)</li>
+                                <li>Water uit eigen bron</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Faciliteiten -->
+                    <div class="info-card">
+                        <div class="info-card__header">
+                            <div class="info-card__icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+                                </svg>
+                            </div>
+                            <h2 class="info-card__title">Faciliteiten</h2>
+                        </div>
+                        <div class="info-card__content">
+                            <ul>
+                                <li>Douche (gedeeld)</li>
+                                <li>Ecotoilet (gedeeld)</li>
+                                <li>Buitenkeuken (gedeeld)</li>
+                                <li>Wifi in gemeenschappelijke ruimte</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Betaling Section -->
+        <section class="info-section info-section--alt">
+            <div class="info-section__inner">
+                <div class="info-card">
+                    <div class="info-card__header">
+                        <div class="info-card__icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                            </svg>
+                        </div>
+                        <h2 class="info-card__title">Betaling</h2>
+                    </div>
+                    <div class="info-card__content">
+                        <ul>
+                            <li><strong>Alleen contant</strong> - we accepteren geen pinbetalingen op locatie</li>
+                            <li>Pinautomaat beschikbaar in de stad (Elbasan)</li>
+                        </ul>
+                        <div class="info-card__highlight">
+                            Tip: Neem voldoende contant geld mee voor je verblijf. De dichtstbijzijnde pinautomaat is in Elbasan.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CTA Section -->
+    <section class="info-cta">
+        <div class="info-cta__content">
+            <h2 class="info-cta__title">Klaar om te boeken?</h2>
+            <p class="info-cta__text">Reserveer je verblijf en ervaar PasneserPark zelf</p>
+            <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="btn">Boek nu</a>
         </div>
     </section>
 
