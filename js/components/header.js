@@ -229,11 +229,12 @@
         <header class="site-header" id="site-header">
             <div class="site-header__inner">
                 <nav class="site-header__nav">
-                    <a href="index.html" data-page="index">Home</a>
-                    <a href="slapen.html" data-page="slapen">Slapen</a>
+                    <a href="index.html" data-page="index">Welkom</a>
+                    <a href="glamping.html" data-page="glamping">Glamping</a>
                     <a href="fotos.html" data-page="fotos">Foto's</a>
                     <a href="reviews.html" data-page="reviews">Reviews</a>
                     <a href="blog.html" data-page="blog">Blog</a>
+                    <a href="info.html" data-page="info">Info</a>
                     <a href="contact.html" data-page="contact">Contact</a>
                 </nav>
 
@@ -250,11 +251,12 @@
         </header>
 
         <nav class="site-mobile-nav" id="site-mobile-nav">
-            <a href="index.html" data-page="index">Home</a>
-            <a href="slapen.html" data-page="slapen">Slapen</a>
+            <a href="index.html" data-page="index">Welkom</a>
+            <a href="glamping.html" data-page="glamping">Glamping</a>
             <a href="fotos.html" data-page="fotos">Foto's</a>
             <a href="reviews.html" data-page="reviews">Reviews</a>
             <a href="blog.html" data-page="blog">Blog</a>
+            <a href="info.html" data-page="info">Info</a>
             <a href="contact.html" data-page="contact">Contact</a>
             <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">Reserveren</a>
         </nav>

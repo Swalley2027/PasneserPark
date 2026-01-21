@@ -359,13 +359,15 @@
 
             <!-- Layer 2: Info columns -->
             <div class="site-footer__info">
-                <!-- Column 1: Navigation -->
+                <!-- Column 1: Menu -->
                 <div class="site-footer__column">
-                    <h4>Navigatie</h4>
-                    <a href="index.html">Home</a>
-                    <a href="slapen.html">Slapen</a>
+                    <h4>Menu</h4>
+                    <a href="index.html">Welkom</a>
+                    <a href="glamping.html">Glamping</a>
                     <a href="fotos.html">Foto's</a>
                     <a href="reviews.html">Reviews</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="info.html">Info</a>
                     <a href="contact.html">Contact</a>
                 </div>
 
