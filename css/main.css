@@ -614,16 +614,76 @@ p {
     width: 160px;
     height: 160px;
     margin: 0 auto var(--space-sm);
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(93, 64, 55, 0.2);
+    border: 3px solid var(--gold);
+    cursor: pointer;
 }
 
 .team__photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Individual team member photo positioning */
+/* Merel - center face */
+.team__member:nth-child(1) .team__photo {
+    object-position: center 20%;
+}
+
+/* Frank - center face */
+.team__member:nth-child(2) .team__photo {
+    object-position: center 25%;
+}
+
+/* Tito (dog) - center head */
+.team__member:nth-child(3) .team__photo {
+    object-position: center 30%;
+}
+
+/* Besa (cat) - ears sticking out */
+.team__member:nth-child(4) .team__photo-wrapper {
+    overflow: visible;
+}
+
+.team__member:nth-child(4) .team__photo {
+    width: 115%;
+    height: 115%;
+    margin-left: -7.5%;
+    margin-top: -20%;
+    object-position: center 35%;
     border-radius: 50%;
     box-shadow: 0 4px 20px rgba(93, 64, 55, 0.2);
     border: 3px solid var(--gold);
-    transition: transform 0.4s ease;
+}
+
+.team__member:nth-child(4) .team__photo-wrapper {
+    box-shadow: none;
+    border: none;
+}
+
+/* Alpha (cat) - ears sticking out */
+.team__member:nth-child(5) .team__photo-wrapper {
+    overflow: visible;
+}
+
+.team__member:nth-child(5) .team__photo {
+    width: 115%;
+    height: 115%;
+    margin-left: -7.5%;
+    margin-top: -20%;
+    object-position: center 35%;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(93, 64, 55, 0.2);
+    border: 3px solid var(--gold);
+}
+
+.team__member:nth-child(5) .team__photo-wrapper {
+    box-shadow: none;
+    border: none;
 }
 
 .team__overlay {

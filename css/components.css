@@ -89,21 +89,7 @@
     text-align: center;
 }
 
-.team__photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--sand-dark);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform var(--transition), box-shadow var(--transition);
-    cursor: pointer;
-}
-
-.team__member:hover .team__photo {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
+/* Note: .team__photo styles are in main.css for uniform team photos with cat ear overflow */
 
 .team__name {
     margin-top: var(--space-sm);
