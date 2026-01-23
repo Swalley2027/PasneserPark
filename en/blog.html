@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PasneserPark Blog - Stories from the Albanian mountains. Coming soon!">
+    <meta name="description" content="PasneserPark Blog - Stories from the Albanian mountains. Read about our life in Shelcan, cultural differences and adventures.">
     <title>Blog - PasneserPark</title>
     <!-- Hreflang tags for SEO -->
     <link rel="alternate" hreflang="nl" href="https://pasneserpark.com/blog.html" />
@@ -18,29 +18,134 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <script src="../js/language.js"></script>
+    <style>
+        /* Blog Page Styling */
+        .blog-hero {
+            background-color: #2d3a2e;
+            padding: 120px 20px 60px;
+            text-align: center;
+        }
+
+        .blog-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #FFF4D5;
+            margin-bottom: 10px;
+        }
+
+        .blog-hero__line {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .blog-post {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(93, 64, 55, 0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .blog-post__header {
+            background: linear-gradient(135deg, #5A7D3E 0%, #2d3a2e 100%);
+            padding: 30px;
+            color: #FFF4D5;
+        }
+
+        .blog-post__date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-post__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0;
+            color: #FFF4D5;
+        }
+
+        .blog-post__content {
+            padding: 40px 30px;
+            line-height: 1.8;
+            color: #5D4037;
+            font-size: 1.1rem;
+        }
+
+        .blog-post__content p {
+            margin-bottom: 1.5em;
+        }
+
+        .blog-post__content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .blog-post__emoji {
+            font-size: 1.3em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-hero__title {
+                font-size: 2.5rem;
+            }
+
+            .blog-post__title {
+                font-size: 1.5rem;
+            }
+
+            .blog-post__content {
+                padding: 30px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body data-lang="en" data-page="blog">
     <!-- Header loaded via JavaScript -->
 
-    <section class="blog-placeholder" style="
-        min-height: 60vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px;
-    ">
-        <h1 style="
-            font-size: 48px;
-            color: #2d3a2e;
-            margin-bottom: 20px;
-        ">Blogs Coming Soon!</h1>
-        <p style="
-            font-size: 72px;
-            margin: 0;
-        ">:-)</p>
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <h1 class="blog-hero__title">Blog</h1>
+        <div class="blog-hero__line"></div>
     </section>
+
+    <!-- Blog Posts -->
+    <div class="blog-container">
+        <article class="blog-post">
+            <div class="blog-post__header">
+                <span class="blog-post__date">January 23, 2026</span>
+                <h2 class="blog-post__title">The first blog</h2>
+            </div>
+            <div class="blog-post__content">
+                <p>Welcome to the first blog of PasneserPark. <span class="blog-post__emoji">:-)</span></p>
+
+                <p>Here we share a piece of our life in Shelcan every week, a mountain village near Elbasan in Central Albania where nobody is in a hurry and everything can wait until the day after tomorrow.</p>
+
+                <p>What you can expect here are stories about cultural differences that sometimes knock you off your feet, because some things work just a little differently here than you're used to. About freshly distilled raki that neighbors bring over in old cola bottles. About mountain life and village life and how we as Dutch people try to navigate through it all.</p>
+
+                <p>We write about our dog Tito who loves to help with the neighbor's sheep and sometimes howls loudly at the mountains because he's not allowed to come along. About our cats Alpha and Besa who have their own adventures. And about chickens that lay eggs in unexpected places, the neighbor's goats, and fat toads by the pond.</p>
+
+                <p>You'll read about vegetable gardening and permaculture. About construction projects that don't always go as planned. About Albanian chaos, dented Mercedes cars, and old mopeds that against all expectations still run.</p>
+
+                <p>About volunteers who help us with what we can't do alone and for the good vibes. Who teach us things and learn things from us.</p>
+
+                <p>And then there are the people around us. Neighbors where we drink coffee and where we can buy raw milk, fresh butter and other local delicacies. The priest who regularly stops by for a raki at Toli's pub and then at our place <span class="blog-post__emoji">:-)</span></p>
+
+                <p>You could call this a social experiment. Dutch people trying to run a glamping in a country where nobody knows what glamping is. Sometimes it goes well, sometimes it becomes a story <span class="blog-post__emoji">:-)</span></p>
+            </div>
+        </article>
+    </div>
 
     <!-- Footer loaded via JavaScript -->
 

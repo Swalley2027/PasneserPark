@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de" data-lang="de" data-page="blog">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PasneserPark Blog - Geschichten aus den albanischen Bergen. Bald verfugbar!">
+    <meta name="description" content="PasneserPark Blog - Geschichten aus den albanischen Bergen. Lesen Sie uber unser Leben in Shelcan, Kulturunterschiede und Abenteuer.">
     <title>Blog - PasneserPark</title>
     <!-- Hreflang tags for SEO -->
     <link rel="alternate" hreflang="nl" href="https://pasneserpark.com/blog.html" />
@@ -18,29 +18,134 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <script src="../js/language.js"></script>
+    <style>
+        /* Blog Page Styling */
+        .blog-hero {
+            background-color: #2d3a2e;
+            padding: 120px 20px 60px;
+            text-align: center;
+        }
+
+        .blog-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #FFF4D5;
+            margin-bottom: 10px;
+        }
+
+        .blog-hero__line {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .blog-post {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(93, 64, 55, 0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .blog-post__header {
+            background: linear-gradient(135deg, #5A7D3E 0%, #2d3a2e 100%);
+            padding: 30px;
+            color: #FFF4D5;
+        }
+
+        .blog-post__date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-post__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 0;
+            color: #FFF4D5;
+        }
+
+        .blog-post__content {
+            padding: 40px 30px;
+            line-height: 1.8;
+            color: #5D4037;
+            font-size: 1.1rem;
+        }
+
+        .blog-post__content p {
+            margin-bottom: 1.5em;
+        }
+
+        .blog-post__content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .blog-post__emoji {
+            font-size: 1.3em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-hero__title {
+                font-size: 2.5rem;
+            }
+
+            .blog-post__title {
+                font-size: 1.5rem;
+            }
+
+            .blog-post__content {
+                padding: 30px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-<body>
+<body data-lang="de" data-page="blog">
     <!-- Header wird via JavaScript geladen -->
 
-    <section class="blog-placeholder" style="
-        min-height: 60vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px;
-    ">
-        <h1 style="
-            font-size: 48px;
-            color: #2d3a2e;
-            margin-bottom: 20px;
-        ">Blogs kommen bald!</h1>
-        <p style="
-            font-size: 72px;
-            margin: 0;
-        ">:-)</p>
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <h1 class="blog-hero__title">Blog</h1>
+        <div class="blog-hero__line"></div>
     </section>
+
+    <!-- Blog Posts -->
+    <div class="blog-container">
+        <article class="blog-post">
+            <div class="blog-post__header">
+                <span class="blog-post__date">23. Januar 2026</span>
+                <h2 class="blog-post__title">Der erste Blog</h2>
+            </div>
+            <div class="blog-post__content">
+                <p>Willkommen zum ersten Blog von PasneserPark. <span class="blog-post__emoji">:-)</span></p>
+
+                <p>Hier teilen wir jede Woche ein Stuck aus unserem Leben in Shelcan, einem Bergdorf bei Elbasan in Zentralalbanien, wo niemand es eilig hat und alles ubermorgen erledigt werden kann.</p>
+
+                <p>Was Sie hier erwarten konnen, sind Geschichten uber Kulturunterschiede, die einen manchmal umhauen, denn manche Dinge laufen hier einfach ein bisschen anders als gewohnt. Uber frisch gebrannten Raki, den Nachbarn in alten Colaflaschen vorbeibringen. Uber Bergleben und Dorfleben und wie wir als Niederlander versuchen, uns durchzunavigieren.</p>
+
+                <p>Wir schreiben uber unseren Hund Tito, der gerne bei den Schafen des Nachbarn mithilft und manchmal laut in die Berge heult, weil er nicht mitkommen darf. Uber unsere Katzen Alpha und Besa, die ihre eigenen Abenteuer erleben. Und uber Huhner, die Eier an unerwarteten Stellen legen, die Ziegen der Nachbarn und dicke Kroten am Teich.</p>
+
+                <p>Sie lesen hier uber Gemusegarten und Permakultur. Uber Bauprojekte, die nicht immer nach Plan verlaufen. Uber albanisches Chaos, verbeulte Mercedes und alte Mopeds, die wider Erwarten noch fahren.</p>
+
+                <p>Uber Freiwillige, die uns bei dem helfen, was wir nicht alleine schaffen, und fur die gute Stimmung sorgen. Die uns Dinge beibringen und von uns lernen.</p>
+
+                <p>Und dann sind da die Menschen um uns herum. Nachbarn, bei denen wir Kaffee trinken und wo wir Rohmilch, frische Butter und andere lokale Kostlichkeiten kaufen konnen. Der Priester, der regelmasig auf einen Raki bei Toli in der Kneipe vorbeikommt und dann bei uns <span class="blog-post__emoji">:-)</span></p>
+
+                <p>Man konnte das ein soziales Experiment nennen. Niederlander, die versuchen, einen Glamping-Platz in einem Land zu betreiben, in dem niemand weiss, was Glamping ist. Manchmal geht es gut, manchmal wird es eine Geschichte <span class="blog-post__emoji">:-)</span></p>
+            </div>
+        </article>
+    </div>
 
     <!-- Footer wird via JavaScript geladen -->
 

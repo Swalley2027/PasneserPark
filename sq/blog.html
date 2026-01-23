@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="sq" data-lang="sq" data-page="blog">
+<html lang="sq">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PasneserPark Blog - Histori nga malet shqiptare. Se shpejti!">
+    <meta name="description" content="PasneserPark Blog - Histori nga malet shqiptare. Lexoni per jeten tone ne Shelcan, dallimet kulturore dhe aventurat.">
     <title>Blog - PasneserPark</title>
     <!-- Hreflang tags for SEO -->
     <link rel="alternate" hreflang="nl" href="https://pasneserpark.com/blog.html" />
@@ -18,31 +18,136 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/responsive.css">
-</head>
-<body>
-    <!-- Header wordt geladen via JavaScript -->
+    <script src="../js/language.js"></script>
+    <style>
+        /* Blog Page Styling */
+        .blog-hero {
+            background-color: #2d3a2e;
+            padding: 120px 20px 60px;
+            text-align: center;
+        }
 
-    <section class="blog-placeholder" style="
-        min-height: 60vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 40px;
-    ">
-        <h1 style="
-            font-size: 48px;
-            color: #2d3a2e;
-            margin-bottom: 20px;
-        ">Blogjet vijnë së shpejti!</h1>
-        <p style="
-            font-size: 72px;
+        .blog-hero__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #FFF4D5;
+            margin-bottom: 10px;
+        }
+
+        .blog-hero__line {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .blog-post {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(93, 64, 55, 0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .blog-post__header {
+            background: linear-gradient(135deg, #5A7D3E 0%, #2d3a2e 100%);
+            padding: 30px;
+            color: #FFF4D5;
+        }
+
+        .blog-post__date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-post__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             margin: 0;
-        ">:-)</p>
+            color: #FFF4D5;
+        }
+
+        .blog-post__content {
+            padding: 40px 30px;
+            line-height: 1.8;
+            color: #5D4037;
+            font-size: 1.1rem;
+        }
+
+        .blog-post__content p {
+            margin-bottom: 1.5em;
+        }
+
+        .blog-post__content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .blog-post__emoji {
+            font-size: 1.3em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blog-hero__title {
+                font-size: 2.5rem;
+            }
+
+            .blog-post__title {
+                font-size: 1.5rem;
+            }
+
+            .blog-post__content {
+                padding: 30px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body data-lang="sq" data-page="blog">
+    <!-- Header ngarkohet permes JavaScript -->
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <h1 class="blog-hero__title">Blog</h1>
+        <div class="blog-hero__line"></div>
     </section>
 
-    <!-- Footer wordt geladen via JavaScript -->
+    <!-- Blog Posts -->
+    <div class="blog-container">
+        <article class="blog-post">
+            <div class="blog-post__header">
+                <span class="blog-post__date">23 janar 2026</span>
+                <h2 class="blog-post__title">Blogu i pare</h2>
+            </div>
+            <div class="blog-post__content">
+                <p>Miresevini ne blogun e pare te PasneserPark. <span class="blog-post__emoji">:-)</span></p>
+
+                <p>Ketu ndajme cdo jave nje cope nga jeta jone ne Shelcan, nje fshat malor prane Elbasanit ne Shqiperine Qendrore, ku askush nuk ka nxitim dhe gjithcka mund te behet pasneser.</p>
+
+                <p>Ajo qe mund te prisni ketu jane histori per dallimet kulturore qe ndonjehere te befasojne, sepse disa gjera funksionojne pak ndryshe ketu nga sa jeni mesuar. Per rakine e sapopjekur qe fqinjet e sjellin ne shishe te vjetra koka-kole. Per jeten malore dhe jeten fshatare dhe si ne si holandez perpiqemi te navigojme permes te gjithave.</p>
+
+                <p>Shkruajme per qenin tone Tito qe i pelqen te ndihmoje me delet e fqinjit dhe ndonjehere ulerin me ze te larte drejt maleve sepse nuk i lejohet te shkoje. Per macet tona Alpha dhe Besa qe kane aventurat e tyre. Dhe per pulat qe bejne veze ne vende te papritura, dhite e fqinjeve dhe bretkosat e trasha prane pellgut.</p>
+
+                <p>Do te lexoni ketu per kopshtarin e perimeve dhe permakulturen. Per projektet e ndertimit qe nuk shkojne gjithmone sipas planit. Per kaosin shqiptar, Mercedes-et e rrahur, dhe motorret e vjetra qe kunder te gjitha pritjeve ende ecin.</p>
+
+                <p>Per vullnetaret qe na ndihmojne me ate qe nuk mundemi ta bejme vete dhe per atmosferen e mire. Qe na mesojne gjera dhe mesojne gjera nga ne.</p>
+
+                <p>Dhe pastaj jane njerezit rreth nesh. Fqinjet ku pime kafe dhe ku mundemi te bleme qumesht te paperpunuar, gjalpe te fresket dhe shijeshmeri te tjera lokale. Prifti qe rregullisht kalon per nje raki te Toli ne kafene dhe pastaj te ne <span class="blog-post__emoji">:-)</span></p>
+
+                <p>Kete mund ta quash nje eksperiment social. Holandezet qe perpiqen te drejtojne nje glamping ne nje vend ku askush nuk e di se cfare eshte glamping. Ndonjehere shkon mire, ndonjehere behet nje histori <span class="blog-post__emoji">:-)</span></p>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer ngarkohet permes JavaScript -->
 
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>

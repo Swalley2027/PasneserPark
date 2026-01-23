@@ -47,6 +47,17 @@
     }
 
     /**
+     * Get base path for redirects (handles subfolders like /en/, /de/, /sq/)
+     */
+    function getBasePath() {
+        const path = window.location.pathname;
+        if (path.includes('/en/') || path.includes('/de/') || path.includes('/sq/')) {
+            return '../';
+        }
+        return '';
+    }
+
+    /**
      * Redirect to language page if no preference is set
      */
     function checkLanguagePreference() {
@@ -64,7 +75,8 @@
         const savedLang = getSavedLanguage();
         if (!savedLang) {
             // No preference set, redirect to language selection
-            window.location.href = 'language.html';
+            const basePath = getBasePath();
+            window.location.href = basePath + 'language.html';
         }
     }
 
@@ -94,10 +106,6 @@
         }
     }
 
-    // Run on DOM ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
+    // Run immediately (before DOM loads) to redirect as fast as possible
+    init();
 })();
