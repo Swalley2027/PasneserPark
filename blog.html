@@ -20,7 +20,17 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/language.js"></script>
     <style>
-        /* Blog Page Styling */
+        /* ================================
+           Blog Page - Premium Styling
+           ================================ */
+
+        /* Page Background */
+        .blog-page {
+            background-color: #FDF8F3;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
         .blog-hero {
             background-color: #2d3a2e;
             padding: 120px 20px 60px;
@@ -41,77 +51,327 @@
             margin: 0 auto;
         }
 
+        /* Blog Container */
         .blog-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
+        /* Blog Post Card */
         .blog-post {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(93, 64, 55, 0.1);
+            background: #FFFCF8;
+            border-radius: 16px;
+            box-shadow:
+                0 4px 6px rgba(93, 64, 55, 0.05),
+                0 10px 40px rgba(93, 64, 55, 0.1);
             overflow: hidden;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
 
+        /* Blog Header */
         .blog-post__header {
             background: linear-gradient(135deg, #5A7D3E 0%, #2d3a2e 100%);
-            padding: 30px;
+            padding: 40px;
             color: #FFF4D5;
         }
 
         .blog-post__date {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 12px;
             display: block;
+            letter-spacing: 0.5px;
         }
 
         .blog-post__title {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin: 0;
             color: #FFF4D5;
+            line-height: 1.3;
         }
 
+        /* Blog Content */
         .blog-post__content {
-            padding: 40px 30px;
-            line-height: 1.8;
-            color: #5D4037;
-            font-size: 1.1rem;
+            padding: 50px 50px 60px;
+            line-height: 1.75;
+            color: #4A3728;
+            font-size: 1.15rem;
         }
 
         .blog-post__content p {
-            margin-bottom: 1.5em;
+            margin-bottom: 1.6em;
         }
 
         .blog-post__content p:last-child {
             margin-bottom: 0;
         }
 
-        .blog-post__emoji {
-            font-size: 1.3em;
+        /* Drop Cap - First letter of first paragraph */
+        .blog-post__content p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            float: left;
+            line-height: 0.8;
+            margin-right: 12px;
+            margin-top: 8px;
+            color: #5A7D3E;
         }
 
-        /* Responsive */
+        .blog-post__emoji {
+            font-size: 1.2em;
+        }
+
+        /* ================================
+           Photo Styling Classes
+           ================================ */
+
+        /* Base figure styling */
+        .blog-post__content figure {
+            margin: 2em 0;
+            padding: 0;
+        }
+
+        .blog-post__content figure img {
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(93, 64, 55, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-post__content figure img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(93, 64, 55, 0.2);
+        }
+
+        .blog-post__content figcaption {
+            font-size: 0.9rem;
+            color: #8B7355;
+            text-align: center;
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Full width photo */
+        .blog-foto-full {
+            width: 100%;
+            margin: 2.5em 0;
+        }
+
+        .blog-foto-full img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Photo left - text wraps right */
+        .blog-foto-links {
+            float: left;
+            width: 45%;
+            margin: 0.5em 2em 1.5em 0;
+        }
+
+        .blog-foto-links img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Photo right - text wraps left */
+        .blog-foto-rechts {
+            float: right;
+            width: 45%;
+            margin: 0.5em 0 1.5em 2em;
+        }
+
+        .blog-foto-rechts img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Photo grid - 2 or 3 photos side by side */
+        .blog-foto-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2.5em 0;
+        }
+
+        .blog-foto-grid.grid-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .blog-foto-grid.grid-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .blog-foto-grid figure {
+            margin: 0;
+        }
+
+        .blog-foto-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-foto-grid figcaption {
+            font-size: 0.85rem;
+        }
+
+        /* Clear floats after floating images */
+        .blog-post__content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* ================================
+           Lightbox
+           ================================ */
+        .blog-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .blog-lightbox.active {
+            display: flex;
+        }
+
+        .blog-lightbox__image {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        .blog-lightbox__close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            line-height: 1;
+        }
+
+        .blog-lightbox__close:hover {
+            opacity: 1;
+        }
+
+        .blog-lightbox__caption {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            max-width: 80%;
+            opacity: 0.9;
+        }
+
+        /* ================================
+           Responsive Design
+           ================================ */
         @media (max-width: 768px) {
+            .blog-hero {
+                padding: 100px 20px 50px;
+            }
+
             .blog-hero__title {
                 font-size: 2.5rem;
             }
 
+            .blog-container {
+                padding: 50px 15px;
+            }
+
+            .blog-post__header {
+                padding: 30px 25px;
+            }
+
             .blog-post__title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
             .blog-post__content {
-                padding: 30px 20px;
+                padding: 35px 25px 45px;
+                font-size: 1.05rem;
+            }
+
+            .blog-post__content p:first-of-type::first-letter {
+                font-size: 3rem;
+                margin-right: 8px;
+            }
+
+            /* Stack floating images on mobile */
+            .blog-foto-links,
+            .blog-foto-rechts {
+                float: none;
+                width: 100%;
+                margin: 2em 0;
+            }
+
+            /* 2-column grid stays, 3-column becomes 2 */
+            .blog-foto-grid.grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .blog-foto-grid img {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-hero__title {
+                font-size: 2rem;
+            }
+
+            .blog-post__content {
+                padding: 30px 20px 40px;
                 font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .blog-post__content p:first-of-type::first-letter {
+                font-size: 2.5rem;
+                margin-right: 6px;
+                margin-top: 5px;
+            }
+
+            /* All grids become single column on small screens */
+            .blog-foto-grid.grid-2,
+            .blog-foto-grid.grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-foto-grid img {
+                height: 200px;
             }
         }
     </style>
 </head>
-<body data-lang="nl" data-page="blog">
+<body class="blog-page" data-lang="nl" data-page="blog">
     <!-- Header wordt geladen via JavaScript -->
 
     <!-- Hero Section -->
@@ -128,9 +388,7 @@
                 <h2 class="blog-post__title">De eerste blog</h2>
             </div>
             <div class="blog-post__content">
-                <p>Welkom bij de eerste blog van PasneserPark. <span class="blog-post__emoji">:-)</span></p>
-
-                <p>Hier delen we elke week een stukje uit ons leven in Shelcan, een bergdorp bij Elbasan in Centraal-Albanie waar niemand haast heeft en alles overmorgen kan.</p>
+                <p>Welkom bij de eerste blog van PasneserPark. <span class="blog-post__emoji">:-)</span> Hier delen we elke week een stukje uit ons leven in Shelcan, een bergdorp bij Elbasan in Centraal-Albanie waar niemand haast heeft en alles overmorgen kan.</p>
 
                 <p>Wat je hier kunt verwachten is verhalen over cultuurverschillen waar je soms van achterover slaat, want sommige dingen gaan hier net even anders dan je gewend bent. Over vers gestookte raki die buren langsbrengen in oude colaflessen. Over bergleven en dorpsleven en hoe wij als Nederlanders daar tussendoor proberen te navigeren.</p>
 
@@ -147,11 +405,65 @@
         </article>
     </div>
 
+    <!-- Lightbox for photos -->
+    <div class="blog-lightbox" id="blogLightbox">
+        <button class="blog-lightbox__close" id="lightboxClose">&times;</button>
+        <img src="" alt="" class="blog-lightbox__image" id="lightboxImage">
+        <p class="blog-lightbox__caption" id="lightboxCaption"></p>
+    </div>
+
     <!-- Footer wordt geladen via JavaScript -->
 
     <script src="js/components/header.js"></script>
     <script src="js/components/footer.js"></script>
     <script src="js/main.js"></script>
     <script src="js/i18n.js"></script>
+
+    <script>
+        // Blog Lightbox functionality
+        (function() {
+            const lightbox = document.getElementById('blogLightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            // Get all blog images
+            const blogImages = document.querySelectorAll('.blog-post__content figure img');
+
+            // Add click handler to each image
+            blogImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    const figcaption = this.closest('figure').querySelector('figcaption');
+                    lightboxImage.src = this.src;
+                    lightboxImage.alt = this.alt;
+                    lightboxCaption.textContent = figcaption ? figcaption.textContent : '';
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close lightbox on X click
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            // Close lightbox on background click
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Close lightbox on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        })();
+    </script>
 </body>
 </html>
