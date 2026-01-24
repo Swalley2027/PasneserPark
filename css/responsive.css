@@ -88,9 +88,9 @@
 
     /* Besa - zelfde techniek als Alpha op tablet */
     .team__member:nth-child(4) .team__photo {
-        transform: scale(1.25) translateY(-12%);
+        transform: scale(1.18) translateY(-10%);
         object-fit: cover;
-        object-position: center 20%;
+        object-position: center 18%;
         border-radius: 50%;
     }
 
@@ -210,9 +210,9 @@
 
     /* Besa - zelfde techniek als Alpha op mobiel */
     .team__member:nth-child(4) .team__photo {
-        transform: scale(1.25) translateY(-12%);
+        transform: scale(1.18) translateY(-10%);
         object-fit: cover;
-        object-position: center 20%;
+        object-position: center 18%;
         border-radius: 50%;
     }
 
