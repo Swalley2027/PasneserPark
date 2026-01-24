@@ -86,6 +86,14 @@
         height: 120px;
     }
 
+    /* Besa - zelfde techniek als Alpha op tablet */
+    .team__member:nth-child(4) .team__photo {
+        transform: scale(1.25) translateY(-12%);
+        object-fit: cover;
+        object-position: center 20%;
+        border-radius: 50%;
+    }
+
     .team__info {
         position: fixed;
         top: 50%;
@@ -198,6 +206,14 @@
     .team__photo {
         width: 100px;
         height: 100px;
+    }
+
+    /* Besa - zelfde techniek als Alpha op mobiel */
+    .team__member:nth-child(4) .team__photo {
+        transform: scale(1.25) translateY(-12%);
+        object-fit: cover;
+        object-position: center 20%;
+        border-radius: 50%;
     }
 
     /* Accommodation */

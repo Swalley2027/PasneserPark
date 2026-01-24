@@ -607,6 +607,8 @@ p {
 .team__member {
     text-align: center;
     max-width: 180px;
+    overflow: visible;
+    padding-top: 25px;  /* Ruimte voor kattenoren */
 }
 
 .team__photo-wrapper {
@@ -647,15 +649,18 @@ p {
     border-radius: 50%;  /* Keep photo circular with scale transform */
 }
 
-/* ===== BESA (kat) - voorbewerkte foto met oren ===== */
+/* ===== BESA (kat) - zelfde techniek als Alpha ===== */
+.team__member:nth-child(4) .team__photo-wrapper {
+    background-color: var(--sand);
+}
+
 .team__member:nth-child(4) .team__photo {
-    width: 150px !important;
-    height: auto !important;
-    object-fit: contain !important;
-    border-radius: 0 !important;
-    margin-top: -18px;
-    margin-left: 5px;
-    clip-path: inset(0 0 8px 0);  /* Snijdt onderkant af, oren blijven zichtbaar */
+    width: 160px;
+    height: 160px;
+    transform: scale(1.25) translateY(-12%);
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 50%;
 }
 
 /* ===== ALPHA (kat) - NIET AANPASSEN ===== */
