@@ -1,0 +1,34 @@
+# robots.txt for PasneserPark
+# https://pasneserpark.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://pasneserpark.com/sitemap.xml
+
+# Block access to admin/private folders if present
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.claude/
+Disallow: /.git/
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Crawl-delay for less important bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

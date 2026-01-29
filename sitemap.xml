@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Dutch (Root) Pages -->
+  <url>
+    <loc>https://pasneserpark.com/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/glamping.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/glamping.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/info.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/info.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/info.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/info.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/info.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/fotos.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/fotos.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/reviews.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/reviews.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/contact.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/blog.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- English Pages -->
+  <url>
+    <loc>https://pasneserpark.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/en/glamping.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/glamping.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/en/info.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/info.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/info.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/info.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/info.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/en/fotos.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/fotos.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/en/reviews.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/reviews.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/contact.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/en/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/blog.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- German Pages -->
+  <url>
+    <loc>https://pasneserpark.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/de/glamping.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/glamping.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/de/info.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/info.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/info.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/info.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/info.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/de/fotos.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/fotos.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/de/reviews.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/reviews.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/de/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/contact.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/de/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/blog.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Albanian Pages -->
+  <url>
+    <loc>https://pasneserpark.com/sq/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/sq/glamping.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/glamping.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/glamping.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/sq/info.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/info.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/info.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/info.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/info.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/info.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/sq/fotos.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/fotos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/fotos.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/sq/reviews.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/reviews.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/reviews.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/sq/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/contact.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://pasneserpark.com/sq/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://pasneserpark.com/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pasneserpark.com/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://pasneserpark.com/de/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://pasneserpark.com/sq/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pasneserpark.com/en/blog.html"/>
+    <lastmod>2026-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

@@ -12,19 +12,19 @@
  */
 
 const FOTOS = [
-    { foto: "outdoor-kitchen.jpg", titel: "Buitenkeuken" },
-    { foto: "water-spot.jpg", titel: "De Waterplek" },
-    { foto: "forest-path-bench.jpg", titel: "Bospaadjes" },
-    { foto: "bar-evening.jpg", titel: "Avond bij de Bar" },
-    { foto: "3Glazen flessen.jpeg", titel: "Glazen Flessen" },
-    { foto: "Eien.jpeg", titel: "Eieren" },
-    { foto: "ezel.jpeg", titel: "De Ezel" },
-    { foto: "Groene Bladeren.jpeg", titel: "Groene Bladeren" },
-    { foto: "Haan.jpeg", titel: "De Haan" },
-    { foto: "Koe.jpeg", titel: "De Koe" },
-    { foto: "Schaduw vijgenblad.jpeg", titel: "Schaduw Vijgenblad" },
-    { foto: "Schapen.jpeg", titel: "De Schapen" },
-    { foto: "Tito op Heuvel.jpeg", titel: "Tito op de Heuvel" }
+    { foto: "outdoor-kitchen.jpg", titel: "Buitenkeuken met kookgerei bij PasneserPark glamping Albanië" },
+    { foto: "water-spot.jpg", titel: "Natuurlijke waterplek in het bos bij PasneserPark" },
+    { foto: "forest-path-bench.jpg", titel: "Rustiek bankje langs bospad bij PasneserPark glamping" },
+    { foto: "bar-evening.jpg", titel: "Sfeervolle avond bij de bar op PasneserPark terrein" },
+    { foto: "3Glazen flessen.jpeg", titel: "Decoratieve glazen flessen in rustieke stijl" },
+    { foto: "Eien.jpeg", titel: "Verse eieren van lokale kippen bij PasneserPark" },
+    { foto: "ezel.jpeg", titel: "Vriendelijke ezel in de Albanese natuur nabij PasneserPark" },
+    { foto: "Groene Bladeren.jpeg", titel: "Weelderig groen gebladerte in de bergen van Albanië" },
+    { foto: "Haan.jpeg", titel: "Kleurrijke haan op het PasneserPark terrein" },
+    { foto: "Koe.jpeg", titel: "Grazende koe in de heuvels rond PasneserPark" },
+    { foto: "Schaduw vijgenblad.jpeg", titel: "Schaduw van vijgenblad in de Albanese zon" },
+    { foto: "Schapen.jpeg", titel: "Schapen grazen in de bergen nabij PasneserPark glamping" },
+    { foto: "Tito op Heuvel.jpeg", titel: "Tito de hond op een heuvel met uitzicht over Albanië" }
 ];
 
 

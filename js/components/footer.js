@@ -74,6 +74,74 @@
         }
 
         /* ================================
+           Rating Badge
+           ================================ */
+        .site-footer__rating-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            margin-top: 1.5rem !important;
+            padding: 0.6rem 1.2rem !important;
+            background: rgba(201, 162, 39, 0.15) !important;
+            border: 1px solid rgba(201, 162, 39, 0.4) !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .site-footer__rating-badge:hover {
+            background: rgba(201, 162, 39, 0.25) !important;
+            border-color: #c9a227 !important;
+            transform: scale(1.03) !important;
+        }
+
+        .site-footer__rating-stars {
+            display: flex !important;
+            gap: 2px !important;
+        }
+
+        .site-footer__rating-stars svg {
+            width: 16px !important;
+            height: 16px !important;
+            fill: #c9a227 !important;
+        }
+
+        .site-footer__rating-text {
+            font-family: 'Source Sans Pro', 'Segoe UI', sans-serif !important;
+            font-size: 0.85rem !important;
+            color: #f5f0e8 !important;
+            font-weight: 500 !important;
+        }
+
+        .site-footer__rating-reviews {
+            font-family: 'Source Sans Pro', 'Segoe UI', sans-serif !important;
+            font-size: 0.8rem !important;
+            color: #f5f0e8 !important;
+            opacity: 0.7 !important;
+        }
+
+        @media (max-width: 480px) {
+            .site-footer__rating-badge {
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                padding: 0.5rem 1rem !important;
+            }
+
+            .site-footer__rating-stars svg {
+                width: 14px !important;
+                height: 14px !important;
+            }
+
+            .site-footer__rating-text {
+                font-size: 0.75rem !important;
+            }
+
+            .site-footer__rating-reviews {
+                font-size: 0.7rem !important;
+            }
+        }
+
+        /* ================================
            DIVIDER
            ================================ */
         .site-footer__divider {
@@ -357,6 +425,9 @@
             contact: 'Contact',
             bookWithUs: 'Boek Bij Ons',
             followUs: 'Volg Ons',
+            rating: 'Beoordeling',
+            ratingText: 'Beoordeeld met 5 sterren op Airbnb',
+            ratingReviews: '4 reviews',
             copyright: 'Alle rechten voorbehouden.'
         },
         en: {
@@ -371,6 +442,9 @@
             contact: 'Contact',
             bookWithUs: 'Book With Us',
             followUs: 'Follow Us',
+            rating: 'Rating',
+            ratingText: 'Rated 5 stars on Airbnb',
+            ratingReviews: '4 reviews',
             copyright: 'All rights reserved.'
         },
         de: {
@@ -385,6 +459,9 @@
             contact: 'Kontakt',
             bookWithUs: 'Bei Uns Buchen',
             followUs: 'Folge Uns',
+            rating: 'Bewertung',
+            ratingText: 'Mit 5 Sternen auf Airbnb bewertet',
+            ratingReviews: '4 Bewertungen',
             copyright: 'Alle Rechte vorbehalten.'
         },
         sq: {
@@ -399,6 +476,9 @@
             contact: 'Kontakt',
             bookWithUs: 'Rezervo',
             followUs: 'Na Ndiqni',
+            rating: 'Vlerësimi',
+            ratingText: 'Vlerësuar me 5 yje në Airbnb',
+            ratingReviews: '4 vlerësime',
             copyright: 'Të gjitha të drejtat e rezervuara.'
         }
     };
@@ -435,6 +515,19 @@
                     <img src="${basePath}images/logo/Logo-round.png" alt="PasneserPark Logo" class="site-footer__logo">
                 </a>
                 <p class="site-footer__tagline">${t.tagline}</p>
+
+                <!-- Rating Badge -->
+                <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-footer__rating-badge">
+                    <div class="site-footer__rating-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="site-footer__rating-text">${t.ratingText}</span>
+                    <span class="site-footer__rating-reviews">(${t.ratingReviews})</span>
+                </a>
             </div>
 
             <!-- Divider -->
