@@ -41,9 +41,13 @@
 
     /**
      * Check if we're on the language selection page
+     * Handles both 'language.html' and '/language' or '/language/' (Cloudflare Pages normalization)
      */
     function isLanguagePage() {
-        return window.location.pathname.includes('language.html');
+        const path = window.location.pathname;
+        return path.includes('language.html') ||
+               path.endsWith('/language') ||
+               path.endsWith('/language/');
     }
 
     /**
