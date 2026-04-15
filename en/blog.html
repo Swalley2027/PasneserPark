@@ -80,368 +80,120 @@
     <link rel="stylesheet" href="../css/responsive.css">
     <script src="../js/language.js"></script>
     <style>
-        /* ================================
-           Blog Page - Premium Styling
-           ================================ */
-
-        /* Page Background */
-        .blog-page {
-            background-color: #FDF8F3;
-            min-height: 100vh;
-        }
-
-        /* Hero Section */
-        .blog-hero {
-            background-color: #2d3a2e;
-            padding: 120px 20px 60px;
-            text-align: center;
-        }
-
-        .blog-hero__title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: #FFF4D5;
-            margin-bottom: 10px;
-        }
-
-        .blog-hero__line {
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
-            margin: 0 auto;
-        }
-
-        /* Blog Container */
-        .blog-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        /* Blog Post Card */
-        .blog-post {
-            background: #FFFCF8;
-            border-radius: 16px;
-            box-shadow:
-                0 4px 6px rgba(93, 64, 55, 0.05),
-                0 10px 40px rgba(93, 64, 55, 0.1);
-            overflow: hidden;
-            margin-bottom: 60px;
-        }
-
-        /* Blog Header */
-        .blog-post__header {
-            background: linear-gradient(135deg, #5A7D3E 0%, #2d3a2e 100%);
-            padding: 40px;
-            color: #FFF4D5;
-        }
-
-        .blog-post__date {
-            font-size: 0.95rem;
-            opacity: 0.85;
-            margin-bottom: 12px;
-            display: block;
-            letter-spacing: 0.5px;
-        }
-
-        .blog-post__title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin: 0;
-            color: #FFF4D5;
-            line-height: 1.3;
-        }
-
-        /* Blog Content */
-        .blog-post__content {
-            padding: 50px 50px 60px;
-            line-height: 1.75;
-            color: #4A3728;
-            font-size: 1.15rem;
-        }
-
-        .blog-post__content p {
-            margin-bottom: 1.6em;
-        }
-
-        .blog-post__content p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Drop Cap - First letter of first paragraph */
-        .blog-post__content p:first-of-type::first-letter {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            float: left;
-            line-height: 0.8;
-            margin-right: 12px;
-            margin-top: 8px;
-            color: #5A7D3E;
-        }
-
-        .blog-post__emoji {
-            font-size: 1.2em;
-        }
-
-        /* ================================
-           Photo Styling Classes
-           ================================ */
-
-        /* Base figure styling */
-        .blog-post__content figure {
-            margin: 2em 0;
-            padding: 0;
-        }
-
-        .blog-post__content figure img {
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(93, 64, 55, 0.15);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .blog-post__content figure img:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(93, 64, 55, 0.2);
-        }
-
-        .blog-post__content figcaption {
-            font-size: 0.9rem;
-            color: #8B7355;
-            text-align: center;
-            margin-top: 12px;
-            font-style: italic;
-        }
-
-        /* Full width photo */
-        .blog-foto-full {
-            width: 100%;
-            margin: 2.5em 0;
-        }
-
-        .blog-foto-full img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Photo left - text wraps right */
-        .blog-foto-links {
-            float: left;
-            width: 45%;
-            margin: 0.5em 2em 1.5em 0;
-        }
-
-        .blog-foto-links img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Photo right - text wraps left */
-        .blog-foto-rechts {
-            float: right;
-            width: 45%;
-            margin: 0.5em 0 1.5em 2em;
-        }
-
-        .blog-foto-rechts img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Photo grid - 2 or 3 photos side by side */
-        .blog-foto-grid {
-            display: grid;
-            gap: 1rem;
-            margin: 2.5em 0;
-        }
-
-        .blog-foto-grid.grid-2 {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .blog-foto-grid.grid-3 {
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-
-        .blog-foto-grid figure {
-            margin: 0;
-        }
-
-        .blog-foto-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .blog-foto-grid figcaption {
-            font-size: 0.85rem;
-        }
-
-        /* Clear floats after floating images */
-        .blog-post__content::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* ================================
-           Lightbox
-           ================================ */
-        .blog-lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            cursor: pointer;
-        }
-
-        .blog-lightbox.active {
-            display: flex;
-        }
-
-        .blog-lightbox__image {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-            cursor: default;
-        }
-
-        .blog-lightbox__close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 3rem;
-            color: #fff;
-            background: none;
-            border: none;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-            line-height: 1;
-        }
-
-        .blog-lightbox__close:hover {
-            opacity: 1;
-        }
-
-        .blog-lightbox__caption {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 1rem;
-            text-align: center;
-            max-width: 80%;
-            opacity: 0.9;
-        }
-
-        /* ================================
-           Responsive Design
-           ================================ */
+        .blog-page { background-color: #FDF8F3; min-height: 100vh; }
+        .blog-hero { background-color: #2d3a2e; padding: 120px 20px 60px; text-align: center; }
+        .blog-hero__title { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #FFF4D5; margin-bottom: 10px; }
+        .blog-hero__line { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); margin: 0 auto; }
+        .blog-container { max-width: 800px; margin: 0 auto; padding: 80px 20px; }
+        .blog-post { background: #FFFCF8; border-radius: 16px; box-shadow: 0 4px 6px rgba(93, 64, 55, 0.05), 0 10px 40px rgba(93, 64, 55, 0.1); overflow: hidden; margin-bottom: 60px; }
+        .blog-post__header { background: linear-gradient(135deg, #5A7D3E 0%, #2d3a2e 100%); padding: 40px; color: #FFF4D5; }
+        .blog-post__date { font-size: 0.95rem; opacity: 0.85; margin-bottom: 12px; display: block; letter-spacing: 0.5px; }
+        .blog-post__title { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0; color: #FFF4D5; line-height: 1.3; }
+        .blog-post__content { padding: 50px 50px 60px; line-height: 1.75; color: #4A3728; font-size: 1.15rem; }
+        .blog-post__content p { margin-bottom: 1.6em; }
+        .blog-post__content p:last-child { margin-bottom: 0; }
+        .blog-post__content p:first-of-type::first-letter { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; float: left; line-height: 0.8; margin-right: 12px; margin-top: 8px; color: #5A7D3E; }
+        .blog-post__emoji { font-size: 1.2em; }
+        .blog-post__content figure { margin: 2em 0; padding: 0; }
+        .blog-post__content figure img { border-radius: 12px; box-shadow: 0 4px 20px rgba(93, 64, 55, 0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-post__content figure img:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(93, 64, 55, 0.2); }
+        .blog-post__content figcaption { font-size: 0.9rem; color: #8B7355; text-align: center; margin-top: 12px; font-style: italic; }
+        .blog-foto-full { width: 100%; margin: 2.5em 0; }
+        .blog-foto-full img { width: 100%; height: auto; display: block; }
+        .blog-foto-links { float: left; width: 45%; margin: 0.5em 2em 1.5em 0; }
+        .blog-foto-links img { width: 100%; height: auto; display: block; }
+        .blog-foto-rechts { float: right; width: 45%; margin: 0.5em 0 1.5em 2em; }
+        .blog-foto-rechts img { width: 100%; height: auto; display: block; }
+        .blog-foto-grid { display: grid; gap: 1rem; margin: 2.5em 0; }
+        .blog-foto-grid.grid-2 { grid-template-columns: 1fr 1fr; }
+        .blog-foto-grid.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .blog-foto-grid figure { margin: 0; }
+        .blog-foto-grid img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .blog-foto-grid figcaption { font-size: 0.85rem; }
+        .blog-post__content::after { content: ""; display: table; clear: both; }
+        .blog-lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.92); z-index: 10000; justify-content: center; align-items: center; padding: 20px; cursor: pointer; }
+        .blog-lightbox.active { display: flex; }
+        .blog-lightbox__image { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5); cursor: default; }
+        .blog-lightbox__close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: #fff; background: none; border: none; cursor: pointer; opacity: 0.8; transition: opacity 0.3s ease; line-height: 1; }
+        .blog-lightbox__close:hover { opacity: 1; }
+        .blog-lightbox__caption { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 1rem; text-align: center; max-width: 80%; opacity: 0.9; }
         @media (max-width: 768px) {
-            .blog-hero {
-                padding: 100px 20px 50px;
-            }
-
-            .blog-hero__title {
-                font-size: 2.5rem;
-            }
-
-            .blog-container {
-                padding: 50px 15px;
-            }
-
-            .blog-post__header {
-                padding: 30px 25px;
-            }
-
-            .blog-post__title {
-                font-size: 1.6rem;
-            }
-
-            .blog-post__content {
-                padding: 35px 25px 45px;
-                font-size: 1.05rem;
-            }
-
-            .blog-post__content p:first-of-type::first-letter {
-                font-size: 3rem;
-                margin-right: 8px;
-            }
-
-            /* Stack floating images on mobile */
-            .blog-foto-links,
-            .blog-foto-rechts {
-                float: none;
-                width: 100%;
-                margin: 2em 0;
-            }
-
-            /* 2-column grid stays, 3-column becomes 2 */
-            .blog-foto-grid.grid-3 {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .blog-foto-grid img {
-                height: 150px;
-            }
+            .blog-hero { padding: 100px 20px 50px; }
+            .blog-hero__title { font-size: 2.5rem; }
+            .blog-container { padding: 50px 15px; }
+            .blog-post__header { padding: 30px 25px; }
+            .blog-post__title { font-size: 1.6rem; }
+            .blog-post__content { padding: 35px 25px 45px; font-size: 1.05rem; }
+            .blog-post__content p:first-of-type::first-letter { font-size: 3rem; margin-right: 8px; }
+            .blog-foto-links, .blog-foto-rechts { float: none; width: 100%; margin: 2em 0; }
+            .blog-foto-grid.grid-3 { grid-template-columns: 1fr 1fr; }
+            .blog-foto-grid img { height: 150px; }
         }
-
         @media (max-width: 480px) {
-            .blog-hero__title {
-                font-size: 2rem;
-            }
-
-            .blog-post__content {
-                padding: 30px 20px 40px;
-                font-size: 1rem;
-                line-height: 1.7;
-            }
-
-            .blog-post__content p:first-of-type::first-letter {
-                font-size: 2.5rem;
-                margin-right: 6px;
-                margin-top: 5px;
-            }
-
-            /* All grids become single column on small screens */
-            .blog-foto-grid.grid-2,
-            .blog-foto-grid.grid-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .blog-foto-grid img {
-                height: 200px;
-            }
+            .blog-hero__title { font-size: 2rem; }
+            .blog-post__content { padding: 30px 20px 40px; font-size: 1rem; line-height: 1.7; }
+            .blog-post__content p:first-of-type::first-letter { font-size: 2.5rem; margin-right: 6px; margin-top: 5px; }
+            .blog-foto-grid.grid-2, .blog-foto-grid.grid-3 { grid-template-columns: 1fr; }
+            .blog-foto-grid img { height: 200px; }
         }
     </style>
 </head>
 <body class="blog-page" data-lang="en" data-page="blog">
-    <!-- Header loaded via JavaScript -->
 
-    <!-- Hero Section -->
     <section class="blog-hero">
         <h1 class="blog-hero__title">Blog</h1>
         <div class="blog-hero__line"></div>
     </section>
 
-    <!-- Blog Posts -->
     <div class="blog-container">
+
+        <!-- NEW POST: Frank - Summer -->
+        <article class="blog-post">
+            <div class="blog-post__header">
+                <span class="blog-post__date">April 15, 2026</span>
+                <h2 class="blog-post__title">Frank's first blog</h2>
+            </div>
+            <div class="blog-post__content">
+                <p>Merel was already happily blogging away, and I just kept putting it off. Letting all the good moments for my first Frank Blog pass me by. Missed Orthodox Easter — that would've been a great one. And before that, Dita e Verës, Albania's Summer Day.</p>
+
+                <figure class="blog-foto-full">
+                    <img src="../images/blog/eerste_schildpad_2026.jpg" alt="First land tortoise of 2026 at PasneserPark among the grass and a daisy">
+                    <figcaption>The first tortoise of 2026 — summer is officially here</figcaption>
+                </figure>
+
+                <h3>What is Dita e Verës anyway?</h3>
+
+                <p>We celebrate the start of summer this early because Albania traditionally only had two seasons. You tie a red and white bracelet around your wrist. And you keep it on until you spot the first swallow. Then you take it off and hang it on a bush or tree — wherever you happen to be at that moment.</p>
+
+                <p>This year I forgot to get one for the first time. Also forgot again after that. On Summer Day the city gets too busy for me. I was there the day before and thought I'd pick up a bracelet. But yeah, forgot. Only remembered when I got home. We didn't have any red and white cord in the house so I couldn't make one myself either. Should be doable though.</p>
+
+                <h3>The swallows are back</h3>
+
+                <p>Well, at least the swallows are back. In fact, yesterday one flew right into the house. I think swallows are the kind of birds that fly into windows trying to get out. And that's exactly what happened — did a lap around the room and flew back out through the double front door that was wide open.</p>
+
+                <h3>Tortoises on PasneserPark</h3>
+
+                <p>And what really marks the start of summer for me: the first tortoises are back. They're not actually turtles — they're land tortoises. I have no idea where they go in winter. Surely they don't migrate south like birds do. : ) They're way too slow for that. But they're also too big to just all disappear for an entire winter. I don't get it! They're quite large animals, there are so many of them on PasneserPark, and all winter long — not a single one to be seen.</p>
+
+                <h3>Summer has started</h3>
+
+                <p>Summer is here. Tortoises on PasneserPark, swallows doing laps through the living room, first bookings coming in via Booking.com and Airbnb, daily volunteer requests through Workaway. And the weather is great.</p>
+
+                <p>Yesterday I was even working outside topless. I know photos of me shirtless tend to do well online, but I'll leave those out of the blog. DM me if you want them. ; )</p>
+
+                <h3>Frequently Asked Questions</h3>
+
+                <p><strong>What is Dita e Verës?</strong><br>
+                Dita e Verës is Albania's Summer Day. You wear a red and white bracelet until you spot the first swallow, then hang it on a tree or bush.</p>
+
+                <p><strong>When do the swallows return to Albania?</strong><br>
+                The swallows return to Albania in March, around Dita e Verës. They sometimes even fly inside if the doors are open.</p>
+
+                <p><strong>Are there tortoises on PasneserPark?</strong><br>
+                Yes, there are lots of land tortoises on PasneserPark. They reappear in spring when summer begins.</p>
+            </div>
+        </article>
+
         <article class="blog-post">
             <div class="blog-post__header">
                 <span class="blog-post__date">January 29, 2026</span>
@@ -449,13 +201,9 @@
             </div>
             <div class="blog-post__content">
                 <p>Today Tito came home after a day of hiking. Limping on three legs with one paw as thick as a hot dog bun. It happens quite often and we're used to it by now. And antibiotics often stop working at some point, so we're trying something different now. With remedies from grandmother's time.</p>
-
                 <p>White cabbage leaves for the swelling. Green clay with tea tree oil as a paste. It doesn't look pretty, but Tito is fine with it. He just lies there with his wrapped-up paw as if he's at a Destiny Spa.</p>
-
                 <p>The problem now is the rest. Tito has to be on the chain because that paw needs to heal. But outside the flock is walking by. Tito hears those sheep and the shepherd whistles. But Tito can't go anywhere.</p>
-
                 <p>So he howls like a wolf. Long drawn-out cries towards the mountains — audible all the way to the little church in Shelcan, I think. The whole neighborhood now knows that Tito is not allowed to come along.</p>
-
                 <p>But anyway, in a few days the chain can come off. Then he'll limp after those sheep again. Until then: cabbage, clay, and wolf howling <span class="blog-post__emoji">:-)</span></p>
             </div>
         </article>
@@ -467,13 +215,9 @@
             </div>
             <div class="blog-post__content">
                 <p>My sourdough starter was almost growing out of the jar, so I decided to bake multiple loaves and also make a focaccia again. Last night I folded the dough several times and then put it in the fridge overnight for a long bulk fermentation.</p>
-
                 <img src="../images/blog/focaccia.jpeg" alt="Freshly baked focaccia with rosemary, garlic and sea salt, golden brown and fluffy from the oven" class="blog-post__image">
-
                 <p>Although I try not to reveal too much to Frank about what I'm planning, Frank still finds out about my plans. That's not convenient because then he asks about every five minutes when the delicious crispy airy olive oil, garlic, rosemary and Celtic sea salt dipped deliciousness will be ready.</p>
-
                 <p>This time I found it extra exciting to make because instead of just water I also added some homemade apple cider to the dough. The idea to make apple cider came to me suddenly while making an apple pie when I had quite a few peels and cores left over. The juice was bubbling nicely, but after a few days I started to wonder if it wasn't on its way to becoming vinegar. I have enough vinegar, so I just drank it and worked part of it into the dough.</p>
-
                 <p>It has become my most delicious focaccia ever so far. As I write this, Frank is sliding the last still-warm piece into his mouth. The bread didn't even get a chance to cool down completely <span class="blog-post__emoji">:-)</span></p>
             </div>
         </article>
@@ -485,50 +229,35 @@
             </div>
             <div class="blog-post__content">
                 <p>Welcome to the first blog of PasneserPark. <span class="blog-post__emoji">:-)</span> Here we share a piece of our life in Shelcan every week, a mountain village near Elbasan in Central Albania where nobody is in a hurry and everything can wait until the day after tomorrow.</p>
-
                 <img src="../images/blog/ons huisje.jpg" alt="Our little house in the Albanian mountains" class="blog-post__image">
-
                 <p>What you can expect here are stories about cultural differences that sometimes knock you off your feet, because some things work just a little differently here than you're used to. About freshly distilled raki that neighbors bring over in old cola bottles. About mountain life and village life and how we as Dutch people try to navigate through it all.</p>
-
                 <p>We write about our dog Tito who loves to help with the neighbor's sheep and sometimes howls loudly at the mountains because he's not allowed to come along. About our cats Alpha and Besa who have their own adventures. And about chickens that lay eggs in unexpected places, the neighbor's goats, and fat toads by the pond.</p>
-
                 <p>You'll read about vegetable gardening and permaculture. About construction projects that don't always go as planned. About Albanian chaos, dented Mercedes cars, and old mopeds that against all expectations still run.</p>
-
                 <p>About volunteers who help us with what we can't do alone and for the good vibes. Who teach us things and learn things from us.</p>
-
                 <p>And then there are the people around us. Neighbors where we drink coffee and where we can buy raw milk, fresh butter and other local delicacies. The priest who regularly stops by for a raki at Toli's pub and then at our place <span class="blog-post__emoji">:-)</span></p>
-
                 <p>You could call this a social experiment. Dutch people trying to run a glamping in a country where nobody knows what glamping is. Sometimes it goes well, sometimes it becomes a story <span class="blog-post__emoji">:-)</span></p>
             </div>
         </article>
+
     </div>
 
-    <!-- Lightbox for photos -->
     <div class="blog-lightbox" id="blogLightbox">
         <button class="blog-lightbox__close" id="lightboxClose">&times;</button>
         <img src="" alt="" class="blog-lightbox__image" id="lightboxImage">
         <p class="blog-lightbox__caption" id="lightboxCaption"></p>
     </div>
 
-    <!-- Footer loaded via JavaScript -->
-
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/i18n.js"></script>
-
     <script>
-        // Blog Lightbox functionality
         (function() {
             const lightbox = document.getElementById('blogLightbox');
             const lightboxImage = document.getElementById('lightboxImage');
             const lightboxCaption = document.getElementById('lightboxCaption');
             const lightboxClose = document.getElementById('lightboxClose');
-
-            // Get all blog images
             const blogImages = document.querySelectorAll('.blog-post__content figure img');
-
-            // Add click handler to each image
             blogImages.forEach(img => {
                 img.addEventListener('click', function() {
                     const figcaption = this.closest('figure').querySelector('figcaption');
@@ -539,28 +268,10 @@
                     document.body.style.overflow = 'hidden';
                 });
             });
-
-            // Close lightbox on X click
             lightboxClose.addEventListener('click', closeLightbox);
-
-            // Close lightbox on background click
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-
-            // Close lightbox on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    closeLightbox();
-                }
-            });
-
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+            lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+            function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
         })();
     </script>
 </body>

@@ -6,7 +6,25 @@
       "Bash(git commit:*)",
       "Bash(ls:*)",
       "Bash(grep:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "WebFetch(domain:unpkg.com)",
+      "Bash(git rm:*)",
+      "Bash(git push:*)",
+      "Bash(start:*)",
+      "Bash(node -c:*)",
+      "Bash(node -e:*)",
+      "Bash(node --check:*)",
+      "Bash(git checkout:*)",
+      "Bash(claude doctor)",
+      "Bash(claude --version:*)",
+      "Bash(git remote add:*)",
+      "Bash(python -m http.server:*)",
+      "Bash(npx http-server -p 8080 -o)",
+      "Bash(npx http-server:*)",
+      "Bash(magick identify:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(tree:*)"
     ]
   }
 }
