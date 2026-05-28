@@ -1182,12 +1182,19 @@ function speak(text) {
     currentAudio.currentTime = 0;
   }
   
-  // Altijd lowercase bestandsnaam
-  const filename = text.toLowerCase()
-    .replace(/ë/g, 'e').replace(/ç/g, 'c').replace(/ü/g, 'u').replace(/é/g, 'e')
-    .replace(/ï/g, 'i').replace(/ö/g, 'o').replace(/á/g, 'a').replace(/ë/g, 'e')
-    .replace(/ /g, '_').replace(/,/g, '').replace(/\?/g, '')
-    .replace(/!/g, '').replace(/\./g, '').replace(/\//g, '_');
+  // Easy words staan op server met hoofdletter, rest lowercase
+  const capitalFiles = new Set(['Art','Artist','Autobus','Biologji','Demokraci','Fantastik','Festival','Film','Fizikë','Hotel','Informacion','Kafé','Kaos','Katastrofë','Kompjuter','Konflikt','Konstitucion','Kulturë','Matematik','Minister','Muzikë','Normal','Parlament','Pasaportë','Perfekt','Pizza','President','Problem','Republik','Restorant','Sallatë','Skandal','Teknologji','Teatër','Turist']);
+
+  let filename;
+  if (capitalFiles.has(text)) {
+    filename = text;
+  } else {
+    filename = text.toLowerCase()
+      .replace(/ë/g, 'e').replace(/ç/g, 'c').replace(/ü/g, 'u').replace(/é/g, 'e')
+      .replace(/ï/g, 'i').replace(/ö/g, 'o').replace(/á/g, 'a')
+      .replace(/ /g, '_').replace(/,/g, '').replace(/\?/g, '')
+      .replace(/!/g, '').replace(/\./g, '').replace(/\//g, '_');
+  }
   
   // Zoek het juiste audio bestand (met nummer prefix)
   // We proberen gewoon het bestand te laden - de browser cacht het
