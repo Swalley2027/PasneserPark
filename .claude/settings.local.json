@@ -24,7 +24,8 @@
       "Bash(magick identify:*)",
       "Bash(python:*)",
       "Bash(pip install:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(vercel:*)"
     ]
   }
 }

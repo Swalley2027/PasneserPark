@@ -545,6 +545,7 @@
                     <a href="reviews.html">${t.reviews}</a>
                     <a href="blog.html">${t.blog}</a>
                     <a href="contact.html">${t.contact}</a>
+                    <a href="/app">App</a>
                 </div>
 
                 <!-- Column 2: Book With Us -->

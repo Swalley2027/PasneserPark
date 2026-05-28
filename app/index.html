@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5D4037">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PasneserPark">
+<link rel="manifest" href="/app/manifest.json">
+<link rel="apple-touch-icon" href="images/image-01.png">
+<title>PasneserPark  Guest App</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#FFF4D5;--sand-dark:#F0E6C8;--brown:#5D4037;--brown-m:#4E3629;--brown-l:#8B7355;--olive:#5A7D3E;--gold:#D4AF37;--orange:#F7CB88;--text:#4A4039;--text-l:#6B5D52;--footer:#2d3a2e;--footer-t:#f5f0e8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:var(--sand);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+.app-header{background:var(--brown);padding:12px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
+.header-logo{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.header-text h1{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;letter-spacing:1.5px;color:var(--sand)}
+.header-text p{font-size:0.68rem;color:var(--orange);letter-spacing:2.5px;text-transform:uppercase}
+
+/* MENU BUTTON */
+.menu-trigger{background:var(--brown-m);padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:none;width:100%;font-family:'Source Sans 3',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sand);border-bottom:2px solid var(--gold)}
+.menu-trigger:active{background:var(--brown)}
+.current-tab{color:var(--orange);font-size:0.75rem;font-weight:600}
+
+/* GRID MENU OVERLAY */
+.menu-overlay{display:none;position:fixed;inset:0;background:var(--sand);z-index:200;overflow-y:auto;padding:16px 16px 80px}
+.menu-overlay.open{display:block}
+.menu-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--gold)}
+.menu-header h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--brown);font-weight:600}
+.menu-close{background:var(--brown);color:var(--sand);border:none;border-radius:50%;width:36px;height:36px;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.menu-tile{background:var(--sand);border:2px solid var(--sand-dark);border-radius:14px;padding:18px 12px;text-align:center;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:8px}
+.menu-tile:active{transform:scale(.96);border-color:var(--olive)}
+.menu-tile.active{border-color:var(--gold);border-width:3px}
+.tile-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;color:var(--brown)}
+.tile-label{font-family:'Source Sans 3',sans-serif;font-size:0.8rem;font-weight:600;color:var(--brown);letter-spacing:0.3px}
+
+/* SECTIONS */
+.section{display:none;padding-bottom:60px;animation:fadeIn .25s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-img{width:100%;height:230px;object-fit:cover;display:block}
+.inner{padding:18px 16px 0}
+
+.section-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;color:var(--brown);margin-bottom:3px}
+.section-sub{font-size:.87rem;color:var(--brown-l);font-style:italic;margin-bottom:6px}
+.gold-line{width:40px;height:2px;background:var(--gold);margin:8px 0 18px}
+
+/* CARDS */
+.card{background:var(--sand);border-radius:12px;padding:16px;margin-bottom:14px;border:1px solid var(--sand-dark)}
+.card-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--brown);margin-bottom:8px;font-weight:600}
+.card-body{font-size:.92rem;line-height:1.65;color:var(--text)}
+
+/* INFO */
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--sand-dark)}
+.info-row:last-child{border-bottom:none}
+.info-label{font-size:.78rem;color:var(--brown-l);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.info-value{font-size:.9rem;color:var(--text);font-weight:600;text-align:right}
+
+/* WIFI */
+.wifi-box{background:var(--brown);color:var(--sand);border-radius:12px;padding:18px;margin-bottom:14px}
+.wifi-label{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--orange);margin-bottom:3px}
+.wifi-value{font-size:1.05rem;font-weight:600;font-family:'Playfair Display',serif}
+.wifi-row{display:flex;justify-content:space-between;align-items:center}
+.copy-btn{background:var(--gold);color:var(--brown);border:none;border-radius:6px;padding:6px 14px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:'Source Sans 3',sans-serif}
+
+/* BUTTONS */
+.big-btn{display:block;width:100%;padding:15px;border-radius:10px;font-family:'Source Sans 3',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;border:none;margin-bottom:10px;text-align:center;text-decoration:none;transition:transform .15s}
+.big-btn:active{transform:scale(.98)}
+.btn-green{background:var(--olive);color:#fff}
+.btn-brown{background:var(--brown);color:var(--sand)}
+.btn-gold{background:var(--gold);color:var(--brown)}
+.btn-outline{background:var(--sand);color:var(--brown);border:2px solid var(--brown)}
+
+/* PHOTO GALLERY */
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:14px}
+.gallery-grid img{width:100%;aspect-ratio:1;object-fit:cover;display:block;cursor:pointer;transition:opacity .2s}
+.gallery-grid img:hover{opacity:.9}
+.gallery-grid img.wide{grid-column:1/-1;aspect-ratio:16/9}
+.gallery-grid img.tall{aspect-ratio:3/4}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:999;align-items:center;justify-content:center;flex-direction:column}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95vw;max-height:85vh;object-fit:contain;border-radius:4px}
+.lightbox-close{position:absolute;top:16px;right:20px;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;line-height:1}
+.lightbox-caption{color:rgba(255,255,255,.7);font-size:.85rem;margin-top:12px;font-style:italic}
+
+/* PERSON CARDS */
+.person-card{background:var(--sand);border-radius:12px;padding:16px;margin-bottom:14px;border:1px solid var(--sand-dark);display:flex;gap:14px;align-items:flex-start}
+.person-img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--sand-dark);object-position:top}
+.person-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);font-weight:600}
+.person-role{font-size:.7rem;color:var(--olive);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:6px}
+.person-bio{font-size:.87rem;line-height:1.55;color:var(--text)}
+
+/* ANIMAL CARDS */
+.animal-card{background:var(--sand);border-radius:14px;margin-bottom:14px;border:1px solid var(--sand-dark);overflow:hidden}
+.animal-img{width:100%;height:200px;object-fit:cover;object-position:center top;display:block}
+.animal-body{padding:14px 16px}
+.animal-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--brown);font-weight:700}
+.animal-role{font-size:.7rem;color:var(--olive);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:8px}
+.animal-bio{font-size:.9rem;line-height:1.6;color:var(--text)}
+
+/* ROUTE */
+.route-step{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.step-circle{width:30px;height:30px;border-radius:50%;background:var(--olive);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0;margin-top:2px}
+.route-title{font-weight:600;color:var(--brown);font-size:.95rem}
+.route-desc{font-size:.85rem;color:var(--text-l);line-height:1.5;margin-top:3px}
+
+/* ALBANIAN */
+.word-card{background:var(--sand);border-radius:12px;padding:14px 16px;margin-bottom:10px;border:1px solid var(--sand-dark);display:flex;gap:12px;align-items:flex-start}
+.alb-word{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--olive);font-weight:700;min-width:90px}
+.word-en{font-size:.95rem;font-weight:600;color:var(--brown)}
+.word-pr{font-size:.8rem;color:var(--brown-l);font-style:italic;margin-top:2px}
+.word-tip{font-size:.8rem;color:var(--text-l);margin-top:5px;line-height:1.5}
+
+/* QUIZ */
+.quiz-card{background:var(--brown);color:var(--sand);border-radius:12px;padding:18px;margin-top:20px}
+.quiz-q{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:14px;font-weight:600}
+.quiz-opts{display:flex;flex-direction:column;gap:9px}
+.quiz-opt{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:11px 14px;color:var(--sand);font-family:'Source Sans 3',sans-serif;font-size:.9rem;cursor:pointer;text-align:left;transition:background .2s}
+.quiz-opt:hover{background:rgba(255,255,255,.18)}
+.quiz-opt.correct{background:var(--olive);border-color:var(--olive)}
+.quiz-opt.wrong{background:#7a3030;border-color:#7a3030}
+.quiz-fb{margin-top:12px;font-size:.9rem;font-style:italic;color:var(--orange);min-height:20px}
+.next-btn{margin-top:12px;background:var(--gold);color:var(--brown);border:none;border-radius:8px;padding:9px 18px;font-weight:600;font-family:'Source Sans 3',sans-serif;cursor:pointer;display:none}
+
+/* TIPS */
+.tip-card{background:var(--sand);border-radius:12px;padding:16px;margin-bottom:10px;border:1px solid var(--sand-dark)}
+.tip-cat{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--olive);font-weight:600;margin-bottom:3px}
+.tip-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--brown);font-weight:600;margin-bottom:5px}
+.tip-desc{font-size:.88rem;color:var(--text-l);line-height:1.55}
+
+/* RULES */
+.rule-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--sand-dark);align-items:flex-start}
+.rule-item:last-child{border-bottom:none}
+.rule-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px}
+.rule-text{font-size:.92rem;line-height:1.5;color:var(--text)}
+
+/* REVIEW */
+.mood-row{display:flex;gap:12px;margin-bottom:20px}
+.mood-btn{flex:1;padding:16px;border-radius:12px;border:2px solid var(--sand-dark);background:var(--sand);cursor:pointer;text-align:center;font-family:'Source Sans 3',sans-serif;transition:all .2s}
+.mood-btn:hover{border-color:var(--olive)}
+.mood-icon{font-size:1.8rem;display:block;margin-bottom:6px}
+.mood-label{font-size:.88rem;font-weight:600;color:var(--brown)}
+
+/* WEBSITE LINK SECTION */
+.website-banner{background:var(--brown);border-radius:12px;padding:20px;margin-bottom:14px;text-align:center;color:var(--sand)}
+.website-banner h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px;color:var(--orange)}
+.website-banner p{font-size:.88rem;color:rgba(245,240,232,.75);margin-bottom:14px;line-height:1.5}
+
+/* FOOTER */
+.app-footer{background:var(--footer);color:var(--footer-t);text-align:center;padding:22px 16px;font-size:.83rem;line-height:1.8}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--orange);margin-bottom:3px}
+.footer-tag{color:rgba(245,240,232,.5);font-size:.78rem}
+
+#review-positive,#review-negative{display:none}
+
+.lang-category{font-size:.68rem;text-transform:uppercase;letter-spacing:2.5px;color:var(--olive);font-weight:600;margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--sand-dark)}
+.lang-notice{background:#eef4e8;border-left:3px solid var(--olive);border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:14px;font-size:.87rem;line-height:1.55;color:var(--text)}
+.speak-btn{background:none;border:none;cursor:pointer;font-size:.9rem;padding:0 0 0 4px;opacity:.7;transition:opacity .2s;vertical-align:middle}
+.speak-btn:hover{opacity:1}
+.speak-btn:active{transform:scale(.9)}
+.numbers-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:6px}
+.num-card{background:var(--sand);border:1px solid var(--sand-dark);border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:3px}
+.num-card:active{transform:scale(.95);background:var(--sand-dark)}
+.num{font-size:1.3rem;font-weight:700;color:var(--brown);font-family:'Playfair Display',serif}
+.num-alb{font-size:.85rem;font-weight:600;color:var(--olive)}
+.num-pr{font-size:.65rem;color:var(--brown-l);font-style:italic}
+
+
+.accordion { margin-bottom: 8px; }
+.acc-item { background: var(--sand); border-radius: 12px; margin-bottom: 8px; border: 1px solid var(--sand-dark); overflow: hidden; }
+.acc-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; cursor: pointer; font-weight: 600; font-size: .95rem; color: var(--brown); user-select: none; }
+.acc-header:hover { background: var(--sand-dark); }
+.acc-arrow { font-size: 1.1rem; color: var(--olive); transition: transform .25s; }
+.acc-header.open .acc-arrow { transform: rotate(180deg); }
+.acc-body { display: none; padding: 4px 16px 16px; }
+.acc-body.open { display: block; }
+
+
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <img class="header-logo" src="images/image-01.png" alt="PasneserPark logo">
+  <div class="header-text">
+    <h1>PasneserPark</h1>
+    <p>Your path · Your peace · Your place</p>
+  </div>
+</header>
+
+<button class="menu-trigger" onclick="openMenu()">
+  <span></span>
+  <span id="current-tab-name" class="current-tab">Very Welcome</span>
+</button>
+
+<!-- GRID MENU OVERLAY -->
+<div class="menu-overlay" id="menu-overlay">
+  <div class="menu-header">
+    <h2>Menu</h2>
+    <button class="menu-close" onclick="closeMenu()">×</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-tile active" onclick="selectTab('welcome','Very Welcome')">
+      <span class="tile-icon"><i data-feather="tent-tree"></i></span>
+      <span class="tile-label">Very Welcome</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('route','Route')">
+      <span class="tile-icon"><i data-feather="map-pin"></i></span>
+      <span class="tile-label">Route</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('wifi','Wifi & Info')">
+      <span class="tile-icon"><i data-feather="wifi"></i></span>
+      <span class="tile-label">Wifi & Info</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('rules','House Rules')">
+      <span class="tile-icon"><i data-feather="smile"></i></span>
+      <span class="tile-label">House Rules</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('animals','Animals')">
+      <span class="tile-icon"><i data-feather="cat"></i></span>
+      <span class="tile-label">Animals</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('albanian','Learn Albanian')">
+      <span class="tile-icon"><i data-feather="globe"></i></span>
+      <span class="tile-label">Learn Albanian</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('gallery','Gallery')">
+      <span class="tile-icon"><i data-feather="camera"></i></span>
+      <span class="tile-label">Gallery</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('tips','Local Tips')">
+      <span class="tile-icon"><i data-feather="compass"></i></span>
+      <span class="tile-label">Local Tips</span>
+    </div>
+    <div class="menu-tile" onclick="selectTab('review','Review')">
+      <span class="tile-icon"><i data-feather="star"></i></span>
+      <span class="tile-label">Review</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- WELCOME -->
+<section class="section active" id="tab-welcome">
+  
+  <!-- Hero Image -->
+  <img class="hero-img" src="images/image-02.jpg" alt="Bell tent at PasneserPark in the Albanian mountains">
+  
+  <div class="inner">
+    <!-- Hero Text -->
+    <h2 class="section-title" style="text-align:center;margin-top:20px"><i data-feather="tent-tree" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>Very welcome.</h2>
+    <p style="text-align:center;font-size:1.1rem;color:var(--text-l);margin-bottom:30px">You made it. The mountains are waiting.</p>
+    
+    <div class="gold-line" style="margin:20px auto"></div>
+    
+    <!-- Photo Grid with Captions -->
+    <div style="margin-top:30px">
+      
+      <!-- Tent Inside -->
+      <div style="margin-bottom:30px">
+        <img src="images/image-03.jpg" alt="Inside the bell tent" style="width:100%;border-radius:10px;margin-bottom:10px">
+        <p style="text-align:center;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--brown);font-weight:600">Every detail matters. Including the bed.</p>
+      </div>
+      
+      <!-- Hammock -->
+      <div style="margin-bottom:30px">
+        <img src="images/image-04.jpg" alt="Hammock in the forest" style="width:100%;border-radius:10px;margin-bottom:10px">
+        <p style="text-align:center;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--brown);font-weight:600">Mornings move slower here.</p>
+      </div>
+      
+      <!-- Bar Area -->
+      <div style="margin-bottom:20px">
+        <img src="images/image-05.jpg" alt="The bar area at PasneserPark" style="width:100%;border-radius:10px;margin-bottom:10px">
+        <p style="text-align:center;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--brown);font-weight:600">Rustic. Warm. Real Albanian mountain life.</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE -->
+<section class="section" id="tab-route">
+  <img class="hero-img" src="images/image-06.jpg" alt="Park from distance">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="map-pin" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>Getting here</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">The last bit is unpaved.</p>
+
+    <a href="https://wa.me/355685576874?text=Hi!%20I%20need%20help%20finding%20PasneserPark%20-%20can%20you%20send%20me%20the%20pin?" class="big-btn btn-green">Get directions via WhatsApp</a>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="car" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> By car</div>
+      <div class="route-step">
+        <div class="step-circle">1</div>
+        <div><div class="route-title">From Elbasan — cross the bridge and turn left after 200 metres</div><div class="route-desc">Head towards Cerrik and cross the bridge. After about 200 metres, turn left onto the SH88 towards Gjinar. Follow this road into the mountains.</div></div>
+      </div>
+      <div class="route-step">
+        <div class="step-circle">2</div>
+        <div><div class="route-title">7.5 km on the SH88 — about 15 minutes</div><div class="route-desc">A winding mountain road. Take it easy, enjoy the scenery. You'll pass through some small villages — keep going.</div></div>
+      </div>
+      <div class="route-step">
+        <div class="step-circle">3</div>
+        <div><div class="route-title">Turn left uphill — easy to miss!</div><div class="route-desc">Keep an eye out for the unpaved road going <strong>left and uphill</strong> towards PasneserPark. It's easy to miss.<br><br><i data-feather="alert-triangle" style="width:16px;height:16px;vertical-align:middle"></i> <strong>If you reach Restaurant Oda Qosja</strong> (great restaurant by the way) — you've gone too far. Turn around, and after about 100 metres the turn is on your <strong>right</strong>, heading uphill to PasneserPark.<br><br><i data-feather="info" style="width:16px;height:16px;vertical-align:middle"></i> <strong>There are other routes</strong> to PasneserPark through the mountains, but those require a 4x4 or a capable motorbike.</div></div>
+      </div>
+      <div class="route-step" style="margin-bottom:0">
+        <div class="step-circle" style="background:var(--gold);color:var(--brown)"></div>
+        <div><div class="route-title">After about 15 minutes you'll see a yellow house on the right</div><div class="route-desc">Drive a bit further, your bell tent will be visible on the right. A little further ahead you can park.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="car" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> By taxi</div>
+      <div class="card-body">A taxi from Elbasan costs around <strong>1500 lek</strong>. Before you get in, mention that the last stretch is an unpaved mountain road — not all drivers are happy about it, so it's better to agree upfront. If in doubt, message us and we can help arrange things.</div>
+      <a href="https://wa.me/355685576874?text=Hi!%20Can%20you%20help%20me%20arrange%20a%20taxi%20to%20PasneserPark?" class="big-btn btn-brown" style="margin-top:12px">Ask us for help</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="bus" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> By bus</div>
+      <div class="card-body">From Elbasan, take a bus or furgon towards Shelcan from the <strong>Regional Bus Station</strong> (Rruga Nikolla Puka). Buses run until around 17:00. Ask for the bus to Shelcan — locals will point you in the right direction.<br><br>Get off at the end of the paved road and message us — we'll come and pick you up for <strong>€5</strong>.</div>
+      <a href="https://wa.me/355685576874?text=Hi!%20I%20need%20a%20pickup%20from%20the%20road%20-%20can%20you%20help?" class="big-btn btn-brown" style="margin-top:12px">Request a pickup — €5</a>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="thumbs-up" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> Hitchhiking</div>
+      <div class="card-body">Hitchhiking works surprisingly well in Albania — people are genuinely helpful and curious. Stand at the edge of Elbasan on the road towards Shelcan and stick out your hand. Good chance you'll get a ride for most of the way. If you get dropped off before PasneserPark, message us and we'll pick you up for €5.</div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--olive)">
+      <div class="card-title">Not sure where you are?</div>
+      <div class="card-body" style="margin-bottom:12px">Just send us a message and we'll guide you in. It happens to the best of them.</div>
+      <a href="https://wa.me/355685576874?text=Hi!%20I%20need%20help%20finding%20PasneserPark" class="big-btn btn-brown">WhatsApp us</a>
+    </div>
+  </div>
+</section>
+
+<!-- WIFI & INFO -->
+<section class="section" id="tab-wifi">
+  <img class="hero-img" src="images/image-24.jpg" alt="Water spot at PasneserPark" style="object-position:center">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="wifi" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>Wifi & Info</h2>
+    <div class="gold-line"></div>
+
+    <div class="wifi-box">
+      <div class="wifi-label"><i data-feather="wifi" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>Network</div>
+      <div class="wifi-value" style="margin-bottom:14px">PasneserPark</div>
+      <div class="wifi-label">Password</div>
+      <div class="wifi-row">
+        <div class="wifi-value">Summer26</div>
+        <button class="copy-btn" onclick="copyWifi()">Copy</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="info" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>Practical info</div>
+      <div class="info-row"><span class="info-label">Check-in</span><span class="info-value">From 13:00</span></div>
+      <div class="info-row"><span class="info-label">Check-out</span><span class="info-value">By 09:00</span></div>
+      <div class="info-row"><span class="info-label">Altitude</span><span class="info-value">600m</span></div>
+      <div class="info-row"><span class="info-label">Emergency</span><span class="info-value">112</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="handbag" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>What's included — bring nothing</div>
+      <div class="card-body">You don't need to pack much. The tent has everything: bedding, blankets, pillows and towels are all provided. Just bring your clothes and yourself. The outdoor kitchen is shared and fully equipped. If you want to cook for yourself, bring ingredients. We also have things available to take over and we can arrange it for you if needed — it'll work out.</div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--gold)">
+      <div class="card-title"><i data-feather="coins" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>Bring cash</div>
+      <div class="card-body">There are no ATMs nearby and nowhere accepts card payments in the area. Make sure you have enough cash (Albanian lek or euros) before you head up the mountain. No shops in the immediate area either — but if you need something basic, we probably have it. Just ask and we'll sort you out.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="shopping-cart" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> Fresh fruit & vegetables</div>
+      <div class="card-body">Monday and Thursday a van comes up the mountain with fresh local fruit and vegetables.</div>
+    </div>
+
+    <a href="https://wa.me/355685576874" class="big-btn btn-brown">WhatsApp Frank & Merel</a>
+  </div>
+</section>
+
+<!-- HOUSE RULES -->
+<section class="section" id="tab-rules">
+  <img class="hero-img" src="images/image-27.jpg" alt="Outdoor washbasin">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="smile" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>House Rules</h2>
+    <div class="gold-line"></div>
+
+    <div class="card" style="padding:28px 20px;text-align:center">
+      <div class="card-body" style="font-size:1.05rem;line-height:1.8;color:var(--text)">
+        There are already so many laws and rules in the world. We don't have much to add at PasneserPark.<br><br>
+        <strong style="font-size:1.15rem;color:var(--brown)">Respect yourself, respect us, respect the world.</strong><br><br>
+        We think that covers it. : )
+      </div>
+    </div>
+
+    <div class="card" style="background:var(--sand-dark)">
+      <div class="card-body" style="font-style:italic;color:var(--brown-m);line-height:1.7">
+        "If something's not right, tell us before you leave. We're here, we're human, and we'll fix it."<br><br>
+        &#8212; Frank &amp; Merel
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANIMALS / THE CREW -->
+<section class="section" id="tab-animals">
+  <img class="hero-img" src="images/image-13.jpg" alt="Tito the dog">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="cat" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>The animals</h2>
+    <p class="section-sub">They were here before you. They'll be here after you.</p>
+    <div class="gold-line"></div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="dog" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> Tito <span style="font-weight:400;color:var(--brown-l);font-size:.85rem">— Head of Security · Dog</span></div>
+      <div class="card-body">Raised on the streets of Tirana, Tito worked his way up to Head of Security at PasneserPark. He also works part-time as a sheep herder and as a tour guide. Tito loves attention from guests. Give him enough of it and he'll spontaneously decide to become your personal tour guide for the rest of the day.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="cat" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> Alpha <span style="font-weight:400;color:var(--brown-l);font-size:.85rem">— Pest Control & Snake Prevention · Cat</span></div>
+      <div class="card-body">Alpha catches mice before the snakes in the area can get to them — a genuinely useful service. She came all the way from the streets of Shkodër, together with Besa. She is an incredibly sweet animal. But she has boundaries. Respect them — she will bite if she's had enough.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="cat" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> Besa <span style="font-weight:400;color:var(--brown-l);font-size:.85rem">— Sensitive Soul · Cat</span></div>
+      <div class="card-body">Besa came from the streets of Shkodër together with Alpha. She is gentle, warm, and a little sensitive — please treat her carefully. She'll find you in the hammock and ask for nothing except a bit of quiet company. She is wonderful. Handle with care.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i data-feather="egg" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> The Chickens <span style="font-weight:400;color:var(--brown-l);font-size:.85rem">— Egg Production & Alarm Service</span></div>
+      <div class="card-body">Our chickens produce genuinely excellent eggs — rich, fresh, and very local. You may be offered some during your stay. One of them also doubles as an alarm clock. She starts somewhere around 5:00 AM and does not negotiate. Earplugs are available — but honestly, the sunrise is worth it.</div>
+    </div>
+
+    <div class="card" style="background:var(--sand-dark)">
+      <div class="card-title"><i data-feather="tractor" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i> Also in the neighbourhood</div>
+      <div class="card-body">All our neighbours are farmers. One has an olive grove, a few sheep and a donkey. Another has about 100 sheep. And yet another has 100 to 150 goats, depending on the season. The mountains are also home to many species of birds, tortoises roaming freely, lizards sunbathing on the rocks, and some impressively fat toads. The mountains around PasneserPark are genuinely alive.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ALBANIAN -->
+<section class="section" id="tab-albanian">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="globe" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>Learn Albanian</h2>
+    <p class="section-sub">Shqip  the language of the mountains</p>
+    <div class="gold-line"></div>
+
+    <div class="accordion">
+
+      <!-- 1. GREETINGS -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="hand" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Greetings</span></div>
+        <div class="acc-body">
+          <div class="word-card"><div class="alb-word">Mirë se vini <button class="speak-btn" onclick="speak('Mirë se vini')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Welcome</div></div></div>
+          <div class="word-card"><div class="alb-word">Mirë se vini në PasneserPark <button class="speak-btn" onclick="speak('Mirë se vini në PasneserPark')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Welcome to PasneserPark</div></div></div>
+          <div class="word-card"><div class="alb-word">Përshëndetje <button class="speak-btn" onclick="speak('Përshëndetje')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Hello / Greetings</div><div class="word-pr">per-shen-DET-yeh</div><div class="word-tip">Literally: "wishing you good health."</div></div></div>
+          <div class="lang-notice">In Albania, people wish each other good health all day long. Every hello is a wish for wellbeing. Once you know that, the whole language feels a bit warmer.</div>
+          <div class="word-card"><div class="alb-word">Mirëdita <button class="speak-btn" onclick="speak('Mirëdita')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Good day / Hello</div><div class="word-pr">meer-eh-DEE-ta</div><div class="word-tip">The all-purpose daytime greeting. Use it confidently and you'll get a big smile.</div></div></div>
+          <div class="word-card"><div class="alb-word">Mirëmëngjes <button class="speak-btn" onclick="speak('Mirëmëngjes')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Good morning</div><div class="word-pr">meer-eh-MENG-yes</div><div class="word-tip">For when the rooster wakes you at 5am and you're making the best of it.</div></div></div>
+          <div class="word-card"><div class="alb-word">Mirëmbrëma <button class="speak-btn" onclick="speak('Mirëmbrëma')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Good evening</div><div class="word-pr">meer-em-BREH-ma</div><div class="word-tip">Use this when the sun starts going down over the mountains.</div></div></div>
+          <div class="word-card"><div class="alb-word">Natën e mirë <button class="speak-btn" onclick="speak('Natën e mirë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Good night</div><div class="word-pr">NAH-ten eh MEE-reh</div><div class="word-tip">For after you've looked at the stars for too long.</div></div></div>
+          <div class="word-card"><div class="alb-word">Si jeni? <button class="speak-btn" onclick="speak('Si jeni')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">How are you? (formal)</div><div class="word-pr">see YEH-nee</div><div class="word-tip">Albanians ask this genuinely  not just as a filler. Be ready with an answer.</div></div></div>
+          <div class="word-card"><div class="alb-word">Si je? <button class="speak-btn" onclick="speak('Si je')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">How are you? (informal)</div><div class="word-pr">see yeh</div><div class="word-tip">Use with people your age or younger. Friendlier and more casual.</div></div></div>
+          <div class="word-card"><div class="alb-word">Mirë, faleminderit <button class="speak-btn" onclick="speak('Mirë, faleminderit')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Fine, thank you</div><div class="word-pr">MEE-reh, fa-leh-min-DEHR-it</div><div class="word-tip">The perfect reply. You'll sound impressively fluent.</div></div></div>
+          <div class="word-card"><div class="alb-word">Mirupafshim <button class="speak-btn" onclick="speak('Mirupafshim')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Goodbye</div><div class="word-pr">meer-oo-PAF-shim</div><div class="word-tip">Literally: "may we see each other well" / "wishing you well until we meet again." Even goodbye is a wish for wellbeing in Albanian.</div></div></div>
+          <div class="word-card"><div class="alb-word">Të shihemi <button class="speak-btn" onclick="speak('Të shihemi')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">See you later</div><div class="word-pr">teh shee-HEH-mee</div><div class="word-tip">More casual than mirupafshim. Good for people you expect to see again.</div></div></div>
+        </div>
+      </div>
+
+      <!-- 2. EASY WORDS -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="book-open" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Easy words</span></div>
+        <div class="acc-body">
+          <div class="lang-notice">Albanian looks intimidating at first we remember our first weeks in Albania. But good news: you already know more than you think.</div>
+          <div class="word-card"><div class="alb-word">Problem <button class="speak-btn" onclick="speak('Problem')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Problem</div><div class="word-tip">Exactly the same.</div></div></div>
+          <div class="word-card"><div class="alb-word">Artist <button class="speak-btn" onclick="speak('Artist')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Artist</div></div></div>
+          <div class="word-card"><div class="alb-word">Muzikë <button class="speak-btn" onclick="speak('Muzikë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Music</div></div></div>
+          <div class="word-card"><div class="alb-word">Taksi <button class="speak-btn" onclick="speak('Taksi')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Taxi</div></div></div>
+          <div class="word-card"><div class="alb-word">Katastrofë <button class="speak-btn" onclick="speak('Katastrofë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Catastrophe</div></div></div>
+          <div class="word-card"><div class="alb-word">Restorant <button class="speak-btn" onclick="speak('Restorant')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Restaurant</div></div></div>
+          <div class="word-card"><div class="alb-word">Kulturë <button class="speak-btn" onclick="speak('Kulturë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Culture</div></div></div>
+          <div class="word-card"><div class="alb-word">Parlament <button class="speak-btn" onclick="speak('Parlament')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Parliament</div></div></div>
+          <div class="word-card"><div class="alb-word">Kafé <button class="speak-btn" onclick="speak('Kafé')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Café</div></div></div>
+          <div class="word-card"><div class="alb-word">Skandal <button class="speak-btn" onclick="speak('Skandal')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Scandal</div></div></div>
+          <div class="word-card"><div class="alb-word">Teknologji <button class="speak-btn" onclick="speak('Teknologji')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Technology</div></div></div>
+          <div class="word-card"><div class="alb-word">Film <button class="speak-btn" onclick="speak('Film')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Film</div></div></div>
+          <div class="word-card"><div class="alb-word">Normal <button class="speak-btn" onclick="speak('Normal')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Normal</div></div></div>
+          <div class="word-card"><div class="alb-word">Demokraci <button class="speak-btn" onclick="speak('Demokraci')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Democracy</div></div></div>
+          <div class="word-card"><div class="alb-word">Konflikt <button class="speak-btn" onclick="speak('Konflikt')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Conflict</div></div></div>
+          <div class="word-card"><div class="alb-word">Kompjuter <button class="speak-btn" onclick="speak('Kompjuter')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Computer</div></div></div>
+          <div class="word-card"><div class="alb-word">Festival <button class="speak-btn" onclick="speak('Festival')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Festival</div></div></div>
+          <div class="word-card"><div class="alb-word">Turist <button class="speak-btn" onclick="speak('Turist')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Tourist</div></div></div>
+          <div class="word-card"><div class="alb-word">Teatër <button class="speak-btn" onclick="speak('Teatër')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Theater</div></div></div>
+          <div class="word-card"><div class="alb-word">President <button class="speak-btn" onclick="speak('President')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">President</div></div></div>
+          <div class="word-card"><div class="alb-word">Pizza <button class="speak-btn" onclick="speak('Pizza')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Pizza</div></div></div>
+          <div class="word-card"><div class="alb-word">Fantastik <button class="speak-btn" onclick="speak('Fantastik')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Fantastic</div></div></div>
+          <div class="word-card"><div class="alb-word">Biologji <button class="speak-btn" onclick="speak('Biologji')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Biology</div></div></div>
+          <div class="word-card"><div class="alb-word">Pasaportë <button class="speak-btn" onclick="speak('Pasaportë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Passport</div></div></div>
+          <div class="word-card"><div class="alb-word">Republik <button class="speak-btn" onclick="speak('Republik')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Republic</div></div></div>
+          <div class="word-card"><div class="alb-word">Kaos <button class="speak-btn" onclick="speak('Kaos')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Chaos</div></div></div>
+          <div class="word-card"><div class="alb-word">Informacion <button class="speak-btn" onclick="speak('Informacion')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Information</div></div></div>
+          <div class="word-card"><div class="alb-word">Autobus <button class="speak-btn" onclick="speak('Autobus')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Bus</div></div></div>
+          <div class="word-card"><div class="alb-word">Art <button class="speak-btn" onclick="speak('Art')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Art</div></div></div>
+          <div class="word-card"><div class="alb-word">Perfekt <button class="speak-btn" onclick="speak('Perfekt')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Perfect</div></div></div>
+          <div class="word-card"><div class="alb-word">Minister <button class="speak-btn" onclick="speak('Minister')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Minister</div></div></div>
+          <div class="word-card"><div class="alb-word">Sallatë <button class="speak-btn" onclick="speak('Sallatë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Salad</div></div></div>
+          <div class="word-card"><div class="alb-word">Hotel <button class="speak-btn" onclick="speak('Hotel')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Hotel</div></div></div>
+          <div class="word-card"><div class="alb-word">Konstitucion <button class="speak-btn" onclick="speak('Konstitucion')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Constitution</div></div></div>
+          <div class="word-card"><div class="alb-word">Fizikë <button class="speak-btn" onclick="speak('Fizikë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Physics</div></div></div>
+          <div class="word-card"><div class="alb-word">Matematik <button class="speak-btn" onclick="speak('Matematik')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Mathematics</div></div></div>
+        </div>
+      </div>
+
+      <!-- 3. PASNESËR -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="tent-tree" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Pasnesër</span></div>
+        <div class="acc-body">
+          <div class="word-card"><div class="alb-word">Sot <button class="speak-btn" onclick="speak('Sot')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Today</div></div></div>
+          <div class="word-card"><div class="alb-word">Tani <button class="speak-btn" onclick="speak('Tani')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Now</div></div></div>
+          <div class="word-card"><div class="alb-word">Nesër <button class="speak-btn" onclick="speak('Nesër')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Tomorrow</div><div class="word-tip">"Can you fix this today?"  "Nesër." There's a good reason why nesër sounds like never.</div></div></div>
+          <div class="word-card"><div class="alb-word">Pasnesër <button class="speak-btn" onclick="speak('Pasnesër')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">The day after tomorrow</div></div></div>
+          <div class="lang-notice">We called it PasneserPark because it has two meanings: a place in the near future you're looking forward to, and a place where time goes slow. Both felt right.</div>
+          <div class="word-card"><div class="alb-word">Avash avash <button class="speak-btn" onclick="speak('Avash avash')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Slowly slowly</div><div class="word-tip">You'll hear it everywhere. No rush. Albania runs on its own clock  and after a few days, you will too.</div></div></div>
+        </div>
+      </div>
+
+      <!-- 4. YES & NO -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="check-circle" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Yes &amp; No</span></div>
+        <div class="acc-body">
+          <div class="lang-notice">Two words. Sounds simple. It isn't. Jo means no  but sounds like 'yo'. And Albanians nod for yes and shake their head for no. You will get this wrong. Everyone does.</div>
+          <div class="word-card"><div class="alb-word">Po <button class="speak-btn" onclick="speak('Po')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Yes</div></div></div>
+          <div class="word-card"><div class="alb-word">Jo <button class="speak-btn" onclick="speak('Jo')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">No</div></div></div>
+          <div class="word-card"><div class="alb-word">Po, po, po <button class="speak-btn" onclick="speak('Po po po')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Yes yes yes</div><div class="word-tip">Strongly affirmative. Used all the time.</div></div></div>
+          <div class="word-card"><div class="alb-word">Jo, jo, jo <button class="speak-btn" onclick="speak('Jo jo jo')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">No, no, no</div><div class="word-tip">And then they mean it.</div></div></div>
+          <div class="word-card"><div class="alb-word">Ndoshta <button class="speak-btn" onclick="speak('Ndoshta')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Maybe</div><div class="word-tip">Usually means jo.</div></div></div>
+          <div class="word-card"><div class="alb-word">Natyrisht <button class="speak-btn" onclick="speak('Natyrisht')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Of course</div></div></div>
+          <div class="word-card"><div class="alb-word">Absolutisht <button class="speak-btn" onclick="speak('Absolutisht')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Absolutely</div></div></div>
+          <div class="word-card"><div class="alb-word">Sigurisht <button class="speak-btn" onclick="speak('Sigurisht')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Certainly / Sure</div></div></div>
+          <div class="word-card"><div class="alb-word">Po or jo? <button class="speak-btn" onclick="speak('Po or jo')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Yes or no?</div></div></div>
+          <div class="word-card"><div class="alb-word">Nuk e di <button class="speak-btn" onclick="speak('Nuk e di')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">I don't know</div></div></div>
+          <div class="lang-notice">In Albania, the first no is just the opening. Only the third answer counts. Expect to be asked three times before your answer is accepted.</div>
+        </div>
+      </div>
+
+      <!-- 5. ESSENTIALS -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="star" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Essentials</span></div>
+        <div class="acc-body">
+          <div class="word-card"><div class="alb-word">Raki <button class="speak-btn" onclick="speak('Raki')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Raki</div><div class="word-tip">Just kidding. It's not essential. At least not for every tourist.</div></div></div>
+          <div class="word-card"><div class="alb-word">Ju lutem <button class="speak-btn" onclick="speak('Ju lutem')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Please</div><div class="word-pr">yoo LOO-tem</div></div></div>
+          <div class="word-card"><div class="alb-word">Faleminderit <button class="speak-btn" onclick="speak('Faleminderit')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Thank you</div><div class="word-pr">fa-leh-min-DEHR-it</div><div class="word-tip">The word locals love hearing from foreigners. Never skip it.</div></div></div>
+          <div class="word-card"><div class="alb-word">Mirë <button class="speak-btn" onclick="speak('Mirë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Good / Fine / OK</div><div class="word-tip">You'll hear mirë all day long. Mirë? Po, mirë. Shumë mirë. Ti mirë? Mirë! When in doubt, just say mirë.</div></div></div>
+          <div class="word-card"><div class="alb-word">Shumë mirë <button class="speak-btn" onclick="speak('Shumë mirë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Very good / Great</div><div class="word-pr">SHOO-meh MEE-reh</div></div></div>
+          <div class="word-card"><div class="alb-word">Më falni <button class="speak-btn" onclick="speak('Më falni')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Excuse me / Sorry</div><div class="word-pr">meh FAL-nee</div></div></div>
+          <div class="word-card"><div class="alb-word">Nuk kuptoj <button class="speak-btn" onclick="speak('Nuk kuptoj')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">I don't understand</div><div class="word-pr">nook koop-TOY</div></div></div>
+          <div class="word-card"><div class="alb-word">Nuk flas shqip <button class="speak-btn" onclick="speak('Nuk flas shqip')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">I don't speak Albanian</div><div class="word-pr">nook flas shchip</div></div></div>
+          <div class="word-card"><div class="alb-word">Çfarë? <button class="speak-btn" onclick="speak('Çfarë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">What?</div></div></div>
+          <div class="word-card"><div class="alb-word">Ku? <button class="speak-btn" onclick="speak('Ku')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Where?</div></div></div>
+          <div class="word-card"><div class="alb-word">Kur? <button class="speak-btn" onclick="speak('Kur')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">When?</div></div></div>
+          <div class="word-card"><div class="alb-word">Pse? <button class="speak-btn" onclick="speak('Pse')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Why?</div></div></div>
+          <div class="word-card"><div class="alb-word">Si? <button class="speak-btn" onclick="speak('Si')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">How?</div></div></div>
+          <div class="word-card"><div class="alb-word">Një moment <button class="speak-btn" onclick="speak('Një moment')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">One moment</div></div></div>
+          <div class="word-card"><div class="alb-word">Prisni <button class="speak-btn" onclick="speak('Prisni')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Wait / Hold on</div></div></div>
+        </div>
+      </div>
+
+      <!-- 6. NUMBERS -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="hash" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Numbers</span></div>
+        <div class="acc-body">
+          <div class="numbers-grid">
+            <div class="num-card" onclick="speak('një')"><span class="num">1</span><span class="num-alb">një</span><span class="num-pr">nyeh</span></div>
+            <div class="num-card" onclick="speak('dy')"><span class="num">2</span><span class="num-alb">dy</span><span class="num-pr">dü</span></div>
+            <div class="num-card" onclick="speak('tre')"><span class="num">3</span><span class="num-alb">tre</span><span class="num-pr">treh</span></div>
+            <div class="num-card" onclick="speak('katër')"><span class="num">4</span><span class="num-alb">katër</span><span class="num-pr">KAH-ter</span></div>
+            <div class="num-card" onclick="speak('pesë')"><span class="num">5</span><span class="num-alb">pesë</span><span class="num-pr">PEH-seh</span></div>
+            <div class="num-card" onclick="speak('gjashtë')"><span class="num">6</span><span class="num-alb">gjashtë</span><span class="num-pr">GYASH-teh</span></div>
+            <div class="num-card" onclick="speak('shtatë')"><span class="num">7</span><span class="num-alb">shtatë</span><span class="num-pr">SHTA-teh</span></div>
+            <div class="num-card" onclick="speak('tetë')"><span class="num">8</span><span class="num-alb">tetë</span><span class="num-pr">TEH-teh</span></div>
+            <div class="num-card" onclick="speak('nëntë')"><span class="num">9</span><span class="num-alb">nëntë</span><span class="num-pr">NEN-teh</span></div>
+            <div class="num-card" onclick="speak('dhjetë')"><span class="num">10</span><span class="num-alb">dhjetë</span><span class="num-pr">DHYEH-teh</span></div>
+          </div>
+          <div class="word-card"><div class="alb-word">njëmbëdhjetë <button class="speak-btn" onclick="speak('njëmbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">11</div></div></div>
+          <div class="word-card"><div class="alb-word">dymbëdhjetë <button class="speak-btn" onclick="speak('dymbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">12</div></div></div>
+          <div class="word-card"><div class="alb-word">trembëdhjetë <button class="speak-btn" onclick="speak('trembëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">13</div></div></div>
+          <div class="word-card"><div class="alb-word">katërmbëdhjetë <button class="speak-btn" onclick="speak('katërmbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">14</div></div></div>
+          <div class="word-card"><div class="alb-word">pesëmbëdhjetë <button class="speak-btn" onclick="speak('pesëmbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">15</div></div></div>
+          <div class="word-card"><div class="alb-word">gjashtëmbëdhjetë <button class="speak-btn" onclick="speak('gjashtëmbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">16</div></div></div>
+          <div class="word-card"><div class="alb-word">shtatëmbëdhjetë <button class="speak-btn" onclick="speak('shtatëmbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">17</div></div></div>
+          <div class="word-card"><div class="alb-word">tetëmbëdhjetë <button class="speak-btn" onclick="speak('tetëmbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">18</div></div></div>
+          <div class="word-card"><div class="alb-word">nëntëmbëdhjetë <button class="speak-btn" onclick="speak('nëntëmbëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">19</div></div></div>
+          <div class="word-card"><div class="alb-word">njëzet <button class="speak-btn" onclick="speak('njëzet')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">20</div></div></div>
+          <div class="word-card"><div class="alb-word">tridhjetë <button class="speak-btn" onclick="speak('tridhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">30</div></div></div>
+          <div class="word-card"><div class="alb-word">dyzet <button class="speak-btn" onclick="speak('dyzet')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">40</div></div></div>
+          <div class="word-card"><div class="alb-word">pesëdhjetë <button class="speak-btn" onclick="speak('pesëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">50</div></div></div>
+          <div class="word-card"><div class="alb-word">gjashtëdhjetë <button class="speak-btn" onclick="speak('gjashtëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">60</div></div></div>
+          <div class="word-card"><div class="alb-word">shtatëdhjetë <button class="speak-btn" onclick="speak('shtatëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">70</div></div></div>
+          <div class="word-card"><div class="alb-word">tetëdhjetë <button class="speak-btn" onclick="speak('tetëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">80</div></div></div>
+          <div class="word-card"><div class="alb-word">nëntëdhjetë <button class="speak-btn" onclick="speak('nëntëdhjetë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">90</div></div></div>
+          <div class="word-card"><div class="alb-word">njëqind <button class="speak-btn" onclick="speak('njëqind')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">100</div></div></div>
+        </div>
+      </div>
+
+      <!-- 7. RAKI -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="glass-water" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Raki</span></div>
+        <div class="acc-body">
+          <div class="lang-notice">Raki is important in Albania. It is both the cause and the solution to almost every problem. Don't be surprised if it appears at breakfast.</div>
+          <div class="word-card"><div class="alb-word">Raki rrushi <button class="speak-btn" onclick="speak('Raki rrushi')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Grape raki</div></div></div>
+          <div class="word-card"><div class="alb-word">Raki mani <button class="speak-btn" onclick="speak('Raki mani')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Mulberry raki</div></div></div>
+          <div class="word-card"><div class="alb-word">Raki thane <button class="speak-btn" onclick="speak('Raki thane')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Cornelian cherry raki</div><div class="word-tip">Wild red berry from northern Albania. Rare and special.</div></div></div>
+          <div class="word-card"><div class="alb-word">Gëzuar! <button class="speak-btn" onclick="speak('Gëzuar')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Cheers!</div><div class="word-pr">geh-ZOO-ar</div></div></div>
+          <div class="word-card"><div class="alb-word">Një raki <button class="speak-btn" onclick="speak('Një raki')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">One raki</div></div></div>
+          <div class="word-card"><div class="alb-word">Pak raki <button class="speak-btn" onclick="speak('Pak raki')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">A little raki</div></div></div>
+          <div class="word-card"><div class="alb-word">Ju lutem, jo raki <button class="speak-btn" onclick="speak('Ju lutem jo raki')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">No raki please</div></div></div>
+          <div class="word-card"><div class="alb-word">Jam me stomakun <button class="speak-btn" onclick="speak('Jam me stomakun')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">My stomach...</div><div class="word-tip">The excuse nobody believes, but everyone respects.</div></div></div>
+          <div class="lang-notice">In Albania, the first no is just the opening. Only the third answer counts. Expect to be asked three times before your answer is accepted. As a tourist you really don't have to drink raki  but knowing how to decline politely will save you.</div>
+        </div>
+      </div>
+
+      <!-- 8. COFFEE -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="coffee" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Coffee</span></div>
+        <div class="acc-body">
+          <div class="lang-notice">Albania is the country with the most coffee bars per inhabitant in the world. For every 152 inhabitants there is one coffee bar. Albanians usually drink espresso  strong. Almost as strong as raki. And the two often come together: a coffee, a raki, and a glass of water.</div>
+          <div class="word-card"><div class="alb-word">Kafe ekspres <button class="speak-btn" onclick="speak('Kafe ekspres')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Espresso</div></div></div>
+          <div class="word-card"><div class="alb-word">Kapuçino <button class="speak-btn" onclick="speak('Kapuçino')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Cappuccino</div></div></div>
+          <div class="word-card"><div class="alb-word">Kafe me qumësht <button class="speak-btn" onclick="speak('Kafe me qumësht')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Coffee with milk</div></div></div>
+          <div class="word-card"><div class="alb-word">Kafe turke <button class="speak-btn" onclick="speak('Kafe turke')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Turkish coffee</div><div class="word-tip">A whole different experience  thick, strong, unfiltered.</div></div></div>
+          <div class="word-card"><div class="alb-word">Kafe ftohtë <button class="speak-btn" onclick="speak('Kafe ftohtë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Cold coffee / freddo</div></div></div>
+          <div class="word-card"><div class="alb-word">Një kafe, ju lutem <button class="speak-btn" onclick="speak('Një kafe ju lutem')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">One coffee please</div></div></div>
+          <div class="word-card"><div class="alb-word">Pa sheqer <button class="speak-btn" onclick="speak('Pa sheqer')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">Without sugar</div><div class="word-tip">Albanian coffee comes sweet by default. Say this if you want it plain.</div></div></div>
+          <div class="word-card"><div class="alb-word">Me sheqer <button class="speak-btn" onclick="speak('Me sheqer')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">With sugar</div></div></div>
+        </div>
+      </div>
+
+      <!-- 9. FOOD & DRINK -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="utensils" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Food &amp; drink</span></div>
+        <div class="acc-body">
+          <div class="lang-notice">On Monday and Tuesday, a small van drives past PasneserPark selling fresh vegetables and fruit. You'll hear it coming from far away  the megaphone on the roof. He's been doing this for years, and he's one of the friendliest people you'll meet here. His call always sounds exactly the same. It goes like this:</div>
+          <div class="word-card"><div class="alb-word">patate <button class="speak-btn" onclick="speak('patate')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">potatoes</div></div></div>
+          <div class="word-card"><div class="alb-word">domate <button class="speak-btn" onclick="speak('domate')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">tomatoes</div></div></div>
+          <div class="word-card"><div class="alb-word">speca <button class="speak-btn" onclick="speak('speca')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">peppers</div></div></div>
+          <div class="word-card"><div class="alb-word">kastraveca <button class="speak-btn" onclick="speak('kastraveca')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">cucumbers</div></div></div>
+          <div class="word-card"><div class="alb-word">karrotë <button class="speak-btn" onclick="speak('karrotë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">carrots</div></div></div>
+          <div class="word-card"><div class="alb-word">qepë <button class="speak-btn" onclick="speak('qepë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">onions</div></div></div>
+          <div class="word-card"><div class="alb-word">lakër <button class="speak-btn" onclick="speak('lakër')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">cabbage</div></div></div>
+          <div class="word-card"><div class="alb-word">spinaq <button class="speak-btn" onclick="speak('spinaq')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">spinach</div></div></div>
+          <div class="lang-notice">He also sells fruit  he just doesn't shout about it:</div>
+          <div class="word-card"><div class="alb-word">mollë <button class="speak-btn" onclick="speak('mollë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">apple</div></div></div>
+          <div class="word-card"><div class="alb-word">portokall <button class="speak-btn" onclick="speak('portokall')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">orange</div></div></div>
+          <div class="word-card"><div class="alb-word">limon <button class="speak-btn" onclick="speak('limon')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">lemon</div></div></div>
+          <div class="word-card"><div class="alb-word">dardhë <button class="speak-btn" onclick="speak('dardhë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">pear</div></div></div>
+          <div class="word-card"><div class="alb-word">shalqi <button class="speak-btn" onclick="speak('shalqi')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">watermelon</div></div></div>
+          <div class="word-card"><div class="alb-word">ujë <button class="speak-btn" onclick="speak('ujë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">water</div></div></div>
+          <div class="word-card"><div class="alb-word">bukë <button class="speak-btn" onclick="speak('bukë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">bread</div></div></div>
+          <div class="word-card"><div class="alb-word">gjalp <button class="speak-btn" onclick="speak('gjalp')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">butter</div></div></div>
+          <div class="word-card"><div class="alb-word">djathë <button class="speak-btn" onclick="speak('djathë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">cheese</div></div></div>
+          <div class="word-card"><div class="alb-word">vezë <button class="speak-btn" onclick="speak('vezë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">eggs</div></div></div>
+          <div class="word-card"><div class="alb-word">mish derri <button class="speak-btn" onclick="speak('mish derri')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">pork</div></div></div>
+          <div class="word-card"><div class="alb-word">qoftë <button class="speak-btn" onclick="speak('qoftë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">meatballs / minced meat</div></div></div>
+          <div class="word-card"><div class="alb-word">mish dhie <button class="speak-btn" onclick="speak('mish dhie')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">goat meat</div></div></div>
+          <div class="word-card"><div class="alb-word">mish qengji <button class="speak-btn" onclick="speak('mish qengji')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">lamb</div></div></div>
+        </div>
+      </div>
+
+      <!-- 10. TRANSPORT -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="bus" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Transport &amp; directions</span></div>
+        <div class="acc-body">
+          <div class="word-card"><div class="alb-word">left <button class="speak-btn" onclick="speak('majtas')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">majtas</div></div></div>
+          <div class="word-card"><div class="alb-word">right <button class="speak-btn" onclick="speak('djathtas')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">djathtas</div></div></div>
+          <div class="word-card"><div class="alb-word">straight ahead <button class="speak-btn" onclick="speak('drejt')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">drejt</div></div></div>
+          <div class="word-card"><div class="alb-word">bus <button class="speak-btn" onclick="speak('autobus')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">autobus</div></div></div>
+          <div class="word-card"><div class="alb-word">furgon <button class="speak-btn" onclick="speak('furgon')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">furgon <span style="font-size:.8rem;color:var(--brown-l)">(shared minivan)</span></div></div></div>
+          <div class="word-card"><div class="alb-word">taxi <button class="speak-btn" onclick="speak('taksi')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">taksi</div></div></div>
+          <div class="word-card"><div class="alb-word">bus station <button class="speak-btn" onclick="speak('stacioni i autobusit')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">stacioni i autobusit</div></div></div>
+          <div class="word-card"><div class="alb-word">car <button class="speak-btn" onclick="speak('makinë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">makinë</div></div></div>
+          <div class="word-card"><div class="alb-word">motorcycle <button class="speak-btn" onclick="speak('motor')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">motor</div></div></div>
+          <div class="word-card"><div class="alb-word">scooter / moped <button class="speak-btn" onclick="speak('papaqi')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">papaqi</div></div></div>
+          <div class="word-card"><div class="alb-word">truck <button class="speak-btn" onclick="speak('kamion')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">kamion</div></div></div>
+        </div>
+      </div>
+
+      <!-- 11. NATURE & WEATHER -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="sun" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Nature &amp; weather</span></div>
+        <div class="acc-body">
+          <div class="word-card"><div class="alb-word">mountain <button class="speak-btn" onclick="speak('mal')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">mal</div></div></div>
+          <div class="word-card"><div class="alb-word">hill <button class="speak-btn" onclick="speak('kodër')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">kodër</div></div></div>
+          <div class="word-card"><div class="alb-word">valley <button class="speak-btn" onclick="speak('luginë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">luginë</div></div></div>
+          <div class="word-card"><div class="alb-word">river <button class="speak-btn" onclick="speak('lumë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">lumë</div></div></div>
+          <div class="word-card"><div class="alb-word">lake <button class="speak-btn" onclick="speak('liqen')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">liqen</div></div></div>
+          <div class="word-card"><div class="alb-word">forest <button class="speak-btn" onclick="speak('pyll')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">pyll</div></div></div>
+          <div class="word-card"><div class="alb-word">field <button class="speak-btn" onclick="speak('fushë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">fushë</div></div></div>
+          <div class="word-card"><div class="alb-word">rock <button class="speak-btn" onclick="speak('gur')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">gur</div></div></div>
+          <div class="word-card"><div class="alb-word">sun <button class="speak-btn" onclick="speak('diell')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">diell</div></div></div>
+          <div class="word-card"><div class="alb-word">rain <button class="speak-btn" onclick="speak('shi')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">shi</div></div></div>
+          <div class="word-card"><div class="alb-word">wind <button class="speak-btn" onclick="speak('erë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">erë</div></div></div>
+          <div class="word-card"><div class="alb-word">star <button class="speak-btn" onclick="speak('yll')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">yll</div></div></div>
+          <div class="word-card"><div class="alb-word">moon <button class="speak-btn" onclick="speak('hënë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">hënë</div></div></div>
+          <div class="word-card"><div class="alb-word">cloud <button class="speak-btn" onclick="speak('re')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">re</div></div></div>
+          <div class="word-card"><div class="alb-word">sunset <button class="speak-btn" onclick="speak('perëndim dielli')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">perëndim dielli</div></div></div>
+          <div class="word-card"><div class="alb-word">sunrise <button class="speak-btn" onclick="speak('lindja e diellit')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">lindja e diellit</div></div></div>
+        </div>
+      </div>
+
+      <!-- 12. ANIMALS -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="paw-print" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Animals</span></div>
+        <div class="acc-body">
+          <div class="lang-notice">All of the following animals can be found in or around PasneserPark:</div>
+          <div class="word-card"><div class="alb-word">cat <button class="speak-btn" onclick="speak('macë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">macë</div></div></div>
+          <div class="word-card"><div class="alb-word">dog <button class="speak-btn" onclick="speak('qen')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">qen</div></div></div>
+          <div class="word-card"><div class="alb-word">chicken <button class="speak-btn" onclick="speak('pulë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">pulë</div></div></div>
+          <div class="word-card"><div class="alb-word">duck <button class="speak-btn" onclick="speak('rosë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">rosë</div></div></div>
+          <div class="word-card"><div class="alb-word">cow <button class="speak-btn" onclick="speak('lopë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">lopë</div></div></div>
+          <div class="word-card"><div class="alb-word">goat <button class="speak-btn" onclick="speak('dhie')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">dhie</div></div></div>
+          <div class="word-card"><div class="alb-word">sheep <button class="speak-btn" onclick="speak('dele')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">dele</div></div></div>
+          <div class="word-card"><div class="alb-word">donkey <button class="speak-btn" onclick="speak('gomar')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">gomar</div></div></div>
+          <div class="word-card"><div class="alb-word">horse <button class="speak-btn" onclick="speak('kalë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">kalë</div></div></div>
+          <div class="word-card"><div class="alb-word">turtle <button class="speak-btn" onclick="speak('breshkë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">breshkë</div></div></div>
+          <div class="word-card"><div class="alb-word">toad <button class="speak-btn" onclick="speak('bufo')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">bufo</div></div></div>
+          <div class="word-card"><div class="alb-word">lizard <button class="speak-btn" onclick="speak('hardhucë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">hardhucë</div></div></div>
+          <div class="word-card"><div class="alb-word">woodpecker <button class="speak-btn" onclick="speak('qukapik')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">qukapik</div></div></div>
+          <div class="word-card"><div class="alb-word">owl <button class="speak-btn" onclick="speak('buf')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">buf</div></div></div>
+          <div class="word-card"><div class="alb-word">swallow <button class="speak-btn" onclick="speak('dallëndyshe')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">dallëndyshe</div></div></div>
+          <div class="word-card"><div class="alb-word">crow <button class="speak-btn" onclick="speak('sorrë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">sorrë</div></div></div>
+          <div class="word-card"><div class="alb-word">fox <button class="speak-btn" onclick="speak('dhelpër')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">dhelpër</div></div></div>
+          <div class="word-card"><div class="alb-word">bat <button class="speak-btn" onclick="speak('lakuriq natës')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">lakuriq natës</div></div></div>
+          <div class="word-card"><div class="alb-word">frog <button class="speak-btn" onclick="speak('bretkosë')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">bretkosë</div></div></div>
+          <div class="word-card"><div class="alb-word">cricket <button class="speak-btn" onclick="speak('karkalec')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">karkalec</div></div></div>
+          <div class="word-card"><div class="alb-word">butterfly <button class="speak-btn" onclick="speak('flutur')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">flutur</div></div></div>
+          <div class="word-card"><div class="alb-word">hawk <button class="speak-btn" onclick="speak('skifter')"><i data-feather="volume-2" style="width:16px;height:16px"></i></button></div><div><div class="word-en">skifter</div></div></div>
+        </div>
+      </div>
+
+      <!-- 13. ALBANIAN ALPHABET -->
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)"><span><i data-feather="type" style="width:18px;height:18px;vertical-align:middle;margin-right:6px"></i>Albanian alphabet</span></div>
+        <div class="acc-body">
+          <div class="lang-notice">Albanian looks scary at first. But once you know a few rules, it clicks. Unlike English, Albanian is almost perfectly phonetic  every letter sounds the same every time. No exceptions. No surprises.</div>
+          <div class="word-card"><div class="alb-word">ë</div><div><div class="word-en">Like the 'u' in "butter"</div><div class="word-tip">The most common Albanian letter. It's in almost every word: Mirëdita, Faleminderit, Pasnesër...</div></div></div>
+          <div class="word-card"><div class="alb-word">ç</div><div><div class="word-en">Like 'ch' in "church"</div></div></div>
+          <div class="word-card"><div class="alb-word">xh</div><div><div class="word-en">Like 'j' in "jungle"</div></div></div>
+          <div class="word-card"><div class="alb-word">gj</div><div><div class="word-en">No real English equivalent</div><div class="word-tip">Just say 'g' and 'y' fast together.</div></div></div>
+          <div class="word-card"><div class="alb-word">dh</div><div><div class="word-en">Like 'th' in "this"</div></div></div>
+          <div class="word-card"><div class="alb-word">th</div><div><div class="word-en">Like 'th' in "think"</div></div></div>
+          <div class="word-card"><div class="alb-word">ll</div><div><div class="word-en">A deeper 'l'  further back in the mouth</div></div></div>
+          <div class="word-card"><div class="alb-word">rr</div><div><div class="word-en">Roll your r like you're purring</div></div></div>
+          <div class="word-card"><div class="alb-word">q</div><div><div class="word-en">Like 'ch' but softer  like 'ky'</div></div></div>
+          <div class="word-card"><div class="alb-word">j</div><div><div class="word-en">Like 'y' in "yes"</div></div></div>
+          <div class="lang-notice">Master these and you can read almost anything out loud. Albanians will be impressed.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- QUIZ -->
+    <div class="quiz-card" id="quiz-container" style="margin-top:20px">
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--sand);margin-bottom:12px;font-weight:600">Quick quiz — test yourself!</div>
+      <div class="quiz-q" id="quiz-q"></div>
+      <div class="quiz-opts" id="quiz-opts"></div>
+      <div class="quiz-fb" id="quiz-fb"></div>
+      <button class="next-btn" id="quiz-next" onclick="nextQuestion()" style="display:none;margin-top:12px;background:var(--gold);color:var(--brown);border:none;border-radius:8px;padding:8px 18px;font-weight:600;cursor:pointer">Next question →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="tab-gallery">
+  <img class="hero-img" src="images/image-18.jpg" alt="PasneserPark" style="height:260px">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="camera" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>Gallery</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">More photos coming soon.</p>
+    <p style="font-size:.85rem;color:var(--brown-l);margin-bottom:14px">Tap any photo to see it larger.</p>
+
+    <div class="gallery-grid">
+      <img src="images/image-19.jpg" alt="Bell tent" onclick="openLightbox(this,'Bell tent on platform')" class="wide">
+      <img src="images/image-20.jpg" alt="Inside the tent" onclick="openLightbox(this,'Inside the bell tent')">
+      <img src="images/image-21.jpg" alt="Tent on platform" onclick="openLightbox(this,'Bell tent')">
+      <img src="images/image-22.jpg" alt="Outdoor kitchen" onclick="openLightbox(this,'The outdoor kitchen')" class="wide">
+      <img src="images/image-23.jpg" alt="Bar evening" onclick="openLightbox(this,'Bar area in the evening')">
+      <img src="images/image-24.jpg" alt="Water spot" onclick="openLightbox(this,'The water spot at dusk')">
+      <img src="images/image-25.jpg" alt="Hammock" onclick="openLightbox(this,'Hammock in the forest')">
+      <img src="images/image-26.jpg" alt="Reading" onclick="openLightbox(this,'Reading in the hammock')">
+      <img src="images/image-27.jpg" alt="Washbasin" onclick="openLightbox(this,'Outdoor washbasin')">
+      <img src="images/image-28.jpg" alt="Facilities" onclick="openLightbox(this,'Shower and toilet cabins')">
+      <img src="images/image-29.jpg" alt="Shower" onclick="openLightbox(this,'Inside the shower')">
+      <img src="images/image-30.jpg" alt="Platform" onclick="openLightbox(this,'Tent platform')">
+      <img src="images/image-31.jpg" alt="Kitchen interior" onclick="openLightbox(this,'The kitchen')" class="wide">
+      <img src="images/image-32.jpg" alt="Bar area" onclick="openLightbox(this,'Bar area')">
+      <img src="images/image-33.jpg" alt="Outdoor table" onclick="openLightbox(this,'Outdoor table in the forest')">
+      <img src="images/image-34.jpg" alt="Focaccia" onclick="openLightbox(this,'Fresh focaccia')">
+      <img src="images/image-35.jpg" alt="Forest path" onclick="openLightbox(this,'Forest path with bench')">
+      <img src="images/image-36.jpg" alt="Shadow" onclick="openLightbox(this,'Light and shadow')">
+      <img src="images/image-37.jpg" alt="Green leaves" onclick="openLightbox(this,'Mountain view through the leaves')">
+      <img src="images/image-39.jpg" alt="Cow" onclick="openLightbox(this,'Neighbour cow with valley view')">
+    </div>
+
+    <div class="website-banner">
+      <h3>More on our website</h3>
+      <p>Read Merel's blog, see all photos and book your stay at pasneserpark.com</p>
+      <a href="https://pasneserpark.com" class="big-btn btn-gold">Visit pasneserpark.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL TIPS -->
+<section class="section" id="tab-tips">
+  <img class="hero-img" src="" alt="Bar evening at PasneserPark">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="compass" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>Local tips</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">From us to you. The stuff that isn't on Google.</p>
+
+    <!-- AT THE PARK -->
+        <div class="lang-category" style="margin-top:0">At PasneserPark</div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Always · Free</div>
+      <div class="tip-name"><i data-feather="tree-deciduous" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Do absolutely nothing</div>
+      <div class="tip-desc">The hammock is there for a reason. Bring a book, lie back, and let the mountain do the rest. This is the activity. You don't need a plan.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Evening · At the bar area</div>
+      <div class="tip-name"><i data-feather="sunset" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Golden hour at the viewpoint</div>
+      <div class="tip-desc">Walk up to the rocks behind the tents in the hour before sunset. The light over the valley is extraordinary. Bring something to drink and just sit there.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Anytime</div>
+      <div class="tip-name"><i data-feather="palette" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Get creative</div>
+      <div class="tip-desc">There are board games, cards, and space to draw, write or think. If you feel inspired — go for it. If you don't — that's fine too.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Morning</div>
+      <div class="tip-name"><i data-feather="footprints" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>The mountain behind the park</div>
+      <div class="tip-desc">Behind the park is a beautiful hiking area. Walk up the hill behind the tents. It gets steeper but the views open up fast. Morning is best — cooler, quieter, and the light is incredible.</div>
+    </div>
+
+    <div class="lang-category"><i data-feather="map" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>Nearby walks &amp; villages</div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Walk · ~30 min · Must-see</div>
+      <div class="tip-name"><i data-feather="church" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Shelcan village &amp; the Church of St. Nicholas</div>
+      <div class="tip-desc">A half-hour walk down the hill brings you to Shelcan village — a quiet, real Albanian mountain village. At the top of the village stands the Church of St. Nicholas (Kisha e Shën Kollit), an Orthodox church that became a Cultural Monument of Albania in 1948.<br><br>Inside, the walls are completely covered with frescoes by Onufri. A bit lower than the church is Tolli's café — very nice man, excellent coffee and also has beer and of course raki and chips : )</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Village · ~30 min by car</div>
+      <div class="tip-name"><i data-feather="map-pin" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Gjinar — authentic mountain village</div>
+      <div class="tip-desc">About 22 km southeast of Elbasan lies Gjinar, a mountain village in the heart of the Shpati range. Tourism is only just beginning here — it's still genuinely authentic.<br><br>There's a Thursday bazaar where all local farmers sell their crops and where you can also buy goats, sheep and donkeys, and some second-hand clothing and tools — in short, everything you'd expect in a mountain village. Pine forests, canyon walks, and mountain air that actually tastes different.<br><br>From Gjinar, you can hike towards Mount Bukanik (1,831m) — a serious hike but stunning.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Hike · Full day · Serious</div>
+      <div class="tip-name"><i data-feather="mountain" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Mount Bukanik — 1,831m</div>
+      <div class="tip-desc">The highest peak in the area. The trailhead starts around 1,500m, so the climb itself is manageable. Go with good shoes, water, and an early start. The summit view over the Shpati range is worth every step.</div>
+    </div>
+
+    <div class="lang-category"><i data-feather="coffee" style="width:16px;height:16px;vertical-align:middle;margin-right:6px"></i>Restaurants</div>
+
+    <p style="font-style:italic;color:var(--text-l);margin-bottom:16px">There are many restaurants, but these are our favorites.</p>
+
+    <div class="tip-card">
+      <div class="tip-cat">10 min · Just down the road</div>
+      <div class="tip-name"><i data-feather="utensils" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Restaurant Oda Qosja</div>
+      <div class="tip-desc">You already know where this is — it's the landmark on the route to PasneserPark. Lots of flowers, Albanian music, traditional food, good atmosphere. Good portions, genuinely good. The owner speaks good English. Worth stopping for lunch or dinner.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Elbasan · Albanian · Unmissable</div>
+      <div class="tip-name"><i data-feather="utensils" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Kala Restaurant — inside the castle</div>
+      <div class="tip-desc">A restaurant inside the old Ottoman castle walls of Elbasan. The setting alone is worth it. Order tavë kosi — baked lamb with yoghurt, Elbasan's most famous dish. This is the place to try it properly.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Elbasan · Pizza &amp; more</div>
+      <div class="tip-name"><i data-feather="utensils" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Basilico Pizzeria</div>
+      <div class="tip-desc">Good pizza in Elbasan city. Reliable, popular with locals, worth a stop if you're in town.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Elbasan · Pizza &amp; Albanian dishes</div>
+      <div class="tip-name"><i data-feather="utensils" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Don Camillo</div>
+      <div class="tip-desc">Pizzeria that also does Albanian dishes — a good combination. A bit more upscale. Solid food, good value.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Elbasan · Artisan pizza &amp; premium burgers</div>
+      <div class="tip-name"><i data-feather="utensils" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Brumi</div>
+      <div class="tip-desc">Wood-fired pizza and premium burgers. Artisan, fresh, well made. Rruga 11 Nentori, Elbasan.</div>
+    </div>
+
+    <div class="card" style="background:var(--brown);color:var(--sand)">
+      <div class="card-body" style="margin-bottom:12px">For the best but hard-to-find, genuinely authentic places with good simple food — ask us.</div>
+      <a href="https://wa.me/355685576874?text=Hi!%20Can%20you%20recommend%20a%20really%20local%20restaurant?" class="big-btn btn-gold">Ask Frank or Merel</a>
+    </div>
+
+    <div class="lang-category"><i data-feather="map-pin" style="width:16px;height:16px;vertical-align:middle;margin-right:4px"></i>Elbasan city</div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Culture · Old town</div>
+      <div class="tip-name"><i data-feather="landmark" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>The Ottoman castle walls</div>
+      <div class="tip-desc">The old castle walls of Elbasan date back to the 15th century, built by Sultan Mehmed II. You can walk on them and through them — the old center is inside. There's hospitality, including Kala Restaurant, and it's still part of daily life in the city.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Culture · Museum</div>
+      <div class="tip-name"><i data-feather="landmark" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Ethnographic Museum</div>
+      <div class="tip-desc">The Ethnographic Museum of Elbasan shows traditional Albanian life — crafts, clothing, household items from the region. Small museum, but gives a good picture of how life here used to be.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Market · 7 days a week from early morning</div>
+      <div class="tip-name"><i data-feather="apple" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Tregu Fruta Perime Elbasan "Markata"</div>
+      <div class="tip-desc">The fruit and vegetable market of Elbasan. All kinds of fruit, vegetables and also nuts, oil, homemade wines, rakia, olive oil. Lots of local but also imports. Busiest in the mornings. Rruga Thoma Kalefi.</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-cat">Drink · Everywhere in Albania</div>
+      <div class="tip-name"><i data-feather="coffee" style="width:15px;height:15px;vertical-align:middle;margin-right:5px"></i>Coffee shops</div>
+      <div class="tip-desc">There are many coffee shops. Coffee and raki are the most sold, often there's also beer and chips.</div>
+    </div>
+
+    <div class="website-banner" style="margin-top:16px">
+      <h3>More on our blog</h3>
+      <p>We write about Albania, the region, local food and life at PasneserPark — all on the website.</p>
+      <a href="https://pasneserpark.com/blog" class="big-btn btn-gold">Read the blog</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ALBANIA FACTS -->
+
+
+
+
+
+
+
+
+
+<!-- REVIEW -->
+<section class="section" id="tab-review">
+  <img class="hero-img" src="images/image-40.jpg" alt="PasneserPark" style="object-position:center">
+  <div class="inner">
+    <h2 class="section-title"><i data-feather="star" style="width:22px;height:22px;vertical-align:middle;margin-right:8px"></i>Enjoyed your stay?</h2>
+    <div class="gold-line"></div>
+
+    <div id="review-start">
+      <div class="card" style="text-align:center;padding:24px 16px">
+        <div style="font-size:2rem;color:var(--gold);margin-bottom:8px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="card-title">How was your stay?</div>
+        <div class="card-body">Honest feedback means everything to a small place like ours.</div>
+      </div>
+      <div class="mood-row">
+        <div class="mood-btn" onclick="showReview('positive')"><span class="mood-icon"><i data-feather="heart"></i></span><span class="mood-label">Loved it</span></div>
+        <div class="mood-btn" onclick="showReview('negative')"><span class="mood-icon"><i data-feather="message-circle"></i></span><span class="mood-label">Have feedback</span></div>
+      </div>
+    </div>
+
+    <div id="review-positive">
+      <div class="card"><div class="card-title">That's wonderful to hear</div><div class="card-body" style="margin-bottom:14px">A review makes a real difference for a small place like ours. It only takes 2 minutes.</div></div>
+      <a href="https://g.page/r/PLACEHOLDER-GOOGLE-REVIEW" class="big-btn btn-green">Leave a Google review</a>
+      <a href="https://www.booking.com" class="big-btn btn-brown">Leave a Booking.com review</a>
+      <a href="https://www.glampinghub.com" class="big-btn btn-outline">Leave a GlampingHub review</a>
+      <p style="font-size:.85rem;color:var(--brown-l);text-align:center;margin-top:8px;font-style:italic">Very welcome &#8212; and thank you. Really.</p>
+    </div>
+
+    <div id="review-negative">
+      <div class="card"><div class="card-title">We want to know</div><div class="card-body" style="margin-bottom:14px">If something wasn't right, please tell us directly. We'd much rather fix it than read about it later.</div></div>
+      <a href="https://wa.me/355685576874?text=Hi%20Frank%20and%20Merel%2C%20I%20wanted%20to%20share%20some%20feedback..." class="big-btn btn-brown">Send us a WhatsApp message</a>
+      <p style="font-size:.85rem;color:var(--brown-l);text-align:center;margin-top:8px;font-style:italic">We read everything. We appreciate honesty.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<footer class="app-footer">
+  <div class="footer-brand">PasneserPark</div>
+  <div>Shelcan, Elbasan, Albania</div>
+  <a href="https://pasneserpark.com" style="color:var(--orange);text-decoration:none">pasneserpark.com</a>
+  <div class="footer-tag">Very welcome.</div>
+</footer>
+
+<script>
+// Inline Feather Icons - only the ones we need
+const featherIcons = {
+  'tent-tree': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="4" r="2"/><path d="m14 5 3-3 3 3"/><path d="m14 10 3-3 3 3"/><path d="M17 14V2"/><path d="M17 14H7l-5 8h20Z"/><path d="M8 14v8"/><path d="m9 14 5 8"/></svg>',
+  'tent': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22l9-18 9 18"/><path d="M7.5 13.5h9"/><path d="M12 4v18"/></svg>',
+  'cat': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/><path d="M8 14v.5"/><path d="M16 14v.5"/><path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/></svg>',
+  'home': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+  'map-pin': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  'wifi': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>',
+  'info': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+  'heart': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  'message-circle': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
+  'camera': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  'compass': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+  'mountain': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>',
+  'star': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  'smile': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
+  'volume-2': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>',
+  'users': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'book': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  'book-open': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+  'check-circle': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+  'hash': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>',
+  'coffee': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
+  'car': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>',
+  'bus': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></svg>',
+  'thumbs-up': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>',
+  'handbag': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z"/><path d="M8 11V6a4 4 0 0 1 8 0v5"/></svg>',
+  'coins': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>',
+  'apple': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.528V3a1 1 0 0 1 1-1h0"/><path d="M18.237 21A15 15 0 0 0 22 11a6 6 0 0 0-10-4.472A6 6 0 0 0 2 11a15.1 15.1 0 0 0 3.763 10 3 3 0 0 0 3.648.648 5.5 5.5 0 0 1 5.178 0A3 3 0 0 0 18.237 21"/></svg>',
+  'wifi': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg>',
+  'dog': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.25 16.25h1.5L12 17z"/><path d="M16 14v.5"/><path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"/><path d="M8 14v.5"/><path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"/></svg>',
+  'egg': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 4 8 4 14a8 8 0 0 0 16 0c0-6-4-12-8-12"/></svg>',
+  'tractor': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 11 11 .9a1 1 0 0 1 .8 1.1l-.665 4.158a1 1 0 0 1-.988.842H20"/><path d="M16 18h-5"/><path d="M18 5a1 1 0 0 0-1 1v5.573"/><path d="M3 4h8.129a1 1 0 0 1 .99.863L13 11.246"/><path d="M4 11V4"/><path d="M7 15h.01"/><path d="M8 10.1V4"/><circle cx="18" cy="18" r="2"/><circle cx="7" cy="15" r="5"/></svg>',
+  'tree-deciduous': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19a4 4 0 0 1-2.24-7.32A3.5 3.5 0 0 1 9 6.03V6a3 3 0 1 1 6 0v.04a3.5 3.5 0 0 1 3.24 5.65A4 4 0 0 1 16 19Z"/><path d="M12 19v3"/></svg>',
+  'sunset': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m16 6-4 4-4-4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>',
+  'palette': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>',
+  'footprints': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></svg>',
+  'church': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 9h4"/><path d="M12 7v5"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="m18 9 3.52 2.147a1 1 0 0 1 .48.854V19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6.999a1 1 0 0 1 .48-.854L6 9"/><path d="M6 21V7a1 1 0 0 1 .376-.782l5-3.999a1 1 0 0 1 1.249.001l5 4A1 1 0 0 1 18 7v14"/></svg>',
+  'utensils': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',
+  'landmark': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>',
+  'coffee': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg>',
+  'hand': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>',
+  'book-open': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>',
+  'glass-water': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.116 4.104A1 1 0 0 1 6.11 3h11.78a1 1 0 0 1 .994 1.105L17.19 20.21A2 2 0 0 1 15.2 22H8.8a2 2 0 0 1-2-1.79z"/><path d="M6 12a5 5 0 0 1 6 0 5 5 0 0 0 6 0"/></svg>',
+  'paw-print': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></svg>',
+  'wine': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg>',
+  'globe': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
+  'navigation': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>',
+  'shopping-bag': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
+  'shopping-cart': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
+  'sun': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+  'feather': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>',
+  'map': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>',
+  'user': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  'truck': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+  'alert-triangle': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+  'award': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+  'type': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>',
+  'zap': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  'circle': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>',
+  'globe': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  'package': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>',
+  'droplet': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+  'gitlab': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"/></svg>'
+};
+
+// Feather replacement function
+const feather = {
+  replace: function(options = {}) {
+    document.querySelectorAll('[data-feather]').forEach(el => {
+      const iconName = el.getAttribute('data-feather');
+      if (featherIcons[iconName]) {
+        // Get inline style from the element
+        const style = el.getAttribute('style') || '';
+        // Extract width/height from inline style if present
+        const wMatch = style.match(/width:\s*(\d+)px/);
+        const hMatch = style.match(/height:\s*(\d+)px/);
+        const w = wMatch ? wMatch[1] : (options.width || 24);
+        const h = hMatch ? hMatch[1] : (options.height || 24);
+        const sw = options['stroke-width'] || 2;
+
+        let svg = featherIcons[iconName];
+        svg = svg.replace(/width="24"/, `width="${w}"`);
+        svg = svg.replace(/height="24"/, `height="${h}"`);
+        svg = svg.replace(/stroke-width="2"/, `stroke-width="${sw}"`);
+        
+        // Copy over vertical-align and margin from style
+        if (style) {
+          const va = style.match(/vertical-align:[^;]*/)?.[0] || '';
+          const mr = style.match(/margin-right:[^;]*/)?.[0] || '';
+          const ml = style.match(/margin-left:[^;]*/)?.[0] || '';
+          const extraStyle = [va, mr, ml].filter(Boolean).join(';');
+          if (extraStyle) {
+            svg = svg.replace('<svg ', `<svg style="${extraStyle}" `);
+          }
+        }
+        el.outerHTML = svg;
+      }
+    });
+  }
+};
+</script>
+<script>
+function openMenu() {
+  document.getElementById('menu-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  document.getElementById('menu-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectTab(id, name) {
+  // Switch tab
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  
+  // Update menu tiles
+  document.querySelectorAll('.menu-tile').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  
+  // Update current tab display
+  document.getElementById('current-tab-name').textContent = name;
+  
+  // Close menu and scroll to top
+  closeMenu();
+  window.scrollTo(0, 0);
+}
+
+function copyWifi() {
+  navigator.clipboard.writeText('Summer26').then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+
+function showReview(type) {
+  document.getElementById('review-start').style.display = 'none';
+  document.getElementById('review-' + type).style.display = 'block';
+}
+
+function openLightbox(img, caption) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-caption').textContent = caption;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.acc-header').forEach(h => h.classList.remove('open'));
+  if (!isOpen) {
+    body.classList.add('open');
+    header.classList.add('open');
+  }
+}
+
+// Audio player voor Albanese woorden
+let currentAudio = null;
+
+function speak(text) {
+  // Stop huidige audio als die speelt
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+  
+  // Check if this is an Easy Word (starts with capital letter and no spaces)
+  const isEasyWord = /^[A-Z][a-zë]+$/.test(text);
+  
+  let filename;
+  if (isEasyWord) {
+    // Easy Words: keep original capitalization, just handle special chars
+    filename = text;
+  } else {
+    // Other words: convert to lowercase and create filename
+    filename = text.toLowerCase()
+      .replace(/ë/g, 'e').replace(/ç/g, 'c').replace(/ü/g, 'u')
+      .replace(/ï/g, 'i').replace(/ö/g, 'o').replace(/á/g, 'a')
+      .replace(/ /g, '_').replace(/,/g, '').replace(/\?/g, '')
+      .replace(/!/g, '').replace(/\./g, '').replace(/\//g, '_');
+  }
+  
+  // Zoek het juiste audio bestand (met nummer prefix)
+  // We proberen gewoon het bestand te laden - de browser cacht het
+  currentAudio = new Audio(`/audio/${filename}.mp3`);
+  
+  // Fallback: als bestand niet gevonden, probeer met nummers
+  currentAudio.addEventListener('error', function() {
+    // Probeer bestanden 001-157 te doorzoeken
+    // Voor nu: doe niks, audio speelt gewoon niet af
+    console.warn(`Audio niet gevonden voor: ${filename}`);
+  });
+  
+  currentAudio.play().catch(err => {
+    console.warn('Audio playback failed:', err);
+  });
+}
+
+const questions = [
+  // GREETINGS
+  {q:"How do you say 'Hello / Good day'?", opts:["Mirupafshim","Mirëdita","Faleminderit","Tungjatjeta"], a:1},
+  {q:"What does 'Tungjatjeta' mean?", opts:["Good night","Goodbye","Hello (formal)","Thank you"], a:2},
+  {q:"How do you say 'Goodbye'?", opts:["Mirëdita","Mirupafshim","Natën e mirë","Si jeni?"], a:1},
+  {q:"'Si jeni?' means...", opts:["How are you?","Where are you?","Who are you?","What do you want?"], a:0},
+  {q:"How do you say 'Good night'?", opts:["Mirë mëngjes","Mirëdita","Natën e mirë","Mirupafshim"], a:2},
+  {q:"'Mirë' means...", opts:["Hello","Thank you","Good / Fine","Please"], a:2},
+  // ESSENTIALS
+  {q:"How do you say 'Thank you'?", opts:["Ju lutem","Faleminderit","Mirëdita","Shumë mirë"], a:1},
+  {q:"'Ju lutem' means...", opts:["Thank you","Goodbye","Please / You're welcome","I don't understand"], a:2},
+  {q:"How do you say 'Yes'?", opts:["Jo","Mirë","Po","Të"], a:2},
+  {q:"How do you say 'No'?", opts:["Po","Jo","Nuk","S'di"], a:1},
+  {q:"'Nuk kuptoj' means...", opts:["I don't understand","How much?","Very good","I don't know"], a:0},
+  {q:"How do you say 'I don't know'?", opts:["Nuk kuptoj","S'di","Jo","Nuk"], a:1},
+  {q:"'Sa kushton?' means...", opts:["Where is it?","How much does it cost?","What is this?","I want this"], a:1},
+  {q:"'Shumë mirë' means...", opts:["Good morning","Very good","Very much","Good night"], a:1},
+  // PASNESËR
+  {q:"What does 'Pasnesër' mean?", opts:["Yesterday","Tomorrow","Day after tomorrow","Next week"], a:2},
+  {q:"'Neser' means...", opts:["Yesterday","Today","Tomorrow","Soon"], a:2},
+  // YES & NO (useful words)
+  {q:"How do you say 'Water'?", opts:["Bukë","Ujë","Kafe","Mish"], a:1},
+  {q:"How do you say 'Bread'?", opts:["Ujë","Mish","Bukë","Kafe"], a:2},
+  {q:"'Çfarë?' means...", opts:["Where?","When?","What?","Who?"], a:2},
+  {q:"'Ku?' means...", opts:["When?","Where?","Who?","Why?"], a:1},
+  {q:"'Kush?' means...", opts:["Where?","What?","Who?","When?"], a:2},
+  {q:"How do you say 'Help!'?", opts:["Ndalo!","Ndihmë!","Shko!","Eja!"], a:1},
+  {q:"'Ndalo!' means...", opts:["Come!","Go!","Stop!","Help!"], a:2},
+  // NUMBERS
+  {q:"How do you say 'One' in Albanian?", opts:["Dy","Tre","Një","Katër"], a:2},
+  {q:"How do you say 'Two'?", opts:["Tre","Dy","Një","Pesë"], a:1},
+  {q:"How do you say 'Three'?", opts:["Dy","Katër","Pesë","Tre"], a:3},
+  {q:"'Katër' means...", opts:["Three","Five","Four","Six"], a:2},
+  {q:"'Pesë' means...", opts:["Four","Five","Six","Seven"], a:1},
+  {q:"How do you say 'Ten'?", opts:["Nëntë","Tetë","Dhjetë","Gjashtë"], a:2},
+  {q:"'Dhjetë' means...", opts:["Eight","Nine","Ten","Seven"], a:2},
+  // RAKI
+  {q:"What is 'Raki'?", opts:["Albanian coffee","Homemade brandy","Mountain spring water","Traditional bread"], a:1},
+  {q:"When is raki typically drunk in Albania?", opts:["Only at weddings","Only in winter","At any time — breakfast included","Only on weekends"], a:2},
+  {q:"'Gëzuar!' means...", opts:["Thank you","Good night","Cheers!","Delicious!"], a:2},
+  // COFFEE
+  {q:"How do you say 'Coffee'?", opts:["Çaj","Ujë","Kafe","Birë"], a:2},
+  {q:"'Çaj' means...", opts:["Coffee","Juice","Tea","Water"], a:2},
+  {q:"'Birë' means...", opts:["Wine","Beer","Raki","Juice"], a:1},
+  // FOOD & DRINK
+  {q:"What is 'Tavë kosi'?", opts:["Coffee with milk","Baked lamb with yoghurt","Grilled fish","Vegetable soup"], a:1},
+  {q:"Where is tavë kosi from?", opts:["Tirana","Shkodër","Elbasan","Gjirokastër"], a:2},
+  {q:"How do you say 'Meat'?", opts:["Bukë","Ujë","Mish","Perime"], a:2},
+  {q:"'Perime' means...", opts:["Fruit","Meat","Vegetables","Bread"], a:2},
+  {q:"'Fruta' means...", opts:["Vegetables","Fruit","Food","Market"], a:1},
+  {q:"How do you say 'Delicious'?", opts:["Shumë mirë","E shijshme","Faleminderit","Gëzuar"], a:1},
+  {q:"How do you ask for the bill?", opts:["Sa kushton?","Llogarinë, ju lutem","Ku është?","Çfarë është?"], a:1},
+  // TRANSPORT
+  {q:"How do you say 'Car'?", opts:["Autobus","Makinë","Biçikletë","Tren"], a:1},
+  {q:"'Autobus' means...", opts:["Train","Car","Bus","Taxi"], a:2},
+  {q:"How do you say 'Where is...?'", opts:["Sa kushton?","Çfarë është?","Ku është?","Kush është?"], a:2},
+  {q:"'Djathtas' means...", opts:["Left","Straight ahead","Right","Behind"], a:2},
+  {q:"'Majtas' means...", opts:["Right","Left","Straight","Back"], a:1},
+  {q:"'Drejt' means...", opts:["Left","Right","Straight ahead","Stop"], a:2},
+  // NATURE & WEATHER
+  {q:"How do you say 'Mountain'?", opts:["Det","Lumë","Mal","Pyll"], a:2},
+  {q:"'Pyll' means...", opts:["Mountain","River","Sea","Forest"], a:3},
+  {q:"'Lumë' means...", opts:["Lake","River","Sea","Mountain"], a:1},
+  {q:"How do you say 'Hot'?", opts:["Ftohtë","Ngrohtë","Shi","Diell"], a:1},
+  {q:"'Ftohtë' means...", opts:["Hot","Warm","Cold","Windy"], a:2},
+  {q:"'Diell' means...", opts:["Rain","Wind","Cloud","Sun"], a:3},
+  {q:"'Shi' means...", opts:["Sun","Wind","Rain","Snow"], a:2},
+  // ANIMALS
+  {q:"How do you say 'Dog'?", opts:["Mace","Qen","Zog","Lopë"], a:1},
+  {q:"'Mace' means...", opts:["Dog","Bird","Cat","Cow"], a:2},
+  {q:"'Zog' means...", opts:["Cat","Dog","Bird","Horse"], a:2},
+  {q:"How do you say 'Sheep'?", opts:["Dele","Kali","Lopë","Derr"], a:0},
+  {q:"'Lopë' means...", opts:["Sheep","Horse","Cow","Donkey"], a:2},
+  // ALBANIA FACTS
+  {q:"What is the Albanian language called?", opts:["Shqip","Alban","Illyrian","Balkan"], a:0},
+  {q:"Albanian is related to which language?", opts:["Greek","Serbian","No other language — it's unique","Romanian"], a:2},
+  {q:"What is the capital of Albania?", opts:["Shkodër","Elbasan","Vlorë","Tirana"], a:3},
+  {q:"What is the Albanian currency?", opts:["Euro","Leka","Dinar","Kuna"], a:1},
+  {q:"The Albanian flag has...", opts:["A star","A crescent","A double-headed eagle","A lion"], a:2},
+  {q:"Who is the national hero of Albania?", opts:["Ali Pasha","Ismail Qemali","Skanderbeg","Enver Hoxha"], a:2},
+  {q:"Albania was communist until...", opts:["1975","1981","1990","1999"], a:2},
+  {q:"How many letters does the Albanian alphabet have?", opts:["26","32","36","40"], a:2},
+  {q:"What does 'Shqipëri' (Albania) mean?", opts:["Land of eagles","Land of mountains","Land of rivers","Land of the sun"], a:0},
+];
+function shuffleArr(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
+const shuffled = shuffleArr([...Array(questions.length).keys()]);
+let si = 0;
+let qi = shuffled[0]; let answered = false;
+
+
+function loadQuestion() {
+  answered = false;
+  const q = questions[qi];
+  document.getElementById('quiz-q').textContent = q.q;
+  document.getElementById('quiz-fb').textContent = '';
+  document.getElementById('quiz-next').style.display = 'none';
+  const opts = document.getElementById('quiz-opts');
+  opts.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt;
+    btn.onclick = () => answer(i);
+    opts.appendChild(btn);
+  });
+}
+
+function answer(i) {
+  if (answered) return;
+  answered = true;
+  const q = questions[qi];
+  const btns = document.querySelectorAll('.quiz-opt');
+  btns[i].classList.add(i === q.a ? 'correct' : 'wrong');
+  if (i !== q.a) btns[q.a].classList.add('correct');
+  document.getElementById('quiz-fb').textContent = q.fb || '';
+  document.getElementById('quiz-next').style.display = 'block';
+}
+
+function nextQuestion() {
+  si = (si + 1) % shuffled.length;
+  qi = shuffled[si];
+  loadQuestion();
+}
+
+loadQuestion();
+
+// Init feather icons on load
+document.addEventListener('DOMContentLoaded', () => {
+  feather.replace({ width: 28, height: 28, 'stroke-width': 1.5 });
+});
+
+// Register service worker for PWA functionality + AUTO UPDATE
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/app/service-worker.js', { scope: '/app/' })
+      .then(registration => {
+        console.log('ServiceWorker registered:', registration.scope);
+        
+        // Check voor updates elke keer dat de app opent
+        registration.update();
+        
+        // Luister naar nieuwe service worker
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'activated') {
+              // Nieuwe versie actief - herlaad de pagina
+              window.location.reload();
+            }
+          });
+        });
+      })
+      .catch(err => {
+        console.log('ServiceWorker registration failed:', err);
+      });
+  });
+  
+  // Als een nieuwe service worker het overneemt, herlaad direct
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
+  });
+}
+
+</script>
+</body>
+</html>

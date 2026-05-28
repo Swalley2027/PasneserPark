@@ -105,6 +105,36 @@
             gap: 1rem !important;
         }
 
+        /* App button */
+        .site-header__app-btn {
+            font-family: 'Source Sans Pro', sans-serif !important;
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            color: white !important;
+            background: linear-gradient(135deg, #5A7D3E, #4A6B30) !important;
+            padding: 0.75rem 1.5rem !important;
+            border-radius: 4px !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+
+        .site-header__app-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 15px rgba(90, 125, 62, 0.4) !important;
+        }
+
+        .site-header.scrolled .site-header__app-btn {
+            box-shadow: 0 2px 8px rgba(90, 125, 62, 0.3) !important;
+        }
+
+        @media (max-width: 768px) {
+            .site-header__app-btn {
+                display: none !important;
+            }
+        }
+
         /* Reserveren button */
         .site-header__cta {
             font-family: 'Source Sans Pro', sans-serif !important;
@@ -240,10 +270,10 @@
 
     // ===== TRANSLATIONS =====
     const navTexts = {
-        nl: { home: 'Welkom', glamping: 'Glamping', fotos: "Foto's", info: 'Info', reviews: 'Reviews', blog: 'Blog', contact: 'Contact', book: 'Reserveren' },
-        en: { home: 'Home', glamping: 'Glamping', fotos: 'Photos', info: 'Info', reviews: 'Reviews', blog: 'Blog', contact: 'Contact', book: 'Book Now' },
-        de: { home: 'Startseite', glamping: 'Glamping', fotos: 'Fotos', info: 'Info', reviews: 'Bewertungen', blog: 'Blog', contact: 'Kontakt', book: 'Buchen' },
-        sq: { home: 'Kryefaqja', glamping: 'Glamping', fotos: 'Foto', info: 'Info', reviews: 'Vlerësime', blog: 'Blog', contact: 'Kontakt', book: 'Rezervo' }
+        nl: { home: 'Welkom', glamping: 'Glamping', fotos: "Foto's", info: 'Info', reviews: 'Reviews', blog: 'Blog', contact: 'Contact', app: 'App', book: 'Reserveren' },
+        en: { home: 'Home', glamping: 'Glamping', fotos: 'Photos', info: 'Info', reviews: 'Reviews', blog: 'Blog', contact: 'Contact', app: 'App', book: 'Book Now' },
+        de: { home: 'Startseite', glamping: 'Glamping', fotos: 'Fotos', info: 'Info', reviews: 'Bewertungen', blog: 'Blog', contact: 'Kontakt', app: 'App', book: 'Buchen' },
+        sq: { home: 'Kryefaqja', glamping: 'Glamping', fotos: 'Foto', info: 'Info', reviews: 'Vlerësime', blog: 'Blog', contact: 'Kontakt', app: 'App', book: 'Rezervo' }
     };
     const t = navTexts[currentLang] || navTexts.nl;
 
@@ -259,9 +289,11 @@
                     <a href="${basePath}reviews.html" data-page="reviews">${t.reviews}</a>
                     <a href="${basePath}blog.html" data-page="blog">${t.blog}</a>
                     <a href="${basePath}contact.html" data-page="contact">${t.contact}</a>
+                    <a href="/app" data-page="app">${t.app}</a>
                 </nav>
 
                 <div class="site-header__right">
+                    <a href="/app" class="site-header__app-btn">${t.app}</a>
                     <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">${t.book}</a>
                 </div>
 
@@ -281,6 +313,7 @@
             <a href="${basePath}reviews.html" data-page="reviews">${t.reviews}</a>
             <a href="${basePath}blog.html" data-page="blog">${t.blog}</a>
             <a href="${basePath}contact.html" data-page="contact">${t.contact}</a>
+            <a href="/app" data-page="app">${t.app}</a>
             <a href="https://www.airbnb.nl/rooms/1452333527355917092" target="_blank" rel="noopener" class="site-header__cta">${t.book}</a>
         </nav>
     `;
