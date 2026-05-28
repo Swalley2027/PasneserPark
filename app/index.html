@@ -1200,7 +1200,7 @@ function speak(text) {
   
   // Zoek het juiste audio bestand (met nummer prefix)
   // We proberen gewoon het bestand te laden - de browser cacht het
-  currentAudio = new Audio(`/audio/${filename}.mp3`);
+  currentAudio = new Audio(`/app/audio/${filename}.mp3`);
   
   // Fallback: als bestand niet gevonden, probeer met nummers
   currentAudio.addEventListener('error', function() {
