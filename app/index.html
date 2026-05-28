@@ -1182,21 +1182,12 @@ function speak(text) {
     currentAudio.currentTime = 0;
   }
   
-  // Check if this is an Easy Word (starts with capital letter and no spaces)
-  const isEasyWord = /^[A-Z][a-zë]+$/.test(text);
-  
-  let filename;
-  if (isEasyWord) {
-    // Easy Words: keep original capitalization, just handle special chars
-    filename = text;
-  } else {
-    // Other words: convert to lowercase and create filename
-    filename = text.toLowerCase()
-      .replace(/ë/g, 'e').replace(/ç/g, 'c').replace(/ü/g, 'u')
-      .replace(/ï/g, 'i').replace(/ö/g, 'o').replace(/á/g, 'a')
-      .replace(/ /g, '_').replace(/,/g, '').replace(/\?/g, '')
-      .replace(/!/g, '').replace(/\./g, '').replace(/\//g, '_');
-  }
+  // Altijd lowercase bestandsnaam
+  const filename = text.toLowerCase()
+    .replace(/ë/g, 'e').replace(/ç/g, 'c').replace(/ü/g, 'u').replace(/é/g, 'e')
+    .replace(/ï/g, 'i').replace(/ö/g, 'o').replace(/á/g, 'a').replace(/ë/g, 'e')
+    .replace(/ /g, '_').replace(/,/g, '').replace(/\?/g, '')
+    .replace(/!/g, '').replace(/\./g, '').replace(/\//g, '_');
   
   // Zoek het juiste audio bestand (met nummer prefix)
   // We proberen gewoon het bestand te laden - de browser cacht het
