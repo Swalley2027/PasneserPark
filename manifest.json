@@ -1,0 +1,26 @@
+{
+  "name": "PasneserPark Guest App",
+  "short_name": "PasneserPark",
+  "description": "Your guide to PasneserPark glamping in the Albanian mountains",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "id": "/app/",
+  "display": "standalone",
+  "background_color": "#FFF4D5",
+  "theme_color": "#5D4037",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/image-01.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/image-01.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

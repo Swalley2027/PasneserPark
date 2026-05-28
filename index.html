@@ -55,6 +55,77 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/language.js"></script>
+    <style>
+        .guest-app-block {
+            background: #FFF4D5;
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .guest-app-block__eyebrow {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #5A7D3E;
+            font-weight: 600;
+            margin: 0 0 0.75rem;
+        }
+        .guest-app-block__title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #5D4037;
+            margin: 0 0 1rem;
+            line-height: 1.25;
+        }
+        .guest-app-block__body {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            color: #6B5D52;
+            margin: 0 0 2rem;
+            line-height: 1.6;
+        }
+        .guest-app-block__btn {
+            display: inline-block;
+            background: #5D4037;
+            color: #FFF4D5;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 8px;
+            padding: 0.85rem 2rem;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .guest-app-block__btn:hover {
+            background: #4a3028;
+        }
+        .guest-app-block__ios-hint {
+            display: none;
+            margin-top: 1.25rem;
+            background: #fff;
+            border: 1px solid #e8d8b0;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.9rem;
+            color: #5D4037;
+            line-height: 1.7;
+            text-align: left;
+        }
+        .guest-app-block__qr-note {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.85rem;
+            color: #8B7355;
+            margin-top: 1.25rem;
+            margin-bottom: 0;
+        }
+    </style>
 
     <!-- Structured Data - LodgingBusiness -->
     <script type="application/ld+json">
@@ -413,6 +484,25 @@
         </div>
     </section>
 
+    <!-- Guest App Section -->
+    <section class="section fade-in" id="guest-app">
+        <div class="container">
+            <div class="guest-app-block">
+                <p class="guest-app-block__eyebrow">Guest App</p>
+                <h2 class="guest-app-block__title">Everything you need,<br>right in your pocket.</h2>
+                <p class="guest-app-block__body">Local tips, info about the area, and even your first words in Albanian. Works without internet too.</p>
+                <a href="/app" class="guest-app-block__btn" id="pp-app-btn">Get the app →</a>
+                <div class="guest-app-block__ios-hint" id="pp-ios-hint">
+                    <strong>On iPhone, install the app like this:</strong><br>
+                    1. Tap the <strong>Share</strong> icon at the bottom of Safari<br>
+                    2. Scroll down and tap <strong>Add to Home Screen</strong><br>
+                    3. Tap <strong>Add</strong> — done!
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Footer wordt geladen via JavaScript -->
 
     <!-- Lightbox -->
@@ -427,6 +517,20 @@
     <script src="js/components/footer.js"></script>
     <script src="js/main.js"></script>
     <script src="js/i18n.js"></script>
+    <script>
+        (function() {
+            var ua = navigator.userAgent;
+            var btn = document.getElementById('pp-app-btn');
+            var hint = document.getElementById('pp-ios-hint');
+            if (!btn) return;
+            if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+                btn.textContent = 'Install via Safari ↑';
+                hint.style.display = 'block';
+            } else if (/Android/.test(ua)) {
+                btn.textContent = 'Install the app →';
+            }
+        })();
+    </script>
     
     <script>
         // ================================
