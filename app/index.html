@@ -1157,7 +1157,7 @@ function speak(text) {
     .replace(/ /g, '_').replace(/,/g, '').replace(/\?/g, '')
     .replace(/!/g, '').replace(/\./g, '').replace(/\//g, '_');
   
-  currentAudio = new Audio(`/audio/${filename}.mp3`);
+  currentAudio = new Audio(`audio/${filename}.mp3`);
   currentAudio.addEventListener('error', function() {
     console.warn(`Audio niet gevonden: ${filename}.mp3`);
   });
@@ -1300,7 +1300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register service worker for PWA functionality + AUTO UPDATE
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register('service-worker.js')
       .then(registration => {
         console.log('ServiceWorker registered:', registration.scope);
         
