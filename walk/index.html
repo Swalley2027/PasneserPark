@@ -9,92 +9,75 @@
 /* ============================================================
    STIJL — kleuren uit de PasneserPark brand bible.
    Start- en eindscherm zijn zand. Het loopscherm is donker:
-   een licht scherm op volle helderheid in de zon vreet batterij.
+   een licht scherm op volle helderheid vreet batterij.
    Fonts zijn de fallbacks uit de bible (Georgia / systeem-sans),
    want externe fonts laden kan niet als de app offline moet.
    ============================================================ */
 :root{
-  --sand:#FFF4D5;
-  --sand-dark:#F0E6C8;
-  --brown-dark:#5D4037;
-  --brown-light:#8B7355;
-  --olive:#5A7D3E;
-  --olive-dark:#4A6B30;
-  --gold:#D4AF37;
-  --text:#4A4039;
-  --text-light:#6B5D52;
-  --walk-bg:#3A2A1F;
-  --danger:#B4553A;
+  --sand:#FFF4D5; --sand-dark:#F0E6C8; --brown-dark:#5D4037; --brown-light:#8B7355;
+  --olive:#5A7D3E; --olive-dark:#4A6B30; --gold:#D4AF37; --text:#4A4039;
+  --text-light:#6B5D52; --walk-bg:#3A2A1F; --danger:#B4553A;
   --serif:Georgia,"Playfair Display",serif;
   --sans:"Segoe UI",system-ui,-apple-system,sans-serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0;height:100%;overscroll-behavior:none}
-body{
-  font-family:var(--sans);background:var(--sand);color:var(--text);
-  font-size:16px;line-height:1.6;-webkit-user-select:none;user-select:none;
-}
-h1,h2{font-family:var(--serif);color:var(--brown-dark);font-weight:600;margin:0 0 .6em}
-h1{font-size:1.75rem;line-height:1.25}
-h2{font-size:1.35rem}
+body{font-family:var(--sans);background:var(--sand);color:var(--text);
+  font-size:16px;line-height:1.6;-webkit-user-select:none;user-select:none}
+h1{font-family:var(--serif);color:var(--brown-dark);font-weight:600;
+  margin:0 0 .6em;font-size:1.75rem;line-height:1.25}
 .screen{display:none;min-height:100dvh;flex-direction:column;
   padding:24px 20px calc(24px + env(safe-area-inset-bottom))}
 .screen.on{display:flex}
 button{font-family:var(--sans);font-size:1rem;font-weight:600;border:0;cursor:pointer}
-.btn{background:var(--olive);color:#fff;padding:16px 22px;border-radius:6px;width:100%;margin-top:12px}
+.btn{background:var(--olive);color:#fff;padding:16px 22px;border-radius:6px;width:100%;margin-top:14px}
 .btn:active{background:var(--olive-dark)}
-.btn.sec{background:transparent;color:var(--brown-dark);border:1px solid var(--brown-light);font-weight:400}
 .muted{color:var(--text-light);font-size:.95rem}
 
-/* ---- start ---- */
-#start{justify-content:center;text-align:center;align-items:center}
+#start,#tito{justify-content:center;text-align:center;align-items:center}
 #start .logo{width:168px;height:168px;border-radius:50%;object-fit:cover;margin-bottom:24px}
 #start h1{max-width:16ch}
-#start .lead{max-width:34ch;margin:0 auto}
-#start .prep{text-align:left;max-width:34ch;margin:22px auto 0;padding:16px 18px;
+.lead{max-width:34ch;margin:0 auto}
+.lead p{margin:0 0 12px}
+.prep{text-align:left;max-width:34ch;margin:22px auto 0;padding:16px 18px;
   background:var(--sand-dark);border-radius:6px;font-size:.95rem}
-#start .prep p{margin:0 0 8px}
-#start .prep p:last-child{margin:0}
-#start .actions{width:100%;max-width:34ch;margin-top:6px}
+.prep p{margin:0 0 8px} .prep p:last-child{margin:0}
+.actions{width:100%;max-width:34ch}
+#tito .inner{max-width:34ch}
+#tito h1{margin-bottom:.8em}
+#tito p{text-align:left}
 
-/* ---- lopen ---- */
 #walk{background:var(--walk-bg);color:var(--sand);padding-top:calc(14px + env(safe-area-inset-top))}
-.barlabel{display:flex;justify-content:space-between;font-size:.8rem;color:#C7B49A;margin-bottom:6px}
+.barlabel{font-size:.8rem;color:#C7B49A;margin-bottom:6px}
 .bar{height:6px;background:rgba(255,244,213,.16);border-radius:3px;overflow:hidden}
-.bar>span{display:block;height:100%;width:0%;background:var(--gold);transition:width .6s linear}
+.bar>span{display:block;height:100%;width:0%;background:var(--gold);transition:width 1.6s linear}
 .arrowwrap{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
-#arrow{width:min(60vw,250px);height:min(60vw,250px);transition:transform .35s ease-out}
+#arrow{width:min(72vw,300px);height:min(72vw,300px);transition:transform .45s ease-out}
 #arrow.noheading{opacity:.16}
 .nofix{position:absolute;text-align:center;max-width:22ch;font-size:1.05rem;color:#F7CB88}
-.dist{font-family:var(--serif);font-size:3.8rem;line-height:1;text-align:center}
-.dist small{font-size:1.15rem;color:#C7B49A;margin-left:4px}
-.instr{font-size:1.12rem;margin:14px 0 0;min-height:3em;text-align:center}
-.foot{display:flex;justify-content:space-between;font-size:.85rem;color:#C7B49A;margin-top:10px}
+.foot{display:flex;justify-content:center;font-size:.85rem;color:#C7B49A;margin-top:10px}
 .hint{background:var(--gold);color:#3A2A1F;font-weight:600;text-align:center;
   padding:10px;border-radius:6px;margin-bottom:10px;font-size:.95rem;display:none}
 .hint.on{display:block}
 .warn{background:var(--danger);color:#fff}
 
-/* ---- stop / keuze ---- */
 #stop,#choice{background:var(--sand);justify-content:center}
 #stop .inner,#choice .inner{max-width:34ch;margin:0 auto;width:100%}
-#stop p{margin:0 0 14px}
-.choicebtn{
-  display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--brown-light);
-  border-radius:6px;padding:16px 18px;margin-top:12px;color:var(--text);font-weight:400;line-height:1.5
-}
-.choicebtn strong{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--brown-dark);
-  font-weight:600;margin-bottom:4px}
+#stop p{margin:0 0 14px;white-space:pre-line}
+.choicebtn{display:block;width:100%;text-align:left;background:#fff;
+  border:1px solid var(--brown-light);border-radius:6px;padding:16px 18px;
+  margin-top:12px;color:var(--text);font-weight:400;line-height:1.5}
+.choicebtn strong{display:block;font-family:var(--serif);font-size:1.15rem;
+  color:var(--brown-dark);font-weight:600;margin-bottom:4px}
 .choicebtn.care{border-color:var(--danger)}
 .choicebtn .care-note{color:var(--danger)}
 
-/* ---- eind ---- */
 #done{justify-content:center;text-align:center;align-items:center}
 #done .stat{font-family:var(--serif);font-size:2.4rem;color:var(--brown-dark);line-height:1.1}
 #done .statlabel{color:var(--text-light);font-size:.9rem;margin-bottom:18px}
-#done .bye{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--brown-light);margin-top:22px}
+#done .bye{font-family:var(--serif);font-style:italic;font-size:1.2rem;
+  color:var(--brown-light);margin-top:22px}
 
-/* ---- debug ---- */
 #debug{position:fixed;inset:0;background:#14100D;color:#C9E5A8;z-index:100;
   font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.5;
   padding:calc(12px + env(safe-area-inset-top)) 14px 14px;overflow-y:auto;display:none;
@@ -108,8 +91,9 @@ button{font-family:var(--sans);font-size:1rem;font-weight:600;border:0;cursor:po
 #debug button{background:#2A3320;color:#C9E5A8;border:1px solid #46552F;padding:9px 12px;
   border-radius:4px;font-family:inherit;font-size:12px;font-weight:400;flex:1;min-width:88px}
 #debug button.hot{background:#46552F;color:#F0FFDE}
-#debug textarea{width:100%;height:140px;background:#0C0A08;color:#C9E5A8;border:1px solid #46552F;
-  border-radius:4px;padding:8px;font-family:inherit;font-size:12px;margin-top:8px}
+#debug textarea{width:100%;height:140px;background:#0C0A08;color:#C9E5A8;
+  border:1px solid #46552F;border-radius:4px;padding:8px;font-family:inherit;
+  font-size:12px;margin-top:8px}
 #debug .close{position:absolute;top:calc(10px + env(safe-area-inset-top));right:12px;flex:0;min-width:0}
 .ok{color:#9BD46A}.bad{color:#E08A6A}.dim{color:#6B7A58}
 </style>
@@ -125,68 +109,106 @@ const BRAND = {
   naam:       "PasneserPark",
   tourTitel:  "PasneserPark Church Walk",
   afsluiting: "Very welcome",
-  logo:       "logo.png",          // bestand naast dit HTML-bestand; "" = geen logo
-  kleuren: {
-    sand:      "#FFF4D5",
-    brownDark: "#5D4037",
-    walkBg:    "#3A2A1F",
-    olive:     "#5A7D3E",
-    gold:      "#D4AF37"
-  },
+  logo:       "logo.png",          // bestand ernaast; "" = geen logo
+  kleuren: { sand:"#FFF4D5", brownDark:"#5D4037", walkBg:"#3A2A1F",
+             olive:"#5A7D3E", gold:"#D4AF37" },
   start: {
-    lead:  "You get an arrow and a distance. Follow the arrow and look around you — there is no map to stare at.",
-    regels: [
-      "About an hour of walking. Bring water.",
+    lead: [
+      "You start here at the parking and walk down to the old church at Shelcan. About an hour. Just follow the arrow and you will get there.",
+      "Summers here get hot, so bringing some water would be a good idea."
+    ],
+    prepTitel: "Before you start",
+    prep: [
       "The screen stays on, so turn your brightness down.",
       "Keep the phone in your hand. If the screen goes off, navigation stops.",
-      "Start with at least half a battery, and turn the sound on."
-    ]
-  }
+      "Start with at least 50% battery, and turn the sound on.",
+      "Toli\u2019s bar is two minutes past the church. Bring a little cash if you want to stop there."
+    ],
+    knop: "Next"
+  },
+  tito: {
+    titel: "About Tito",
+    tekst: "Tito may decide to come along. He is a free dog and he is not your responsibility \u2014 if he wanders off or gets himself into trouble, that is his own business. He always finds his way back to PasneserPark.",
+    knop: "Start the walk"
+  },
+  legLabels: { out:"To the church", back:"Back to PasneserPark" },
+  eind: {
+    titel:"You made it", tijd:"on the way", afstand:"walked",
+    tekst:"Put your screen brightness back on automatic to save your battery."
+  },
+  meldingen: {
+    geenKoers:"Take a few steps so we can tell which way you are facing.",
+    geenFix:  "Waiting for your location\u2026",
+    afwijking:"You are off the route. Turn until the arrow points ahead of you.",
+    zwakGps:  "Weak GPS here. Hold on a moment.",
+    vlak:     "Hold your phone flat to keep the arrow accurate.",
+    geenPerm: "Allow location access, otherwise the arrow cannot work.",
+    geenGps:  "This phone is not giving us a location.",
+    verder:   "Continue"
+  },
+  keuze: { titel:"Two ways back", tekst:"From here you can take either route back to the parking." }
 };
 
 /* ============================================================
    DATABLOK 2 — DE ROUTE
    ------------------------------------------------------------
-   BASIS loopt van de parkeerplaats naar Toli's kroeg en weer
-   terug tot de begraafplaats. Daar kiest de wandelaar, en dan
-   wordt een van de TAKKEN eraan geplakt.
+   BASIS loopt van de parkeerplaats naar de kerk en weer terug
+   tot de begraafplaats. Daar kiest de wandelaar en wordt een
+   van de TAKKEN eraan geplakt.
 
    Per punt:
-     lat / lng    coordinaten (Google Maps: breedte eerst)
-     leg          'out' of 'back' — bepaalt welke balk vult
-     instructie   wat de wandelaar doet om hier te komen
-     stop         { titel, tekst } = scherm met tekst en een knop
-     keuze        true = hier komt het keuzescherm
+     lat / lng   coordinaten (Google Maps: breedte eerst)
+     leg         'out' of 'back' — bepaalt welke balk vult
+     vorm        true = vormpunt. Alleen om de lijn de bocht mee
+                 te laten maken. Geen piep, geen scherm, geen
+                 melding; de wandelaar merkt er niets van.
+                 Zet er een waar het pad meer dan ~25 m van de
+                 rechte lijn af komt, op rechte stukken niet
+                 vaker dan om de 150-200 m, en nooit dichter dan
+                 30 m op elkaar (dat is binnen de meetfout).
+     stop        { titel, tekst } = scherm met tekst en een knop
+     keuze       true = hier komt het keuzescherm
    ============================================================ */
 const BASIS = [
-  { id:"start", leg:"out", lat:41.070883, lng:20.140599,
-    instructie:"" },
-
-  { id:"o1", leg:"out", lat:41.070098, lng:20.141665,
-    instructie:"Turn right here and follow this path." },
-
-  { id:"o2", leg:"out", lat:41.065887, lng:20.142660,
-    instructie:"Stay on the path." },
-
-  { id:"o3", leg:"out", lat:41.064490, lng:20.134814,
-    instructie:"The cemetery and the ruin of the old church are on your right. Take the path down to the right." },
-
-  { id:"o4", leg:"out", lat:41.061204, lng:20.134252,
-    instructie:"The road winds down. Keep following it to the church.",
+  { id:"start", leg:"out", lat:41.070976, lng:20.140588 },
+  { id:"a1", leg:"out", lat:41.070487, lng:20.140936, vorm:true },
+  { id:"a2", leg:"out", lat:41.070114, lng:20.141653, vorm:true },
+  { id:"a3", leg:"out", lat:41.069200, lng:20.142195, vorm:true },
+  { id:"a4", leg:"out", lat:41.068359, lng:20.142052, vorm:true },
+  { id:"a5", leg:"out", lat:41.067998, lng:20.142365, vorm:true },
+  { id:"a6", leg:"out", lat:41.067233, lng:20.142060, vorm:true },
+  { id:"a7", leg:"out", lat:41.066780, lng:20.142100, vorm:true },
+  { id:"a8", leg:"out", lat:41.065897, lng:20.142653, vorm:true },
+  { id:"a9", leg:"out", lat:41.065850, lng:20.141925, vorm:true },
+  { id:"a10", leg:"out", lat:41.065696, lng:20.141571, vorm:true },
+  { id:"a11", leg:"out", lat:41.064743, lng:20.141030, vorm:true },
+  { id:"a12", leg:"out", lat:41.064649, lng:20.140247, vorm:true },
+  { id:"a13", leg:"out", lat:41.064566, lng:20.139478, vorm:true },
+  { id:"a14", leg:"out", lat:41.064271, lng:20.137947, vorm:true },
+  { id:"a15", leg:"out", lat:41.064202, lng:20.137354, vorm:true },
+  { id:"a16", leg:"out", lat:41.063949, lng:20.137144, vorm:true },
+  { id:"a17", leg:"out", lat:41.064067, lng:20.136265, vorm:true },
+  { id:"a18", leg:"out", lat:41.064283, lng:20.135937, vorm:true },
+  { id:"a19", leg:"out", lat:41.064219, lng:20.135527, vorm:true },
+  { id:"a20", leg:"out", lat:41.064432, lng:20.135168, vorm:true },
+  { id:"a21", leg:"out", lat:41.064287, lng:20.134778, vorm:true },
+  { id:"a22", leg:"out", lat:41.063538, lng:20.135206, vorm:true },
+  { id:"a23", leg:"out", lat:41.063202, lng:20.135063, vorm:true },
+  { id:"a24", leg:"out", lat:41.062830, lng:20.134750, vorm:true },
+  { id:"a25", leg:"out", lat:41.063069, lng:20.134554, vorm:true },
+  { id:"a26", leg:"out", lat:41.062298, lng:20.134354, vorm:true },
+  { id:"a27", leg:"out", lat:41.061617, lng:20.134649, vorm:true },
+  { id:"a28", leg:"out", lat:41.061364, lng:20.134501, vorm:true },
+  { id:"kerk", leg:"out", lat:41.061230, lng:20.134246,
     stop:{ titel:"St. Nicholas Church",
-           tekst:"Kisha e Shen Kollit. Albanian Orthodox church. The interior is completely covered with frescoes attributed to Onufri. Cultural Monument of Albania since 1948." } },
-
-  { id:"o5", leg:"out", lat:41.060630, lng:20.133702,
-    instructie:"Just past the church.",
-    stop:{ titel:"Toli's bar",
-           tekst:"Toli runs this place and is always pleased when foreigners walk in. Order a raki if you want to make an impression ;)" } },
-
-  { id:"b1", leg:"back", lat:41.061204, lng:20.134252,
-    instructie:"Back past the church." },
-
-  { id:"b2", leg:"back", lat:41.064490, lng:20.134814,
-    instructie:"Back up to the cemetery.",
-    keuze:true }
+           tekst:"Kisha e Shen Kollit. Albanian Orthodox church. The interior is completely covered with frescoes attributed to Onufri. Cultural Monument of Albania since 1948.\n\nToli\u2019s bar is two hundred metres further down the road, on your right, if you feel like a drink." } },
+  { id:"b1", leg:"back", lat:41.062318, lng:20.134365, vorm:true },
+  { id:"b2", leg:"back", lat:41.063017, lng:20.134394, vorm:true },
+  { id:"b3", leg:"back", lat:41.062829, lng:20.134747, vorm:true },
+  { id:"b4", leg:"back", lat:41.063203, lng:20.135066, vorm:true },
+  { id:"b5", leg:"back", lat:41.063591, lng:20.135219, vorm:true },
+  { id:"b6", leg:"back", lat:41.064051, lng:20.134865, vorm:true },
+  { id:"kruispunt", leg:"back", lat:41.064522, lng:20.134774, keuze:true }
 ];
 
 const TAKKEN = {
@@ -194,73 +216,100 @@ const TAKKEN = {
     label:"Same way back",
     omschrijving:"The path you came down. Wide and easy.",
     punten:[
-      { id:"z1", leg:"back", lat:41.065887, lng:20.142660, instructie:"Back along the path you came." },
-      { id:"z2", leg:"back", lat:41.070098, lng:20.141665, instructie:"Keep going, almost there." },
-      { id:"z3", leg:"back", lat:41.070883, lng:20.140599, instructie:"Left, back to the parking." }
+      { id:"y1", leg:"back", lat:41.064219, lng:20.135527, vorm:true },
+      { id:"y2", leg:"back", lat:41.064283, lng:20.135937, vorm:true },
+      { id:"y3", leg:"back", lat:41.064067, lng:20.136265, vorm:true },
+      { id:"y4", leg:"back", lat:41.063949, lng:20.137144, vorm:true },
+      { id:"y5", leg:"back", lat:41.064202, lng:20.137354, vorm:true },
+      { id:"y6", leg:"back", lat:41.064271, lng:20.137947, vorm:true },
+      { id:"y7", leg:"back", lat:41.064701, lng:20.139264, vorm:true },
+      { id:"y8", leg:"back", lat:41.064692, lng:20.139985, vorm:true },
+      { id:"y9", leg:"back", lat:41.064743, lng:20.141030, vorm:true },
+      { id:"y10", leg:"back", lat:41.065696, lng:20.141571, vorm:true },
+      { id:"y11", leg:"back", lat:41.065850, lng:20.141925, vorm:true },
+      { id:"y12", leg:"back", lat:41.065897, lng:20.142653, vorm:true },
+      { id:"y13", leg:"back", lat:41.066780, lng:20.142100, vorm:true },
+      { id:"y14", leg:"back", lat:41.067233, lng:20.142060, vorm:true },
+      { id:"y15", leg:"back", lat:41.067998, lng:20.142365, vorm:true },
+      { id:"y16", leg:"back", lat:41.068359, lng:20.142052, vorm:true },
+      { id:"y17", leg:"back", lat:41.068959, lng:20.142245, vorm:true },
+      { id:"y18", leg:"back", lat:41.070114, lng:20.141653, vorm:true },
+      { id:"y19", leg:"back", lat:41.070487, lng:20.140936, vorm:true },
+      { id:"eind", leg:"back", lat:41.070976, lng:20.140588 }
     ]
   },
   laag: {
     label:"The lower path",
     omschrijving:"Narrower. Past a drop and across a stream bed, dry in summer. Not after rain.",
     punten:[
-      { id:"l1", leg:"back", lat:41.064726, lng:20.135244,
-        instructie:"Look for the path — it is there, just faint at the start." },
-      { id:"l2", leg:"back", lat:41.066308, lng:20.138975,
-        instructie:"Keep right at the top here." },
-      { id:"l3", leg:"back", lat:41.067588, lng:20.139872,
-        instructie:"Cross the stream bed and continue on the other side." },
-      { id:"l4", leg:"back", lat:41.068924, lng:20.140560,
-        instructie:"Pass just right of the house, through the tall grass." },
-      { id:"l5", leg:"back", lat:41.069663, lng:20.140365,
-        instructie:"Find your way up and keep right." },
-      { id:"l6", leg:"back", lat:41.069710, lng:20.140857,
-        instructie:"",
+      { id:"x1", leg:"back", lat:41.064728, lng:20.135014, vorm:true },
+      { id:"x2", leg:"back", lat:41.064889, lng:20.135735, vorm:true },
+      { id:"x3", leg:"back", lat:41.064867, lng:20.136352, vorm:true },
+      { id:"x4", leg:"back", lat:41.065274, lng:20.136460, vorm:true },
+      { id:"x5", leg:"back", lat:41.066176, lng:20.137900, vorm:true },
+      { id:"x6", leg:"back", lat:41.066043, lng:20.138415, vorm:true },
+      { id:"x7", leg:"back", lat:41.066432, lng:20.139303, vorm:true },
+      { id:"x8", leg:"back", lat:41.066795, lng:20.139379, vorm:true },
+      { id:"x9", leg:"back", lat:41.067336, lng:20.139970, vorm:true },
+      { id:"x10", leg:"back", lat:41.067828, lng:20.140032, vorm:true },
+      { id:"x11", leg:"back", lat:41.068127, lng:20.140216, vorm:true },
+      { id:"x12", leg:"back", lat:41.068627, lng:20.140112, vorm:true },
+      { id:"x13", leg:"back", lat:41.069054, lng:20.140619, vorm:true },
+      { id:"x14", leg:"back", lat:41.069667, lng:20.140404, vorm:true },
+      { id:"water", leg:"back", lat:41.069800, lng:20.140711,
         stop:{ titel:"Water point", tekst:"Good drinking water. Fill your bottle ;)" } },
-      { id:"l7", leg:"back", lat:41.070043, lng:20.141319,
-        instructie:"Almost back at PasneserPark." },
-      { id:"l8", leg:"back", lat:41.070883, lng:20.140599,
-        instructie:"Left, back to the parking." }
+      { id:"x15", leg:"back", lat:41.069898, lng:20.141191, vorm:true },
+      { id:"eind", leg:"back", lat:41.070968, lng:20.140585 }
     ]
   }
-};
+};</script>
 
+<script>
 /* ============================================================
    DATABLOK 3 — DREMPELS
    Dit zijn de getallen die je in het veld bijstelt.
    ============================================================ */
 const CFG = {
-  aankomstMeter:      22,
-  afwijkingMeter:     50,
-  afwijkingSeconden:  30,
-  loopSnelheid:      0.7,
-  koersMinAfstand:     6,
-  gpsSlechtMeter:     35,
-  piepOp:      [100, 40],
-  vlakGraden:         45,
-  simStap:            18
+  aankomstMeter:      22,   // doorschakelen binnen zoveel meter
+  afwijkingMeter:     50,   // hoe ver naast de route voor een waarschuwing
+  afwijkingSeconden:  30,   // en hoe lang, voordat hij iets zegt
+  loopSnelheid:      0.7,   // m/s waarboven GPS-koers betrouwbaar is
+  koersMinAfstand:     6,   // minimale verplaatsing (m) voor eigen koersberekening
+  gpsSlechtMeter:     35,   // hierboven: "GPS is even zwak"
+  piepOp:      [100, 40],   // piepjes op zoveel meter voor het volgende echte punt
+  vlakGraden:         45,   // telefoon schuiner dan dit = "houd hem vlak"
+  simStap:            18,   // meters per stap in simulatiemodus
+
+  // --- filters op binnenkomende metingen ---
+  maxNauwkeurigheid:  50,   // meting met een slechtere marge dan dit: weggooien
+  maxSnelheid:         5,   // m/s; sneller is geen wandelaar maar ruis
+  stilMiddelen:        8,   // hoeveel metingen middelen bij stilstand
+
+  // --- vastplakken op de route ---
+  plakMax:            50    // tot zoveel meter naast de lijn corrigeren
 };
 </script>
-
-<!-- ============================ SCHERMEN ============================ -->
 
 <section id="start" class="screen on">
   <img id="brandLogo" class="logo" alt="">
   <h1 id="startTitel">PasneserPark Church Walk</h1>
-  <p class="lead" id="startLead"></p>
-  <div class="prep">
-    <p><strong>Before you start</strong></p>
-    <div id="startRegels"></div>
-  </div>
-  <div class="actions">
-    <button class="btn" id="btnStart">Start the walk</button>
-    <button class="btn sec" id="btnSim">Preview without GPS</button>
+  <div class="lead" id="startLead"></div>
+  <div class="prep"><p><strong id="prepTitel"></strong></p><div id="startPrep"></div></div>
+  <div class="actions"><button class="btn" id="btnNext"></button></div>
+</section>
+
+<section id="tito" class="screen">
+  <div class="inner">
+    <h1 id="titoTitel"></h1>
+    <p id="titoTekst"></p>
+    <button class="btn" id="btnStart"></button>
   </div>
 </section>
 
 <section id="walk" class="screen">
   <div class="hint" id="hint"></div>
   <div>
-    <div class="barlabel"><span id="legLabel">To the church</span><span id="legPct">0%</span></div>
+    <div class="barlabel" id="legLabel"></div>
     <div class="bar"><span id="legBar"></span></div>
   </div>
   <div class="arrowwrap">
@@ -270,35 +319,33 @@ const CFG = {
     </svg>
     <div class="nofix" id="noFix" style="display:none"></div>
   </div>
-  <div class="dist"><span id="distVal">—</span><small id="distUnit">m</small></div>
-  <p class="instr" id="instr"></p>
-  <div class="foot"><span id="clock">0:00</span><span id="stops"></span></div>
+  <div class="foot"><span id="clock">0:00</span></div>
 </section>
 
 <section id="stop" class="screen">
   <div class="inner">
     <h1 id="stopTitel"></h1>
     <p id="stopTekst"></p>
-    <button class="btn" id="btnStopVerder">Continue</button>
+    <button class="btn" id="btnStopVerder"></button>
   </div>
 </section>
 
 <section id="choice" class="screen">
   <div class="inner">
-    <h1>Two ways back</h1>
-    <p class="muted">From here you can take either route back to the parking.</p>
+    <h1 id="keuzeTitel"></h1>
+    <p class="muted" id="keuzeTekst"></p>
     <button class="choicebtn" id="btnZelfde"></button>
     <button class="choicebtn care" id="btnLaag"></button>
   </div>
 </section>
 
 <section id="done" class="screen">
-  <h1>You made it</h1>
+  <h1 id="doneTitel"></h1>
   <div class="stat" id="doneTime">0:00</div>
-  <div class="statlabel">on the way</div>
+  <div class="statlabel" id="doneTimeLabel"></div>
   <div class="stat" id="doneDist">0,0 km</div>
-  <div class="statlabel">walked</div>
-  <p class="muted" style="max-width:32ch">Put your screen brightness back on automatic to save your battery.</p>
+  <div class="statlabel" id="doneDistLabel"></div>
+  <p class="muted" style="max-width:32ch" id="doneTekst"></p>
   <p class="bye" id="doneBye"></p>
 </section>
 
@@ -307,10 +354,14 @@ const CFG = {
   <h3>positie</h3>
   <table>
     <tr><td>nauwkeurigheid</td><td id="d_acc">—</td></tr>
-    <tr><td>lat / lng</td><td id="d_pos">—</td></tr>
+    <tr><td>ruwe positie</td><td id="d_raw">—</td></tr>
+    <tr><td>na filter + middelen</td><td id="d_flt">—</td></tr>
+    <tr><td>vastgeplakt op route</td><td id="d_snap">—</td></tr>
+    <tr><td>correctie</td><td id="d_corr">—</td></tr>
     <tr><td>snelheid</td><td id="d_spd">—</td></tr>
-    <tr><td>fixes ontvangen</td><td id="d_fix">0</td></tr>
+    <tr><td>fixes / weggegooid</td><td id="d_fix">0 / 0</td></tr>
     <tr><td>laatste fix</td><td id="d_age">—</td></tr>
+    <tr><td>modus</td><td id="d_mode">—</td></tr>
   </table>
   <h3>richting</h3>
   <table>
@@ -326,8 +377,9 @@ const CFG = {
   <table>
     <tr><td>gekozen terugweg</td><td id="d_tak">nog niet gekozen</td></tr>
     <tr><td>volgend punt</td><td id="d_next">—</td></tr>
-    <tr><td>afstand</td><td id="d_dist">—</td></tr>
-    <tr><td>afstand tot route</td><td id="d_xte">—</td></tr>
+    <tr><td>volgend echt punt</td><td id="d_echt">—</td></tr>
+    <tr><td>afstand tot punt</td><td id="d_dist">—</td></tr>
+    <tr><td>afstand tot route (ruw)</td><td id="d_xte">—</td></tr>
     <tr><td>afwijking al</td><td id="d_offt">—</td></tr>
     <tr><td>voortgang heen</td><td id="d_p1">—</td></tr>
     <tr><td>voortgang terug</td><td id="d_p2">—</td></tr>
@@ -339,6 +391,7 @@ const CFG = {
     <button id="dbgSim">simulatie aan</button>
     <button id="dbgStep">stap vooruit</button>
     <button id="dbgStray">wijk 80m af</button>
+    <button id="dbgPlak">plakken uit</button>
     <button id="dbgBeep">piep</button>
   </div>
   <h3>waypoints opnemen</h3>
@@ -359,6 +412,7 @@ const CFG = {
 const R = 6371000;
 const rad = d => d * Math.PI / 180;
 const deg = r => r * 180 / Math.PI;
+const $ = id => document.getElementById(id);
 
 function afstand(a, b){
   const dLat = rad(b.lat - a.lat), dLng = rad(b.lng - a.lng);
@@ -373,47 +427,52 @@ function peiling(a, b){
             Math.sin(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.cos(dLng);
   return (deg(Math.atan2(y, x)) + 360) % 360;
 }
+/* platte projectie naar meters — op deze schaal ruim nauwkeurig genoeg */
 function xy(p, ref){
   return { x:(p.lng - ref.lng) * 111320 * Math.cos(rad(ref.lat)),
            y:(p.lat - ref.lat) * 111320 };
 }
+/* punt tot lijnstuk: afstand, hoe ver langs het stuk, en het voetpunt zelf */
 function opSegment(p, a, b){
   const P = xy(p,a), B = xy(b,a);
   const len2 = B.x*B.x + B.y*B.y;
-  if (len2 === 0) return { afstandTot:Math.hypot(P.x,P.y), langs:0, lengte:0 };
+  if (len2 === 0) return { afstandTot:Math.hypot(P.x,P.y), langs:0, lengte:0, voet:a };
   let t = (P.x*B.x + P.y*B.y) / len2;
   t = Math.max(0, Math.min(1, t));
   const lengte = Math.sqrt(len2);
-  return { afstandTot:Math.hypot(P.x - B.x*t, P.y - B.y*t), langs:t*lengte, lengte };
+  return {
+    afstandTot: Math.hypot(P.x - B.x*t, P.y - B.y*t),
+    langs: t*lengte, lengte,
+    voet: { lat: a.lat + (b.lat - a.lat)*t, lng: a.lng + (b.lng - a.lng)*t }
+  };
 }
 function klok(ms){
   const s = Math.floor(ms/1000);
   return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
 }
-const $ = id => document.getElementById(id);
 
 /* ============================================================
    STAAT
    ============================================================ */
 const S = {
   gestart:false, klaar:false, gepauzeerd:false,
-  route:BASIS.slice(),
-  tak:null,
-  index:1,
-  pos:null, acc:null, spd:null, laatsteFix:0,
+  route:BASIS.slice(), tak:null, index:1,
+  ruw:null, pos:null, acc:null, spd:null, laatsteFix:0,
+  buffer:[],                       // laatste metingen, voor middelen bij stilstand
   koersGps:null, koersBerekend:null, koersKompas:null, kanteling:null, bron:"geen",
   startTijd:0, gelopen:0,
   afwijkingSinds:0, afwijkingActief:false,
   gepiept:{}, wakeLock:null, wakeStatus:"niet aangevraagd",
-  sim:false, audioCtx:null, fixes:0, _rot:null,
+  sim:false, audioCtx:null,
+  fixes:0, weg:0, _rot:null, _corr:null, _mode:"—",
+  plakAan:true,
   opnemen:false, opnames:[], opnameSamples:[]
 };
 
 const LEG = {
-  out:  { label:"To the church", totaal:0, gedaan:0 },
-  back: { label:"Back to PasneserPark", totaal:0, gedaan:0 }
+  out:  { label:BRAND.legLabels.out,  totaal:0, gedaan:0 },
+  back: { label:BRAND.legLabels.back, totaal:0, gedaan:0 }
 };
-
 function takLengte(t){
   const p = TAKKEN[t].punten, laatst = BASIS[BASIS.length-1];
   let d = afstand(laatst, p[0]);
@@ -424,7 +483,7 @@ function kortsteTak(){
   return takLengte("zelfde") <= takLengte("laag") ? TAKKEN.zelfde : TAKKEN.laag;
 }
 /* Zolang de terugweg niet gekozen is rekenen we met de kortste tak,
-   anders zou de tweede balk geen totaal hebben. */
+   anders heeft de tweede balk geen totaal. */
 function legsHerberekenen(){
   LEG.out.totaal = 0; LEG.back.totaal = 0;
   const r = S.tak ? S.route : S.route.concat(kortsteTak().punten);
@@ -436,23 +495,34 @@ legsHerberekenen();
    BRANDING TOEPASSEN
    ============================================================ */
 (function(){
-  const r = document.documentElement.style;
-  r.setProperty('--sand', BRAND.kleuren.sand);
-  r.setProperty('--brown-dark', BRAND.kleuren.brownDark);
-  r.setProperty('--walk-bg', BRAND.kleuren.walkBg);
-  r.setProperty('--olive', BRAND.kleuren.olive);
-  r.setProperty('--gold', BRAND.kleuren.gold);
-  $('startTitel').textContent = BRAND.tourTitel;
-  $('startLead').textContent = BRAND.start.lead;
-  $('startRegels').innerHTML = BRAND.start.regels.map(t => "<p>" + t + "</p>").join("");
-  $('doneBye').textContent = BRAND.afsluiting;
+  const r = document.documentElement.style, K = BRAND.kleuren;
+  r.setProperty('--sand', K.sand); r.setProperty('--brown-dark', K.brownDark);
+  r.setProperty('--walk-bg', K.walkBg); r.setProperty('--olive', K.olive);
+  r.setProperty('--gold', K.gold);
   document.title = BRAND.tourTitel;
+  $('startTitel').textContent = BRAND.tourTitel;
+  $('startLead').innerHTML = BRAND.start.lead.map(t => "<p>"+t+"</p>").join("");
+  $('prepTitel').textContent = BRAND.start.prepTitel;
+  $('startPrep').innerHTML = BRAND.start.prep.map(t => "<p>"+t+"</p>").join("");
+  $('btnNext').textContent = BRAND.start.knop;
+  $('titoTitel').textContent = BRAND.tito.titel;
+  $('titoTekst').textContent = BRAND.tito.tekst;
+  $('btnStart').textContent = BRAND.tito.knop;
+  $('btnStopVerder').textContent = BRAND.meldingen.verder;
+  $('keuzeTitel').textContent = BRAND.keuze.titel;
+  $('keuzeTekst').textContent = BRAND.keuze.tekst;
+  $('doneTitel').textContent = BRAND.eind.titel;
+  $('doneTimeLabel').textContent = BRAND.eind.tijd;
+  $('doneDistLabel').textContent = BRAND.eind.afstand;
+  $('doneTekst').textContent = BRAND.eind.tekst;
+  $('doneBye').textContent = BRAND.afsluiting;
+  $('legLabel').textContent = LEG.out.label;
   const l = $('brandLogo');
-  if (BRAND.logo){ l.src = BRAND.logo; l.alt = BRAND.naam; l.onerror = () => l.style.display = 'none'; }
+  if (BRAND.logo){ l.src = BRAND.logo; l.alt = BRAND.naam; l.onerror = () => l.style.display='none'; }
   else l.style.display = 'none';
-  $('btnZelfde').innerHTML = "<strong>" + TAKKEN.zelfde.label + "</strong>" + TAKKEN.zelfde.omschrijving;
-  $('btnLaag').innerHTML   = "<strong>" + TAKKEN.laag.label + "</strong>" +
-                             "<span class='care-note'>" + TAKKEN.laag.omschrijving + "</span>";
+  $('btnZelfde').innerHTML = "<strong>"+TAKKEN.zelfde.label+"</strong>"+TAKKEN.zelfde.omschrijving;
+  $('btnLaag').innerHTML   = "<strong>"+TAKKEN.laag.label+"</strong>"+
+                             "<span class='care-note'>"+TAKKEN.laag.omschrijving+"</span>";
 })();
 
 /* ============================================================
@@ -493,41 +563,91 @@ document.addEventListener("visibilitychange", () => {
 });
 
 /* ============================================================
+   BINNENKOMENDE METINGEN
+   Drie stappen: onzin weggooien, middelen bij stilstand,
+   en vastplakken op de eigen route.
+   ============================================================ */
+function verwerkMeting(nu, acc, tijd){
+  /* 1 — onzin weggooien */
+  if (acc != null && acc > CFG.maxNauwkeurigheid){ S.weg++; return false; }
+  if (S.ruw && S.laatsteFix){
+    const dt = (tijd - S.laatsteFix) / 1000;
+    if (dt > 0.3){
+      const v = afstand(S.ruw, nu) / dt;
+      if (v > CFG.maxSnelheid){ S.weg++; return false; }   // geen wandelaar, dat is ruis
+    }
+  }
+
+  /* afgelegde afstand op de ruwe metingen, vóór correctie */
+  if (S.ruw && S.gestart && !S.klaar){
+    const d = afstand(S.ruw, nu);
+    if (d < 60) S.gelopen += d;
+  }
+  /* eigen koersberekening, ook op de ruwe metingen */
+  if (S.ruw && afstand(S.ruw, nu) >= CFG.koersMinAfstand) S.koersBerekend = peiling(S.ruw, nu);
+
+  S.ruw = nu; S.acc = acc; S.laatsteFix = tijd; S.fixes++;
+
+  /* 2 — middelen bij stilstand, gewogen naar nauwkeurigheid.
+     Een meting van 8 m telt zwaarder dan een van 40 m.
+     Zodra hij loopt uitzetten, anders loop je achter de feiten aan. */
+  S.buffer.push({ lat:nu.lat, lng:nu.lng, acc: acc || 20 });
+  while (S.buffer.length > CFG.stilMiddelen) S.buffer.shift();
+
+  const staatStil = (S.spd == null) ? false : (S.spd < CFG.loopSnelheid);
+  let p = nu;
+  if (staatStil && S.buffer.length > 2){
+    let sw = 0, la = 0, ln = 0;
+    for (const b of S.buffer){ const w = 1/(b.acc*b.acc); sw += w; la += b.lat*w; ln += b.lng*w; }
+    p = { lat: la/sw, lng: ln/sw };
+    S._mode = "gemiddeld (" + S.buffer.length + ")";
+  } else {
+    S._mode = "los";
+    if (!staatStil) S.buffer = [S.buffer[S.buffer.length-1]];
+  }
+
+  /* 3 — vastplakken op de route.
+     Je weet waar het pad loopt, dus een meting die er 20 m naast ligt
+     hoort waarschijnlijk op het pad. Boven plakMax niet meer corrigeren:
+     dan is iemand echt van de route af en moet je hem niet voorliegen. */
+  S._corr = null;
+  if (S.plakAan && S.index >= 1 && S.index < S.route.length){
+    const seg = opSegment(p, S.route[S.index-1], S.route[S.index]);
+    if (seg.afstandTot <= CFG.plakMax){
+      S._corr = seg.afstandTot;
+      p = seg.voet;
+    }
+  }
+  S.pos = p;
+  return true;
+}
+
+/* ============================================================
    SENSOREN
    ============================================================ */
 function startGps(){
-  if (!navigator.geolocation){ toonHint("This phone is not giving us a location.", true); return; }
+  if (!navigator.geolocation){ toonHint(BRAND.meldingen.geenGps, true); return; }
   navigator.geolocation.watchPosition(onPos, onPosFout,
     { enableHighAccuracy:true, maximumAge:1000, timeout:20000 });
 }
 function onPos(p){
   if (S.sim) return;
   const nu = { lat:p.coords.latitude, lng:p.coords.longitude };
-  S.fixes++;
-  S.acc = p.coords.accuracy;
   S.spd = (p.coords.speed == null || isNaN(p.coords.speed)) ? null : p.coords.speed;
-  S.laatsteFix = Date.now();
   S.koersGps = (p.coords.heading == null || isNaN(p.coords.heading)) ? null : p.coords.heading;
-
   if (S.opnemen) S.opnameSamples.push({ lat:nu.lat, lng:nu.lng, acc:p.coords.accuracy });
-
-  if (S.pos){
-    const d = afstand(S.pos, nu);
-    if (d >= CFG.koersMinAfstand) S.koersBerekend = peiling(S.pos, nu);
-    if (S.gestart && !S.klaar && d < 60) S.gelopen += d;
-  }
-  S.pos = nu;
-  tik();
+  if (verwerkMeting(nu, p.coords.accuracy, Date.now())) tik();
+  else debugVerversen();
 }
 function onPosFout(e){
-  if (e.code === 1) toonHint("Allow location access, otherwise the arrow cannot work.", true);
+  if (e.code === 1) toonHint(BRAND.meldingen.geenPerm, true);
 }
 function startKompas(){
   const h = e => {
     if (e.webkitCompassHeading != null && !isNaN(e.webkitCompassHeading))
-      S.koersKompas = e.webkitCompassHeading;                  // iOS
+      S.koersKompas = e.webkitCompassHeading;                 // iOS
     else if (e.alpha != null && !isNaN(e.alpha))
-      S.koersKompas = (360 - e.alpha) % 360;                   // Android
+      S.koersKompas = (360 - e.alpha) % 360;                  // Android
     if (e.beta != null && e.gamma != null)
       S.kanteling = Math.max(Math.abs(e.beta), Math.abs(e.gamma));
   };
@@ -537,12 +657,11 @@ function startKompas(){
 }
 async function vraagKompasToestemming(){
   const D = window.DeviceOrientationEvent;
-  if (D && typeof D.requestPermission === "function"){   // iOS: moet uit een echte tik komen
+  if (D && typeof D.requestPermission === "function"){  // iOS: moet uit een echte tik komen
     try{ await D.requestPermission(); }catch(e){}
   }
   startKompas();
 }
-
 /* GPS-koers is de hoofdbron zolang iemand loopt, kompas is de terugval */
 function huidigeKoers(){
   const beweegt = (S.spd != null && S.spd >= CFG.loopSnelheid);
@@ -555,6 +674,28 @@ function huidigeKoers(){
 }
 
 /* ============================================================
+   VORMPUNTEN
+   ============================================================ */
+function volgendEchtIndex(){
+  for (let i = S.index; i < S.route.length; i++) if (!S.route[i].vorm) return i;
+  return S.route.length - 1;
+}
+/* Afstand langs de route, niet hemelsbreed — anders springt het
+   getal heen en weer op een slingerpad. */
+function afstandTotEcht(){
+  const doel = volgendEchtIndex();
+  let d = afstand(S.pos, S.route[S.index]);
+  for (let i = S.index; i < doel; i++) d += afstand(S.route[i], S.route[i+1]);
+  return d;
+}
+/* De afwijkingswaarschuwing kijkt naar de RUWE positie. Op de
+   gecorrigeerde zit je per definitie op de lijn en waarschuwt hij nooit. */
+function afstandTotRoute(){
+  if (!S.ruw || S.index < 1 || S.index >= S.route.length) return null;
+  return opSegment(S.ruw, S.route[S.index-1], S.route[S.index]).afstandTot;
+}
+
+/* ============================================================
    HOOFDLUS
    ============================================================ */
 function tik(){
@@ -563,6 +704,7 @@ function tik(){
   if (!S.pos || !doel){ debugVerversen(); return; }
 
   const d = afstand(S.pos, doel);
+  const dEcht = afstandTotEcht();
   const brg = peiling(S.pos, doel);
   const koers = huidigeKoers();
   const arrow = $('arrow');
@@ -570,8 +712,7 @@ function tik(){
   if (koers == null){
     arrow.classList.add("noheading");
     $('noFix').style.display = "block";
-    $('noFix').textContent = S.pos ? "Take a few steps so we can tell which way you are facing."
-                                   : "Waiting for your location…";
+    $('noFix').textContent = S.pos ? BRAND.meldingen.geenKoers : BRAND.meldingen.geenFix;
   } else {
     arrow.classList.remove("noheading");
     $('noFix').style.display = "none";
@@ -579,17 +720,11 @@ function tik(){
     arrow.style.transform = "rotate(" + S._rot.toFixed(1) + "deg)";
   }
 
-  if (d >= 1000){ $('distVal').textContent = (d/1000).toFixed(1).replace(".",","); $('distUnit').textContent = "km"; }
-  else { $('distVal').textContent = Math.round(d); $('distUnit').textContent = "m"; }
-
-  $('instr').textContent = doel.instructie || "";
-  $('stops').textContent = "point " + S.index + " of " + (S.route.length - 1);
-
   voortgang();
 
-  CFG.piepOp.forEach(m => {
-    const k = S.index + "@" + m;
-    if (d <= m && !S.gepiept[k]){ S.gepiept[k] = true; piep(1); }
+  CFG.piepOp.forEach(m => {                    // piepen op het echte punt
+    const k = volgendEchtIndex() + "@" + m;
+    if (dEcht <= m && !S.gepiept[k]){ S.gepiept[k] = true; piep(1); }
   });
 
   if (d <= CFG.aankomstMeter){ aangekomen(); return; }
@@ -599,7 +734,7 @@ function tik(){
     if (!S.afwijkingSinds) S.afwijkingSinds = Date.now();
     if ((Date.now() - S.afwijkingSinds)/1000 > CFG.afwijkingSeconden && !S.afwijkingActief){
       S.afwijkingActief = true;
-      toonHint("You are off the route. Turn until the arrow points ahead of you.", true);
+      toonHint(BRAND.meldingen.afwijking, true);
       piep(2); tril(400);
     }
   } else {
@@ -608,21 +743,26 @@ function tik(){
   }
 
   if (!S.afwijkingActief){
-    if (S.acc != null && S.acc > CFG.gpsSlechtMeter)
-      toonHint("Weak GPS here. The distance may be off for a moment.");
+    if (S.acc != null && S.acc > CFG.gpsSlechtMeter) toonHint(BRAND.meldingen.zwakGps);
     else if (S.bron === "kompas" && S.kanteling != null && S.kanteling > CFG.vlakGraden)
-      toonHint("Hold your phone flat to keep the arrow accurate.");
+      toonHint(BRAND.meldingen.vlak);
     else verbergHint();
   }
   debugVerversen();
 }
 
 /* ============================================================
-   AANKOMST — stop, keuze of gewoon door
+   AANKOMST — vormpunt, stop, keuze of gewoon door
    ============================================================ */
 function aangekomen(){
   const punt = S.route[S.index];
   S.afwijkingSinds = 0; S.afwijkingActief = false;
+
+  if (punt.vorm){                 // geruisloos door
+    S.index++;
+    if (S.index >= S.route.length){ afronden(); return; }
+    tik(); return;
+  }
   verbergHint();
   piep(2); tril(200);
 
@@ -631,8 +771,7 @@ function aangekomen(){
     S.gepauzeerd = true;
     $('stopTitel').textContent = punt.stop.titel;
     $('stopTekst').textContent = punt.stop.tekst;
-    toonScherm('stop');
-    return;
+    toonScherm('stop'); return;
   }
   verder();
 }
@@ -640,20 +779,14 @@ function verder(){
   S.gepauzeerd = false;
   S.index++;
   if (S.index >= S.route.length){ afronden(); return; }
-  toonScherm('walk');
-  tik();
+  toonScherm('walk'); tik();
 }
-$('btnStopVerder').addEventListener('click', verder);
-
 function kies(t){
   S.tak = t;
   S.route = BASIS.concat(TAKKEN[t].punten);
   legsHerberekenen();
   verder();
 }
-$('btnZelfde').addEventListener('click', () => kies('zelfde'));
-$('btnLaag').addEventListener('click',  () => kies('laag'));
-
 function afronden(){
   S.klaar = true;
   piep(3); tril([200,100,200]);
@@ -661,11 +794,6 @@ function afronden(){
   $('doneDist').textContent = (S.gelopen/1000).toFixed(1).replace(".",",") + " km";
   toonScherm('done');
   if (S.wakeLock){ try{ S.wakeLock.release(); }catch(e){} }
-}
-
-function afstandTotRoute(){
-  if (!S.pos || S.index < 1 || S.index >= S.route.length) return null;
-  return opSegment(S.pos, S.route[S.index-1], S.route[S.index]).afstandTot;
 }
 
 /* Voortgang op afgelegde afstand, niet op aantal punten — anders
@@ -681,7 +809,6 @@ function voortgang(){
   const l = LEG[S.route[Math.min(S.index, S.route.length-1)].leg];
   const pct = l.totaal ? Math.max(0, Math.min(100, l.gedaan / l.totaal * 100)) : 0;
   $('legLabel').textContent = l.label;
-  $('legPct').textContent = Math.round(pct) + "%";
   $('legBar').style.width = pct + "%";
 }
 
@@ -697,6 +824,11 @@ function toonHint(t, waarschuwing){
 }
 function verbergHint(){ $('hint').classList.remove('on'); }
 
+$('btnNext').addEventListener('click', () => toonScherm('tito'));
+$('btnStopVerder').addEventListener('click', verder);
+$('btnZelfde').addEventListener('click', () => kies('zelfde'));
+$('btnLaag').addEventListener('click',  () => kies('laag'));
+
 /* ============================================================
    STARTEN
    ============================================================ */
@@ -704,18 +836,17 @@ async function starten(simulatie){
   S.sim = !!simulatie;
   S.gestart = true;
   S.startTijd = Date.now();
-  piep(1);                                 // ontgrendelt meteen het geluid op iOS
-  await vraagKompasToestemming();          // moet binnen deze tik gebeuren
+  piep(1);                                // ontgrendelt meteen het geluid op iOS
+  await vraagKompasToestemming();         // moet binnen deze tik gebeuren
   wakeAan();
   if (S.sim){
     S.pos = { lat:S.route[0].lat, lng:S.route[0].lng };
+    S.ruw = S.pos;
     S.koersBerekend = peiling(S.route[0], S.route[1]);
   } else startGps();
-  toonScherm('walk');
-  tik();
+  toonScherm('walk'); tik();
 }
 $('btnStart').addEventListener('click', () => starten(false));
-$('btnSim').addEventListener('click',  () => starten(true));
 
 setInterval(() => {
   if (S.gestart && !S.klaar) $('clock').textContent = klok(Date.now() - S.startTijd);
@@ -723,9 +854,12 @@ setInterval(() => {
 }, 1000);
 
 /* ============================================================
-   SIMULATIE
+   SIMULATIE — alleen bereikbaar via het debug-scherm
    ============================================================ */
 function simStap(m = CFG.simStap){
+  if (!S.gestart){ S.gestart = true; S.sim = true; S.startTijd = Date.now();
+                   S.pos = { lat:S.route[0].lat, lng:S.route[0].lng }; S.ruw = S.pos;
+                   S.koersBerekend = peiling(S.route[0], S.route[1]); toonScherm('walk'); }
   if (!S.pos || S.gepauzeerd || S.index >= S.route.length) return;
   const doel = S.route[S.index];
   const d = afstand(S.pos, doel);
@@ -734,16 +868,10 @@ function simStap(m = CFG.simStap){
                   lng:S.pos.lng + (doel.lng - S.pos.lng)*f };
   S.koersBerekend = peiling(S.pos, nieuw);
   S.gelopen += afstand(S.pos, nieuw);
-  S.pos = nieuw;
+  S.pos = nieuw; S.ruw = nieuw;
   S.spd = 1.3; S.acc = 8; S.laatsteFix = Date.now(); S.fixes++;
   tik();
 }
-let simLoop = null;
-$('dbgSim').addEventListener('click', () => {
-  S.sim = true;
-  if (simLoop){ clearInterval(simLoop); simLoop = null; $('dbgSim').textContent = "simulatie aan"; }
-  else { simLoop = setInterval(() => simStap(), 900); $('dbgSim').textContent = "simulatie uit"; }
-});
 
 /* ============================================================
    DEBUG — 5x tikken op de titel, of ?debug=1
@@ -760,84 +888,100 @@ $('dbgClose').addEventListener('click', () => $('debug').classList.remove('on'))
 if (new URLSearchParams(location.search).has('debug')) $('debug').classList.add('on');
 
 const n = (v,d=0,e="") => (v == null || isNaN(v)) ? "—" : v.toFixed(d) + e;
+const co = p => p ? p.lat.toFixed(6) + ", " + p.lng.toFixed(6) : "—";
 
 function debugVerversen(){
   if (!$('debug').classList.contains('on')) return;
   const doel = S.route[S.index];
   $('d_acc').innerHTML = S.acc == null ? "—" :
     `<span class="${S.acc > CFG.gpsSlechtMeter ? 'bad':'ok'}">${S.acc.toFixed(1)} m</span>`;
-  $('d_pos').textContent = S.pos ? S.pos.lat.toFixed(6) + ", " + S.pos.lng.toFixed(6) : "—";
-  $('d_spd').textContent = S.spd == null ? "—" : S.spd.toFixed(2) + " m/s";
-  $('d_fix').textContent = S.fixes;
-  $('d_age').textContent = S.laatsteFix ? Math.round((Date.now()-S.laatsteFix)/1000) + " s geleden" : "—";
+  $('d_raw').textContent  = co(S.ruw);
+  $('d_flt').textContent  = S._mode;
+  $('d_snap').textContent = co(S.pos);
+  $('d_corr').innerHTML   = S._corr == null ?
+    '<span class="dim">niet geplakt</span>' : S._corr.toFixed(1) + " m verschoven";
+  $('d_spd').textContent  = S.spd == null ? "—" : S.spd.toFixed(2) + " m/s";
+  $('d_fix').textContent  = S.fixes + " / " + S.weg;
+  $('d_age').textContent  = S.laatsteFix ? Math.round((Date.now()-S.laatsteFix)/1000)+" s geleden" : "—";
+  $('d_mode').textContent = (S.sim ? "simulatie" : "echt") + (S.plakAan ? ", plakken aan" : ", plakken UIT");
   $('d_src').innerHTML = `<span class="${S.bron === 'geen' ? 'bad':'ok'}">${S.bron}</span>`;
   $('d_hgps').textContent  = n(S.koersGps,0,"°");
   $('d_hcalc').textContent = n(S.koersBerekend,0,"°");
   $('d_hcomp').textContent = n(S.koersKompas,0,"°");
   $('d_tilt').textContent  = n(S.kanteling,0,"°");
-  $('d_bear').textContent  = (S.pos && doel) ? peiling(S.pos,doel).toFixed(0) + "°" : "—";
+  $('d_bear').textContent  = (S.pos && doel) ? peiling(S.pos,doel).toFixed(0)+"°" : "—";
   $('d_rot').textContent   = n(S._rot,0,"°");
   $('d_tak').textContent   = S.tak ? TAKKEN[S.tak].label : "nog niet gekozen";
-  $('d_next').textContent  = doel ? (S.index + ". " + (doel.stop ? doel.stop.titel : doel.id)) : "einde";
-  $('d_dist').textContent  = (S.pos && doel) ? afstand(S.pos,doel).toFixed(1) + " m" : "—";
+  $('d_next').textContent  = doel ? (S.index+". "+doel.id+(doel.vorm?"  (vormpunt)":"")) : "einde";
+  $('d_echt').textContent  = S.pos ? (S.route[volgendEchtIndex()].id+" op "+
+                                      Math.round(afstandTotEcht())+" m") : "—";
+  $('d_dist').textContent  = (S.pos && doel) ? afstand(S.pos,doel).toFixed(1)+" m" : "—";
   const xte = afstandTotRoute();
   $('d_xte').innerHTML = xte == null ? "—" :
     `<span class="${xte > CFG.afwijkingMeter ? 'bad':'ok'}">${xte.toFixed(1)} m</span>`;
-  $('d_offt').textContent = S.afwijkingSinds ? Math.round((Date.now()-S.afwijkingSinds)/1000) + " s" : "0 s";
-  const pct = k => LEG[k].totaal ? Math.round(LEG[k].gedaan/LEG[k].totaal*100) + "%" : "—";
+  $('d_offt').textContent = S.afwijkingSinds ? Math.round((Date.now()-S.afwijkingSinds)/1000)+" s" : "0 s";
+  const pct = k => LEG[k].totaal ? Math.round(LEG[k].gedaan/LEG[k].totaal*100)+"%" : "—";
   $('d_p1').textContent = pct("out")  + "  (" + Math.round(LEG.out.totaal)  + " m)";
   $('d_p2').textContent = pct("back") + "  (" + Math.round(LEG.back.totaal) + " m)" + (S.tak ? "" : ", schatting");
   $('d_wake').textContent = S.wakeStatus;
 }
 setInterval(debugVerversen, 1000);
 
+let simLoop = null;
+$('dbgSim').addEventListener('click', () => {
+  S.sim = true;
+  if (simLoop){ clearInterval(simLoop); simLoop = null; $('dbgSim').textContent = "simulatie aan"; }
+  else { simLoop = setInterval(() => simStap(), 900); $('dbgSim').textContent = "simulatie uit"; }
+});
+$('dbgStep').addEventListener('click', () => { S.sim = true; simStap(); });
 $('dbgSkip').addEventListener('click', () => { if (S.index < S.route.length) aangekomen(); });
 $('dbgBack').addEventListener('click', () => {
   if (S.index > 1){ S.index--; S.gepiept = {}; S.gepauzeerd = false; toonScherm('walk'); tik(); }
 });
-$('dbgStep').addEventListener('click', () => { S.sim = true; simStap(); });
 $('dbgBeep').addEventListener('click', () => { piep(2); tril(200); });
+$('dbgPlak').addEventListener('click', () => {
+  S.plakAan = !S.plakAan;
+  $('dbgPlak').textContent = S.plakAan ? "plakken uit" : "plakken aan";
+});
 $('dbgStray').addEventListener('click', () => {
-  if (!S.pos) return;
-  S.pos = { lat:S.pos.lat + 0.00072, lng:S.pos.lng };
-  tik();
+  if (!S.ruw) return;
+  const p = { lat:S.ruw.lat + 0.00072, lng:S.ruw.lng };
+  S.ruw = p; S.pos = p; S.buffer = []; tik();
 });
 
 /* ---- waypoints opnemen: 30 seconden middelen ---- */
 $('dbgRec').addEventListener('click', () => {
   if (S.opnemen) return;
-  if (!S.pos && !S.sim){ $('d_recstat').innerHTML = '<span class="bad">nog geen GPS-fix</span>'; return; }
+  if (!S.ruw && !S.sim){ $('d_recstat').innerHTML = '<span class="bad">nog geen GPS-fix</span>'; return; }
   S.opnemen = true; S.opnameSamples = [];
   let over = 30;
   $('d_recstat').textContent = "opnemen… blijf stilstaan (30s)";
   const t = setInterval(() => {
     over--;
-    $('d_recstat').textContent = "opnemen… blijf stilstaan (" + over + "s, " +
-                                 S.opnameSamples.length + " metingen)";
+    $('d_recstat').textContent = "opnemen… blijf stilstaan ("+over+"s, "+S.opnameSamples.length+" metingen)";
     if (over <= 0){
       clearInterval(t); S.opnemen = false;
       const s = S.opnameSamples;
       if (!s.length){ $('d_recstat').innerHTML = '<span class="bad">geen metingen binnen</span>'; return; }
-      const lat = s.reduce((a,b)=>a+b.lat,0)/s.length;
-      const lng = s.reduce((a,b)=>a+b.lng,0)/s.length;
-      const acc = s.reduce((a,b)=>a+b.acc,0)/s.length;
+      let sw=0, la=0, ln=0, sa=0;
+      for (const b of s){ const w = 1/((b.acc||20)*(b.acc||20)); sw+=w; la+=b.lat*w; ln+=b.lng*w; sa+=b.acc; }
+      const lat=la/sw, lng=ln/sw, acc=sa/s.length;
       S.opnames.push({ lat, lng, acc, n:s.length });
-      $('d_recstat').innerHTML = 'punt ' + S.opnames.length + ' opgeslagen — <span class="' +
-        (acc > 10 ? 'bad':'ok') + '">' + acc.toFixed(1) + ' m</span>' +
-        (acc > 10 ? ' — loop een paar stappen en neem opnieuw op' : '');
+      $('d_recstat').innerHTML = 'punt '+S.opnames.length+' opgeslagen — <span class="'+
+        (acc>10?'bad':'ok')+'">'+acc.toFixed(1)+' m</span>'+
+        (acc>10?' — loop een paar stappen en neem opnieuw op':'');
       recUit();
     }
   }, 1000);
 });
-$('dbgRecClear').addEventListener('click', () => { S.opnames = []; recUit(); $('d_recstat').textContent = "lijst gewist"; });
+$('dbgRecClear').addEventListener('click', () => { S.opnames=[]; recUit(); $('d_recstat').textContent="lijst gewist"; });
 $('dbgCopy').addEventListener('click', async () => {
-  try{ await navigator.clipboard.writeText($('d_recout').value); $('d_recstat').textContent = "gekopieerd"; }
+  try{ await navigator.clipboard.writeText($('d_recout').value); $('d_recstat').textContent="gekopieerd"; }
   catch(e){ $('d_recout').select(); }
 });
 function recUit(){
   $('d_recout').value = S.opnames.map((p,i) =>
-    `{ id:"n${i+1}", leg:"back", lat:${p.lat.toFixed(6)}, lng:${p.lng.toFixed(6)},\n` +
-    `  instructie:"" },   // ±${p.acc.toFixed(0)}m, ${p.n} metingen`
+    `{ id:"n${i+1}", leg:"back", lat:${p.lat.toFixed(6)}, lng:${p.lng.toFixed(6)}, vorm:true },   // ±${p.acc.toFixed(0)}m, ${p.n} metingen`
   ).join("\n");
 }
 </script>
